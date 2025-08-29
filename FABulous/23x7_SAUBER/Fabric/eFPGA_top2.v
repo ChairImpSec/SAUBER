@@ -1,0 +1,1373 @@
+module eFPGA_top2
+    #(
+        parameter include_eFPGA=1,
+        parameter NumberOfRows=23,
+        parameter NumberOfCols=11,
+        parameter FrameBitsPerRow=32,
+        parameter MaxFramesPerCol=20,
+        parameter desync_flag=20,
+        parameter FrameSelectWidth=7,
+        parameter RowSelectWidth=7
+    )
+    (
+        //External IO port
+        output [92-1:0] A_config_C,
+        output [92-1:0] B_config_C,
+        output [23-1:0] I_top_0_t,
+        output [23-1:0] I_top_0_f,
+        output [23-1:0] I_top_1_t,
+        output [23-1:0] I_top_1_f,
+        output [23-1:0] T_top,
+        input [23-1:0] O_top_0_t,
+        input [23-1:0] O_top_0_f,
+        input [23-1:0] O_top_1_t,
+        input [23-1:0] O_top_1_f,
+        output [23-1:0] ctrl_I_top_0_t,
+        output [23-1:0] ctrl_I_top_0_f,
+        output [23-1:0] ctrl_T_top,
+        input [23-1:0] ctrl_O_top_0_t,
+        input [23-1:0] ctrl_O_top_0_f,
+
+        //Custom ports (*SAUBER*)
+        input rst_async_full,
+        input rst_sync_fabric,
+        input rst_sync_rng,
+        output f_detected,
+        output prech1,
+        output prech2,        
+        input [79:0] key_t,
+        input [79:0] key_f,
+        input [79:0] iv_t,
+        input [79:0] iv_f,
+
+        //Config related ports
+        input CLK,
+        input resetn,
+        input SelfWriteStrobe,
+        input [31:0] SelfWriteData,
+        input Rx,
+        output ComActive,
+        output ReceiveLED,
+        input s_clk,
+        input s_data
+);
+
+ //Custom signal declarations for SAUBER
+wire[22:0] F_masked1_top;
+wire[22:0] F_masked2_top;
+wire[22:0] F_ctrl_top;
+wire[45:0] R_t_top;
+wire[45:0] R_f_top;
+
+wire rst_fabric, rst_prng, prech_rng, rst_rng;
+
+//assign rst_fabric = rst_async_full | (rst_sync_fabric & prech2);
+assign rst_prng = rst_async_full | (rst_sync_rng & prech2);
+
+
+
+
+ //Signal declarations
+wire[(NumberOfRows*FrameBitsPerRow)-1:0] FrameRegister;
+wire[(MaxFramesPerCol*NumberOfCols)-1:0] FrameSelect;
+wire[(FrameBitsPerRow*(NumberOfRows+2))-1:0] FrameData;
+wire[FrameBitsPerRow-1:0] FrameAddressRegister;
+wire LongFrameStrobe;
+wire[31:0] LocalWriteData;
+wire LocalWriteStrobe;
+wire[RowSelectWidth-1:0] RowSelect;
+wire resten;
+`ifndef EMULATION
+
+eFPGA_Config
+    #(
+    .RowSelectWidth(RowSelectWidth),
+    .NumberOfRows(NumberOfRows),
+    .desync_flag(desync_flag),
+    .FrameBitsPerRow(FrameBitsPerRow)
+    )
+    eFPGA_Config_inst
+    (
+    .CLK(CLK),
+    .resetn(resetn),
+    .Rx(Rx),
+    .ComActive(ComActive),
+    .ReceiveLED(ReceiveLED),
+    .s_clk(s_clk),
+    .s_data(s_data),
+    .SelfWriteData(SelfWriteData),
+    .SelfWriteStrobe(SelfWriteStrobe),
+    .ConfigWriteData(LocalWriteData),
+    .ConfigWriteStrobe(LocalWriteStrobe),
+    .FrameAddressRegister(FrameAddressRegister),
+    .LongFrameStrobe(LongFrameStrobe),
+    .RowSelect(RowSelect)
+);
+
+
+Frame_Data_Reg
+    #(
+    .FrameBitsPerRow(FrameBitsPerRow),
+    .RowSelectWidth(RowSelectWidth),
+    .Row(1)
+    )
+    inst_Frame_Data_Reg_0
+    (
+    .FrameData_I(LocalWriteData),
+    .FrameData_O(FrameRegister[0*FrameBitsPerRow+FrameBitsPerRow-1:0*FrameBitsPerRow]),
+    .RowSelect(RowSelect),
+    .CLK(CLK)
+);
+
+Frame_Data_Reg
+    #(
+    .FrameBitsPerRow(FrameBitsPerRow),
+    .RowSelectWidth(RowSelectWidth),
+    .Row(2)
+    )
+    inst_Frame_Data_Reg_1
+    (
+    .FrameData_I(LocalWriteData),
+    .FrameData_O(FrameRegister[1*FrameBitsPerRow+FrameBitsPerRow-1:1*FrameBitsPerRow]),
+    .RowSelect(RowSelect),
+    .CLK(CLK)
+);
+
+Frame_Data_Reg
+    #(
+    .FrameBitsPerRow(FrameBitsPerRow),
+    .RowSelectWidth(RowSelectWidth),
+    .Row(3)
+    )
+    inst_Frame_Data_Reg_2
+    (
+    .FrameData_I(LocalWriteData),
+    .FrameData_O(FrameRegister[2*FrameBitsPerRow+FrameBitsPerRow-1:2*FrameBitsPerRow]),
+    .RowSelect(RowSelect),
+    .CLK(CLK)
+);
+
+Frame_Data_Reg
+    #(
+    .FrameBitsPerRow(FrameBitsPerRow),
+    .RowSelectWidth(RowSelectWidth),
+    .Row(4)
+    )
+    inst_Frame_Data_Reg_3
+    (
+    .FrameData_I(LocalWriteData),
+    .FrameData_O(FrameRegister[3*FrameBitsPerRow+FrameBitsPerRow-1:3*FrameBitsPerRow]),
+    .RowSelect(RowSelect),
+    .CLK(CLK)
+);
+
+Frame_Data_Reg
+    #(
+    .FrameBitsPerRow(FrameBitsPerRow),
+    .RowSelectWidth(RowSelectWidth),
+    .Row(5)
+    )
+    inst_Frame_Data_Reg_4
+    (
+    .FrameData_I(LocalWriteData),
+    .FrameData_O(FrameRegister[4*FrameBitsPerRow+FrameBitsPerRow-1:4*FrameBitsPerRow]),
+    .RowSelect(RowSelect),
+    .CLK(CLK)
+);
+
+Frame_Data_Reg
+    #(
+    .FrameBitsPerRow(FrameBitsPerRow),
+    .RowSelectWidth(RowSelectWidth),
+    .Row(6)
+    )
+    inst_Frame_Data_Reg_5
+    (
+    .FrameData_I(LocalWriteData),
+    .FrameData_O(FrameRegister[5*FrameBitsPerRow+FrameBitsPerRow-1:5*FrameBitsPerRow]),
+    .RowSelect(RowSelect),
+    .CLK(CLK)
+);
+
+Frame_Data_Reg
+    #(
+    .FrameBitsPerRow(FrameBitsPerRow),
+    .RowSelectWidth(RowSelectWidth),
+    .Row(7)
+    )
+    inst_Frame_Data_Reg_6
+    (
+    .FrameData_I(LocalWriteData),
+    .FrameData_O(FrameRegister[6*FrameBitsPerRow+FrameBitsPerRow-1:6*FrameBitsPerRow]),
+    .RowSelect(RowSelect),
+    .CLK(CLK)
+);
+
+Frame_Data_Reg
+    #(
+    .FrameBitsPerRow(FrameBitsPerRow),
+    .RowSelectWidth(RowSelectWidth),
+    .Row(8)
+    )
+    inst_Frame_Data_Reg_7
+    (
+    .FrameData_I(LocalWriteData),
+    .FrameData_O(FrameRegister[7*FrameBitsPerRow+FrameBitsPerRow-1:7*FrameBitsPerRow]),
+    .RowSelect(RowSelect),
+    .CLK(CLK)
+);
+
+Frame_Data_Reg
+    #(
+    .FrameBitsPerRow(FrameBitsPerRow),
+    .RowSelectWidth(RowSelectWidth),
+    .Row(9)
+    )
+    inst_Frame_Data_Reg_8
+    (
+    .FrameData_I(LocalWriteData),
+    .FrameData_O(FrameRegister[8*FrameBitsPerRow+FrameBitsPerRow-1:8*FrameBitsPerRow]),
+    .RowSelect(RowSelect),
+    .CLK(CLK)
+);
+
+Frame_Data_Reg
+    #(
+    .FrameBitsPerRow(FrameBitsPerRow),
+    .RowSelectWidth(RowSelectWidth),
+    .Row(10)
+    )
+    inst_Frame_Data_Reg_9
+    (
+    .FrameData_I(LocalWriteData),
+    .FrameData_O(FrameRegister[9*FrameBitsPerRow+FrameBitsPerRow-1:9*FrameBitsPerRow]),
+    .RowSelect(RowSelect),
+    .CLK(CLK)
+);
+
+Frame_Data_Reg
+    #(
+    .FrameBitsPerRow(FrameBitsPerRow),
+    .RowSelectWidth(RowSelectWidth),
+    .Row(11)
+    )
+    inst_Frame_Data_Reg_10
+    (
+    .FrameData_I(LocalWriteData),
+    .FrameData_O(FrameRegister[10*FrameBitsPerRow+FrameBitsPerRow-1:10*FrameBitsPerRow]),
+    .RowSelect(RowSelect),
+    .CLK(CLK)
+);
+
+Frame_Data_Reg
+    #(
+    .FrameBitsPerRow(FrameBitsPerRow),
+    .RowSelectWidth(RowSelectWidth),
+    .Row(12)
+    )
+    inst_Frame_Data_Reg_11
+    (
+    .FrameData_I(LocalWriteData),
+    .FrameData_O(FrameRegister[11*FrameBitsPerRow+FrameBitsPerRow-1:11*FrameBitsPerRow]),
+    .RowSelect(RowSelect),
+    .CLK(CLK)
+);
+
+Frame_Data_Reg
+    #(
+    .FrameBitsPerRow(FrameBitsPerRow),
+    .RowSelectWidth(RowSelectWidth),
+    .Row(13)
+    )
+    inst_Frame_Data_Reg_12
+    (
+    .FrameData_I(LocalWriteData),
+    .FrameData_O(FrameRegister[12*FrameBitsPerRow+FrameBitsPerRow-1:12*FrameBitsPerRow]),
+    .RowSelect(RowSelect),
+    .CLK(CLK)
+);
+
+Frame_Data_Reg
+    #(
+    .FrameBitsPerRow(FrameBitsPerRow),
+    .RowSelectWidth(RowSelectWidth),
+    .Row(14)
+    )
+    inst_Frame_Data_Reg_13
+    (
+    .FrameData_I(LocalWriteData),
+    .FrameData_O(FrameRegister[13*FrameBitsPerRow+FrameBitsPerRow-1:13*FrameBitsPerRow]),
+    .RowSelect(RowSelect),
+    .CLK(CLK)
+);
+
+Frame_Data_Reg
+    #(
+    .FrameBitsPerRow(FrameBitsPerRow),
+    .RowSelectWidth(RowSelectWidth),
+    .Row(15)
+    )
+    inst_Frame_Data_Reg_14
+    (
+    .FrameData_I(LocalWriteData),
+    .FrameData_O(FrameRegister[14*FrameBitsPerRow+FrameBitsPerRow-1:14*FrameBitsPerRow]),
+    .RowSelect(RowSelect),
+    .CLK(CLK)
+);
+
+Frame_Data_Reg
+    #(
+    .FrameBitsPerRow(FrameBitsPerRow),
+    .RowSelectWidth(RowSelectWidth),
+    .Row(16)
+    )
+    inst_Frame_Data_Reg_15
+    (
+    .FrameData_I(LocalWriteData),
+    .FrameData_O(FrameRegister[15*FrameBitsPerRow+FrameBitsPerRow-1:15*FrameBitsPerRow]),
+    .RowSelect(RowSelect),
+    .CLK(CLK)
+);
+
+Frame_Data_Reg
+    #(
+    .FrameBitsPerRow(FrameBitsPerRow),
+    .RowSelectWidth(RowSelectWidth),
+    .Row(17)
+    )
+    inst_Frame_Data_Reg_16
+    (
+    .FrameData_I(LocalWriteData),
+    .FrameData_O(FrameRegister[16*FrameBitsPerRow+FrameBitsPerRow-1:16*FrameBitsPerRow]),
+    .RowSelect(RowSelect),
+    .CLK(CLK)
+);
+
+Frame_Data_Reg
+    #(
+    .FrameBitsPerRow(FrameBitsPerRow),
+    .RowSelectWidth(RowSelectWidth),
+    .Row(18)
+    )
+    inst_Frame_Data_Reg_17
+    (
+    .FrameData_I(LocalWriteData),
+    .FrameData_O(FrameRegister[17*FrameBitsPerRow+FrameBitsPerRow-1:17*FrameBitsPerRow]),
+    .RowSelect(RowSelect),
+    .CLK(CLK)
+);
+
+Frame_Data_Reg
+    #(
+    .FrameBitsPerRow(FrameBitsPerRow),
+    .RowSelectWidth(RowSelectWidth),
+    .Row(19)
+    )
+    inst_Frame_Data_Reg_18
+    (
+    .FrameData_I(LocalWriteData),
+    .FrameData_O(FrameRegister[18*FrameBitsPerRow+FrameBitsPerRow-1:18*FrameBitsPerRow]),
+    .RowSelect(RowSelect),
+    .CLK(CLK)
+);
+
+Frame_Data_Reg
+    #(
+    .FrameBitsPerRow(FrameBitsPerRow),
+    .RowSelectWidth(RowSelectWidth),
+    .Row(20)
+    )
+    inst_Frame_Data_Reg_19
+    (
+    .FrameData_I(LocalWriteData),
+    .FrameData_O(FrameRegister[19*FrameBitsPerRow+FrameBitsPerRow-1:19*FrameBitsPerRow]),
+    .RowSelect(RowSelect),
+    .CLK(CLK)
+);
+
+Frame_Data_Reg
+    #(
+    .FrameBitsPerRow(FrameBitsPerRow),
+    .RowSelectWidth(RowSelectWidth),
+    .Row(21)
+    )
+    inst_Frame_Data_Reg_20
+    (
+    .FrameData_I(LocalWriteData),
+    .FrameData_O(FrameRegister[20*FrameBitsPerRow+FrameBitsPerRow-1:20*FrameBitsPerRow]),
+    .RowSelect(RowSelect),
+    .CLK(CLK)
+);
+
+Frame_Data_Reg
+    #(
+    .FrameBitsPerRow(FrameBitsPerRow),
+    .RowSelectWidth(RowSelectWidth),
+    .Row(22)
+    )
+    inst_Frame_Data_Reg_21
+    (
+    .FrameData_I(LocalWriteData),
+    .FrameData_O(FrameRegister[21*FrameBitsPerRow+FrameBitsPerRow-1:21*FrameBitsPerRow]),
+    .RowSelect(RowSelect),
+    .CLK(CLK)
+);
+
+Frame_Data_Reg
+    #(
+    .FrameBitsPerRow(FrameBitsPerRow),
+    .RowSelectWidth(RowSelectWidth),
+    .Row(23)
+    )
+    inst_Frame_Data_Reg_22
+    (
+    .FrameData_I(LocalWriteData),
+    .FrameData_O(FrameRegister[22*FrameBitsPerRow+FrameBitsPerRow-1:22*FrameBitsPerRow]),
+    .RowSelect(RowSelect),
+    .CLK(CLK)
+);
+
+
+Frame_Select
+    #(
+    .MaxFramesPerCol(MaxFramesPerCol),
+    .FrameSelectWidth(FrameSelectWidth),
+    .Col(0)
+    )
+    inst_Frame_Select_0
+    (
+    .FrameStrobe_I(FrameAddressRegister[MaxFramesPerCol-1:0]),
+    .FrameStrobe_O(FrameSelect[0*MaxFramesPerCol+MaxFramesPerCol-1:0*MaxFramesPerCol]),
+    .FrameSelect(FrameAddressRegister[FrameBitsPerRow-1:FrameBitsPerRow-FrameSelectWidth]),
+    .FrameStrobe(LongFrameStrobe)
+);
+
+Frame_Select
+    #(
+    .MaxFramesPerCol(MaxFramesPerCol),
+    .FrameSelectWidth(FrameSelectWidth),
+    .Col(1)
+    )
+    inst_Frame_Select_1
+    (
+    .FrameStrobe_I(FrameAddressRegister[MaxFramesPerCol-1:0]),
+    .FrameStrobe_O(FrameSelect[1*MaxFramesPerCol+MaxFramesPerCol-1:1*MaxFramesPerCol]),
+    .FrameSelect(FrameAddressRegister[FrameBitsPerRow-1:FrameBitsPerRow-FrameSelectWidth]),
+    .FrameStrobe(LongFrameStrobe)
+);
+
+Frame_Select
+    #(
+    .MaxFramesPerCol(MaxFramesPerCol),
+    .FrameSelectWidth(FrameSelectWidth),
+    .Col(2)
+    )
+    inst_Frame_Select_2
+    (
+    .FrameStrobe_I(FrameAddressRegister[MaxFramesPerCol-1:0]),
+    .FrameStrobe_O(FrameSelect[2*MaxFramesPerCol+MaxFramesPerCol-1:2*MaxFramesPerCol]),
+    .FrameSelect(FrameAddressRegister[FrameBitsPerRow-1:FrameBitsPerRow-FrameSelectWidth]),
+    .FrameStrobe(LongFrameStrobe)
+);
+
+Frame_Select
+    #(
+    .MaxFramesPerCol(MaxFramesPerCol),
+    .FrameSelectWidth(FrameSelectWidth),
+    .Col(3)
+    )
+    inst_Frame_Select_3
+    (
+    .FrameStrobe_I(FrameAddressRegister[MaxFramesPerCol-1:0]),
+    .FrameStrobe_O(FrameSelect[3*MaxFramesPerCol+MaxFramesPerCol-1:3*MaxFramesPerCol]),
+    .FrameSelect(FrameAddressRegister[FrameBitsPerRow-1:FrameBitsPerRow-FrameSelectWidth]),
+    .FrameStrobe(LongFrameStrobe)
+);
+
+Frame_Select
+    #(
+    .MaxFramesPerCol(MaxFramesPerCol),
+    .FrameSelectWidth(FrameSelectWidth),
+    .Col(4)
+    )
+    inst_Frame_Select_4
+    (
+    .FrameStrobe_I(FrameAddressRegister[MaxFramesPerCol-1:0]),
+    .FrameStrobe_O(FrameSelect[4*MaxFramesPerCol+MaxFramesPerCol-1:4*MaxFramesPerCol]),
+    .FrameSelect(FrameAddressRegister[FrameBitsPerRow-1:FrameBitsPerRow-FrameSelectWidth]),
+    .FrameStrobe(LongFrameStrobe)
+);
+
+Frame_Select
+    #(
+    .MaxFramesPerCol(MaxFramesPerCol),
+    .FrameSelectWidth(FrameSelectWidth),
+    .Col(5)
+    )
+    inst_Frame_Select_5
+    (
+    .FrameStrobe_I(FrameAddressRegister[MaxFramesPerCol-1:0]),
+    .FrameStrobe_O(FrameSelect[5*MaxFramesPerCol+MaxFramesPerCol-1:5*MaxFramesPerCol]),
+    .FrameSelect(FrameAddressRegister[FrameBitsPerRow-1:FrameBitsPerRow-FrameSelectWidth]),
+    .FrameStrobe(LongFrameStrobe)
+);
+
+Frame_Select
+    #(
+    .MaxFramesPerCol(MaxFramesPerCol),
+    .FrameSelectWidth(FrameSelectWidth),
+    .Col(6)
+    )
+    inst_Frame_Select_6
+    (
+    .FrameStrobe_I(FrameAddressRegister[MaxFramesPerCol-1:0]),
+    .FrameStrobe_O(FrameSelect[6*MaxFramesPerCol+MaxFramesPerCol-1:6*MaxFramesPerCol]),
+    .FrameSelect(FrameAddressRegister[FrameBitsPerRow-1:FrameBitsPerRow-FrameSelectWidth]),
+    .FrameStrobe(LongFrameStrobe)
+);
+
+Frame_Select
+    #(
+    .MaxFramesPerCol(MaxFramesPerCol),
+    .FrameSelectWidth(FrameSelectWidth),
+    .Col(7)
+    )
+    inst_Frame_Select_7
+    (
+    .FrameStrobe_I(FrameAddressRegister[MaxFramesPerCol-1:0]),
+    .FrameStrobe_O(FrameSelect[7*MaxFramesPerCol+MaxFramesPerCol-1:7*MaxFramesPerCol]),
+    .FrameSelect(FrameAddressRegister[FrameBitsPerRow-1:FrameBitsPerRow-FrameSelectWidth]),
+    .FrameStrobe(LongFrameStrobe)
+);
+
+Frame_Select
+    #(
+    .MaxFramesPerCol(MaxFramesPerCol),
+    .FrameSelectWidth(FrameSelectWidth),
+    .Col(8)
+    )
+    inst_Frame_Select_8
+    (
+    .FrameStrobe_I(FrameAddressRegister[MaxFramesPerCol-1:0]),
+    .FrameStrobe_O(FrameSelect[8*MaxFramesPerCol+MaxFramesPerCol-1:8*MaxFramesPerCol]),
+    .FrameSelect(FrameAddressRegister[FrameBitsPerRow-1:FrameBitsPerRow-FrameSelectWidth]),
+    .FrameStrobe(LongFrameStrobe)
+);
+
+Frame_Select
+    #(
+    .MaxFramesPerCol(MaxFramesPerCol),
+    .FrameSelectWidth(FrameSelectWidth),
+    .Col(9)
+    )
+    inst_Frame_Select_9
+    (
+    .FrameStrobe_I(FrameAddressRegister[MaxFramesPerCol-1:0]),
+    .FrameStrobe_O(FrameSelect[9*MaxFramesPerCol+MaxFramesPerCol-1:9*MaxFramesPerCol]),
+    .FrameSelect(FrameAddressRegister[FrameBitsPerRow-1:FrameBitsPerRow-FrameSelectWidth]),
+    .FrameStrobe(LongFrameStrobe)
+);
+
+Frame_Select
+    #(
+    .MaxFramesPerCol(MaxFramesPerCol),
+    .FrameSelectWidth(FrameSelectWidth),
+    .Col(10)
+    )
+    inst_Frame_Select_10
+    (
+    .FrameStrobe_I(FrameAddressRegister[MaxFramesPerCol-1:0]),
+    .FrameStrobe_O(FrameSelect[10*MaxFramesPerCol+MaxFramesPerCol-1:10*MaxFramesPerCol]),
+    .FrameSelect(FrameAddressRegister[FrameBitsPerRow-1:FrameBitsPerRow-FrameSelectWidth]),
+    .FrameStrobe(LongFrameStrobe)
+);
+
+
+`endif
+eFPGA eFPGA_inst (
+    .Tile_X3Y1_R_t(R_t_top[0]),
+    .Tile_X3Y1_R_f(R_f_top[0]),
+    .Tile_X6Y1_R_t(R_t_top[1]),
+    .Tile_X6Y1_R_f(R_f_top[1]),
+    .Tile_X3Y2_R_t(R_t_top[2]),
+    .Tile_X3Y2_R_f(R_f_top[2]),
+    .Tile_X6Y2_R_t(R_t_top[3]),
+    .Tile_X6Y2_R_f(R_f_top[3]),
+    .Tile_X3Y3_R_t(R_t_top[4]),
+    .Tile_X3Y3_R_f(R_f_top[4]),
+    .Tile_X6Y3_R_t(R_t_top[5]),
+    .Tile_X6Y3_R_f(R_f_top[5]),
+    .Tile_X3Y4_R_t(R_t_top[6]),
+    .Tile_X3Y4_R_f(R_f_top[6]),
+    .Tile_X6Y4_R_t(R_t_top[7]),
+    .Tile_X6Y4_R_f(R_f_top[7]),
+    .Tile_X3Y5_R_t(R_t_top[8]),
+    .Tile_X3Y5_R_f(R_f_top[8]),
+    .Tile_X6Y5_R_t(R_t_top[9]),
+    .Tile_X6Y5_R_f(R_f_top[9]),
+    .Tile_X3Y6_R_t(R_t_top[10]),
+    .Tile_X3Y6_R_f(R_f_top[10]),
+    .Tile_X6Y6_R_t(R_t_top[11]),
+    .Tile_X6Y6_R_f(R_f_top[11]),
+    .Tile_X3Y7_R_t(R_t_top[12]),
+    .Tile_X3Y7_R_f(R_f_top[12]),
+    .Tile_X6Y7_R_t(R_t_top[13]),
+    .Tile_X6Y7_R_f(R_f_top[13]),
+    .Tile_X3Y8_R_t(R_t_top[14]),
+    .Tile_X3Y8_R_f(R_f_top[14]),
+    .Tile_X6Y8_R_t(R_t_top[15]),
+    .Tile_X6Y8_R_f(R_f_top[15]),
+    .Tile_X3Y9_R_t(R_t_top[16]),
+    .Tile_X3Y9_R_f(R_f_top[16]),
+    .Tile_X6Y9_R_t(R_t_top[17]),
+    .Tile_X6Y9_R_f(R_f_top[17]),
+    .Tile_X3Y10_R_t(R_t_top[18]),
+    .Tile_X3Y10_R_f(R_f_top[18]),
+    .Tile_X6Y10_R_t(R_t_top[19]),
+    .Tile_X6Y10_R_f(R_f_top[19]),
+    .Tile_X3Y11_R_t(R_t_top[20]),
+    .Tile_X3Y11_R_f(R_f_top[20]),
+    .Tile_X6Y11_R_t(R_t_top[21]),
+    .Tile_X6Y11_R_f(R_f_top[21]),
+    .Tile_X3Y12_R_t(R_t_top[22]),
+    .Tile_X3Y12_R_f(R_f_top[22]),
+    .Tile_X6Y12_R_t(R_t_top[23]),
+    .Tile_X6Y12_R_f(R_f_top[23]),
+    .Tile_X3Y13_R_t(R_t_top[24]),
+    .Tile_X3Y13_R_f(R_f_top[24]),
+    .Tile_X6Y13_R_t(R_t_top[25]),
+    .Tile_X6Y13_R_f(R_f_top[25]),
+    .Tile_X3Y14_R_t(R_t_top[26]),
+    .Tile_X3Y14_R_f(R_f_top[26]),
+    .Tile_X6Y14_R_t(R_t_top[27]),
+    .Tile_X6Y14_R_f(R_f_top[27]),
+    .Tile_X3Y15_R_t(R_t_top[28]),
+    .Tile_X3Y15_R_f(R_f_top[28]),
+    .Tile_X6Y15_R_t(R_t_top[29]),
+    .Tile_X6Y15_R_f(R_f_top[29]),
+    .Tile_X3Y16_R_t(R_t_top[30]),
+    .Tile_X3Y16_R_f(R_f_top[30]),
+    .Tile_X6Y16_R_t(R_t_top[31]),
+    .Tile_X6Y16_R_f(R_f_top[31]),
+    .Tile_X3Y17_R_t(R_t_top[32]),
+    .Tile_X3Y17_R_f(R_f_top[32]),
+    .Tile_X6Y17_R_t(R_t_top[33]),
+    .Tile_X6Y17_R_f(R_f_top[33]),
+    .Tile_X3Y18_R_t(R_t_top[34]),
+    .Tile_X3Y18_R_f(R_f_top[34]),
+    .Tile_X6Y18_R_t(R_t_top[35]),
+    .Tile_X6Y18_R_f(R_f_top[35]),
+    .Tile_X3Y19_R_t(R_t_top[36]),
+    .Tile_X3Y19_R_f(R_f_top[36]),
+    .Tile_X6Y19_R_t(R_t_top[37]),
+    .Tile_X6Y19_R_f(R_f_top[37]),
+    .Tile_X3Y20_R_t(R_t_top[38]),
+    .Tile_X3Y20_R_f(R_f_top[38]),
+    .Tile_X6Y20_R_t(R_t_top[39]),
+    .Tile_X6Y20_R_f(R_f_top[39]),
+    .Tile_X3Y21_R_t(R_t_top[40]),
+    .Tile_X3Y21_R_f(R_f_top[40]),
+    .Tile_X6Y21_R_t(R_t_top[41]),
+    .Tile_X6Y21_R_f(R_f_top[41]),
+    .Tile_X3Y22_R_t(R_t_top[42]),
+    .Tile_X3Y22_R_f(R_f_top[42]),
+    .Tile_X6Y22_R_t(R_t_top[43]),
+    .Tile_X6Y22_R_f(R_f_top[43]),
+    .Tile_X3Y23_R_t(R_t_top[44]),
+    .Tile_X3Y23_R_f(R_f_top[44]),
+    .Tile_X6Y23_R_t(R_t_top[45]),
+    .Tile_X6Y23_R_f(R_f_top[45]),
+    .Tile_X0Y1_A_F_masked1(F_masked1_top[0]),
+    .Tile_X0Y1_A_F_masked2(F_masked2_top[0]),
+    .Tile_X0Y2_A_F_masked1(F_masked1_top[1]),
+    .Tile_X0Y2_A_F_masked2(F_masked2_top[1]),
+    .Tile_X0Y3_A_F_masked1(F_masked1_top[2]),
+    .Tile_X0Y3_A_F_masked2(F_masked2_top[2]),
+    .Tile_X0Y4_A_F_masked1(F_masked1_top[3]),
+    .Tile_X0Y4_A_F_masked2(F_masked2_top[3]),
+    .Tile_X0Y5_A_F_masked1(F_masked1_top[4]),
+    .Tile_X0Y5_A_F_masked2(F_masked2_top[4]),
+    .Tile_X0Y6_A_F_masked1(F_masked1_top[5]),
+    .Tile_X0Y6_A_F_masked2(F_masked2_top[5]),
+    .Tile_X0Y7_A_F_masked1(F_masked1_top[6]),
+    .Tile_X0Y7_A_F_masked2(F_masked2_top[6]),
+    .Tile_X0Y8_A_F_masked1(F_masked1_top[7]),
+    .Tile_X0Y8_A_F_masked2(F_masked2_top[7]),
+    .Tile_X0Y9_A_F_masked1(F_masked1_top[8]),
+    .Tile_X0Y9_A_F_masked2(F_masked2_top[8]),
+    .Tile_X0Y10_A_F_masked1(F_masked1_top[9]),
+    .Tile_X0Y10_A_F_masked2(F_masked2_top[9]),
+    .Tile_X0Y11_A_F_masked1(F_masked1_top[10]),
+    .Tile_X0Y11_A_F_masked2(F_masked2_top[10]),
+    .Tile_X0Y12_A_F_masked1(F_masked1_top[11]),
+    .Tile_X0Y12_A_F_masked2(F_masked2_top[11]),
+    .Tile_X0Y13_A_F_masked1(F_masked1_top[12]),
+    .Tile_X0Y13_A_F_masked2(F_masked2_top[12]),
+    .Tile_X0Y14_A_F_masked1(F_masked1_top[13]),
+    .Tile_X0Y14_A_F_masked2(F_masked2_top[13]),
+    .Tile_X0Y15_A_F_masked1(F_masked1_top[14]),
+    .Tile_X0Y15_A_F_masked2(F_masked2_top[14]),
+    .Tile_X0Y16_A_F_masked1(F_masked1_top[15]),
+    .Tile_X0Y16_A_F_masked2(F_masked2_top[15]),
+    .Tile_X0Y17_A_F_masked1(F_masked1_top[16]),
+    .Tile_X0Y17_A_F_masked2(F_masked2_top[16]),
+    .Tile_X0Y18_A_F_masked1(F_masked1_top[17]),
+    .Tile_X0Y18_A_F_masked2(F_masked2_top[17]),
+    .Tile_X0Y19_A_F_masked1(F_masked1_top[18]),
+    .Tile_X0Y19_A_F_masked2(F_masked2_top[18]),
+    .Tile_X0Y20_A_F_masked1(F_masked1_top[19]),
+    .Tile_X0Y20_A_F_masked2(F_masked2_top[19]),
+    .Tile_X0Y21_A_F_masked1(F_masked1_top[20]),
+    .Tile_X0Y21_A_F_masked2(F_masked2_top[20]),
+    .Tile_X0Y22_A_F_masked1(F_masked1_top[21]),
+    .Tile_X0Y22_A_F_masked2(F_masked2_top[21]),
+    .Tile_X0Y23_A_F_masked1(F_masked1_top[22]),
+    .Tile_X0Y23_A_F_masked2(F_masked2_top[22]),
+    .Tile_X10Y1_A_F_ctrl(F_ctrl_top[0]),
+    .Tile_X10Y2_A_F_ctrl(F_ctrl_top[1]),
+    .Tile_X10Y3_A_F_ctrl(F_ctrl_top[2]),
+    .Tile_X10Y4_A_F_ctrl(F_ctrl_top[3]),
+    .Tile_X10Y5_A_F_ctrl(F_ctrl_top[4]),
+    .Tile_X10Y6_A_F_ctrl(F_ctrl_top[5]),
+    .Tile_X10Y7_A_F_ctrl(F_ctrl_top[6]),
+    .Tile_X10Y8_A_F_ctrl(F_ctrl_top[7]),
+    .Tile_X10Y9_A_F_ctrl(F_ctrl_top[8]),
+    .Tile_X10Y10_A_F_ctrl(F_ctrl_top[9]),
+    .Tile_X10Y11_A_F_ctrl(F_ctrl_top[10]),
+    .Tile_X10Y12_A_F_ctrl(F_ctrl_top[11]),
+    .Tile_X10Y13_A_F_ctrl(F_ctrl_top[12]),
+    .Tile_X10Y14_A_F_ctrl(F_ctrl_top[13]),
+    .Tile_X10Y15_A_F_ctrl(F_ctrl_top[14]),
+    .Tile_X10Y16_A_F_ctrl(F_ctrl_top[15]),
+    .Tile_X10Y17_A_F_ctrl(F_ctrl_top[16]),
+    .Tile_X10Y18_A_F_ctrl(F_ctrl_top[17]),
+    .Tile_X10Y19_A_F_ctrl(F_ctrl_top[18]),
+    .Tile_X10Y20_A_F_ctrl(F_ctrl_top[19]),
+    .Tile_X10Y21_A_F_ctrl(F_ctrl_top[20]),
+    .Tile_X10Y22_A_F_ctrl(F_ctrl_top[21]),
+    .Tile_X10Y23_A_F_ctrl(F_ctrl_top[22]),
+    .Tile_X0Y1_A_prech1(prech1),
+    .Tile_X0Y1_A_prech2(prech2),
+    .Tile_X10Y1_A_prech2(prech2),
+    .Tile_X0Y2_A_prech1(prech1),
+    .Tile_X0Y2_A_prech2(prech2),
+    .Tile_X10Y2_A_prech2(prech2),
+    .Tile_X0Y3_A_prech1(prech1),
+    .Tile_X0Y3_A_prech2(prech2),
+    .Tile_X10Y3_A_prech2(prech2),
+    .Tile_X0Y4_A_prech1(prech1),
+    .Tile_X0Y4_A_prech2(prech2),
+    .Tile_X10Y4_A_prech2(prech2),
+    .Tile_X0Y5_A_prech1(prech1),
+    .Tile_X0Y5_A_prech2(prech2),
+    .Tile_X10Y5_A_prech2(prech2),
+    .Tile_X0Y6_A_prech1(prech1),
+    .Tile_X0Y6_A_prech2(prech2),
+    .Tile_X10Y6_A_prech2(prech2),
+    .Tile_X0Y7_A_prech1(prech1),
+    .Tile_X0Y7_A_prech2(prech2),
+    .Tile_X10Y7_A_prech2(prech2),
+    .Tile_X0Y8_A_prech1(prech1),
+    .Tile_X0Y8_A_prech2(prech2),
+    .Tile_X10Y8_A_prech2(prech2),
+    .Tile_X0Y9_A_prech1(prech1),
+    .Tile_X0Y9_A_prech2(prech2),
+    .Tile_X10Y9_A_prech2(prech2),
+    .Tile_X0Y10_A_prech1(prech1),
+    .Tile_X0Y10_A_prech2(prech2),
+    .Tile_X10Y10_A_prech2(prech2),
+    .Tile_X0Y11_A_prech1(prech1),
+    .Tile_X0Y11_A_prech2(prech2),
+    .Tile_X10Y11_A_prech2(prech2),
+    .Tile_X0Y12_A_prech1(prech1),
+    .Tile_X0Y12_A_prech2(prech2),
+    .Tile_X10Y12_A_prech2(prech2),
+    .Tile_X0Y13_A_prech1(prech1),
+    .Tile_X0Y13_A_prech2(prech2),
+    .Tile_X10Y13_A_prech2(prech2),
+    .Tile_X0Y14_A_prech1(prech1),
+    .Tile_X0Y14_A_prech2(prech2),
+    .Tile_X10Y14_A_prech2(prech2),
+    .Tile_X0Y15_A_prech1(prech1),
+    .Tile_X0Y15_A_prech2(prech2),
+    .Tile_X10Y15_A_prech2(prech2),
+    .Tile_X0Y16_A_prech1(prech1),
+    .Tile_X0Y16_A_prech2(prech2),
+    .Tile_X10Y16_A_prech2(prech2),
+    .Tile_X0Y17_A_prech1(prech1),
+    .Tile_X0Y17_A_prech2(prech2),
+    .Tile_X10Y17_A_prech2(prech2),
+    .Tile_X0Y18_A_prech1(prech1),
+    .Tile_X0Y18_A_prech2(prech2),
+    .Tile_X10Y18_A_prech2(prech2),
+    .Tile_X0Y19_A_prech1(prech1),
+    .Tile_X0Y19_A_prech2(prech2),
+    .Tile_X10Y19_A_prech2(prech2),
+    .Tile_X0Y20_A_prech1(prech1),
+    .Tile_X0Y20_A_prech2(prech2),
+    .Tile_X10Y20_A_prech2(prech2),
+    .Tile_X0Y21_A_prech1(prech1),
+    .Tile_X0Y21_A_prech2(prech2),
+    .Tile_X10Y21_A_prech2(prech2),
+    .Tile_X0Y22_A_prech1(prech1),
+    .Tile_X0Y22_A_prech2(prech2),
+    .Tile_X10Y22_A_prech2(prech2),
+    .Tile_X0Y23_A_prech1(prech1),
+    .Tile_X0Y23_A_prech2(prech2),
+    .Tile_X10Y23_A_prech2(prech2),
+    .Tile_X0Y1_A_I_top_0_t(I_top_0_t[0]),
+    .Tile_X0Y1_A_I_top_0_f(I_top_0_f[0]),
+    .Tile_X0Y1_A_I_top_1_t(I_top_1_t[0]),
+    .Tile_X0Y1_A_I_top_1_f(I_top_1_f[0]),
+    .Tile_X0Y2_A_I_top_0_t(I_top_0_t[1]),
+    .Tile_X0Y2_A_I_top_0_f(I_top_0_f[1]),
+    .Tile_X0Y2_A_I_top_1_t(I_top_1_t[1]),
+    .Tile_X0Y2_A_I_top_1_f(I_top_1_f[1]),
+    .Tile_X0Y3_A_I_top_0_t(I_top_0_t[2]),
+    .Tile_X0Y3_A_I_top_0_f(I_top_0_f[2]),
+    .Tile_X0Y3_A_I_top_1_t(I_top_1_t[2]),
+    .Tile_X0Y3_A_I_top_1_f(I_top_1_f[2]),
+    .Tile_X0Y4_A_I_top_0_t(I_top_0_t[3]),
+    .Tile_X0Y4_A_I_top_0_f(I_top_0_f[3]),
+    .Tile_X0Y4_A_I_top_1_t(I_top_1_t[3]),
+    .Tile_X0Y4_A_I_top_1_f(I_top_1_f[3]),
+    .Tile_X0Y5_A_I_top_0_t(I_top_0_t[4]),
+    .Tile_X0Y5_A_I_top_0_f(I_top_0_f[4]),
+    .Tile_X0Y5_A_I_top_1_t(I_top_1_t[4]),
+    .Tile_X0Y5_A_I_top_1_f(I_top_1_f[4]),
+    .Tile_X0Y6_A_I_top_0_t(I_top_0_t[5]),
+    .Tile_X0Y6_A_I_top_0_f(I_top_0_f[5]),
+    .Tile_X0Y6_A_I_top_1_t(I_top_1_t[5]),
+    .Tile_X0Y6_A_I_top_1_f(I_top_1_f[5]),
+    .Tile_X0Y7_A_I_top_0_t(I_top_0_t[6]),
+    .Tile_X0Y7_A_I_top_0_f(I_top_0_f[6]),
+    .Tile_X0Y7_A_I_top_1_t(I_top_1_t[6]),
+    .Tile_X0Y7_A_I_top_1_f(I_top_1_f[6]),
+    .Tile_X0Y8_A_I_top_0_t(I_top_0_t[7]),
+    .Tile_X0Y8_A_I_top_0_f(I_top_0_f[7]),
+    .Tile_X0Y8_A_I_top_1_t(I_top_1_t[7]),
+    .Tile_X0Y8_A_I_top_1_f(I_top_1_f[7]),
+    .Tile_X0Y9_A_I_top_0_t(I_top_0_t[8]),
+    .Tile_X0Y9_A_I_top_0_f(I_top_0_f[8]),
+    .Tile_X0Y9_A_I_top_1_t(I_top_1_t[8]),
+    .Tile_X0Y9_A_I_top_1_f(I_top_1_f[8]),
+    .Tile_X0Y10_A_I_top_0_t(I_top_0_t[9]),
+    .Tile_X0Y10_A_I_top_0_f(I_top_0_f[9]),
+    .Tile_X0Y10_A_I_top_1_t(I_top_1_t[9]),
+    .Tile_X0Y10_A_I_top_1_f(I_top_1_f[9]),
+    .Tile_X0Y11_A_I_top_0_t(I_top_0_t[10]),
+    .Tile_X0Y11_A_I_top_0_f(I_top_0_f[10]),
+    .Tile_X0Y11_A_I_top_1_t(I_top_1_t[10]),
+    .Tile_X0Y11_A_I_top_1_f(I_top_1_f[10]),
+    .Tile_X0Y12_A_I_top_0_t(I_top_0_t[11]),
+    .Tile_X0Y12_A_I_top_0_f(I_top_0_f[11]),
+    .Tile_X0Y12_A_I_top_1_t(I_top_1_t[11]),
+    .Tile_X0Y12_A_I_top_1_f(I_top_1_f[11]),
+    .Tile_X0Y13_A_I_top_0_t(I_top_0_t[12]),
+    .Tile_X0Y13_A_I_top_0_f(I_top_0_f[12]),
+    .Tile_X0Y13_A_I_top_1_t(I_top_1_t[12]),
+    .Tile_X0Y13_A_I_top_1_f(I_top_1_f[12]),
+    .Tile_X0Y14_A_I_top_0_t(I_top_0_t[13]),
+    .Tile_X0Y14_A_I_top_0_f(I_top_0_f[13]),
+    .Tile_X0Y14_A_I_top_1_t(I_top_1_t[13]),
+    .Tile_X0Y14_A_I_top_1_f(I_top_1_f[13]),
+    .Tile_X0Y15_A_I_top_0_t(I_top_0_t[14]),
+    .Tile_X0Y15_A_I_top_0_f(I_top_0_f[14]),
+    .Tile_X0Y15_A_I_top_1_t(I_top_1_t[14]),
+    .Tile_X0Y15_A_I_top_1_f(I_top_1_f[14]),
+    .Tile_X0Y16_A_I_top_0_t(I_top_0_t[15]),
+    .Tile_X0Y16_A_I_top_0_f(I_top_0_f[15]),
+    .Tile_X0Y16_A_I_top_1_t(I_top_1_t[15]),
+    .Tile_X0Y16_A_I_top_1_f(I_top_1_f[15]),
+    .Tile_X0Y17_A_I_top_0_t(I_top_0_t[16]),
+    .Tile_X0Y17_A_I_top_0_f(I_top_0_f[16]),
+    .Tile_X0Y17_A_I_top_1_t(I_top_1_t[16]),
+    .Tile_X0Y17_A_I_top_1_f(I_top_1_f[16]),
+    .Tile_X0Y18_A_I_top_0_t(I_top_0_t[17]),
+    .Tile_X0Y18_A_I_top_0_f(I_top_0_f[17]),
+    .Tile_X0Y18_A_I_top_1_t(I_top_1_t[17]),
+    .Tile_X0Y18_A_I_top_1_f(I_top_1_f[17]),
+    .Tile_X0Y19_A_I_top_0_t(I_top_0_t[18]),
+    .Tile_X0Y19_A_I_top_0_f(I_top_0_f[18]),
+    .Tile_X0Y19_A_I_top_1_t(I_top_1_t[18]),
+    .Tile_X0Y19_A_I_top_1_f(I_top_1_f[18]),
+    .Tile_X0Y20_A_I_top_0_t(I_top_0_t[19]),
+    .Tile_X0Y20_A_I_top_0_f(I_top_0_f[19]),
+    .Tile_X0Y20_A_I_top_1_t(I_top_1_t[19]),
+    .Tile_X0Y20_A_I_top_1_f(I_top_1_f[19]),
+    .Tile_X0Y21_A_I_top_0_t(I_top_0_t[20]),
+    .Tile_X0Y21_A_I_top_0_f(I_top_0_f[20]),
+    .Tile_X0Y21_A_I_top_1_t(I_top_1_t[20]),
+    .Tile_X0Y21_A_I_top_1_f(I_top_1_f[20]),
+    .Tile_X0Y22_A_I_top_0_t(I_top_0_t[21]),
+    .Tile_X0Y22_A_I_top_0_f(I_top_0_f[21]),
+    .Tile_X0Y22_A_I_top_1_t(I_top_1_t[21]),
+    .Tile_X0Y22_A_I_top_1_f(I_top_1_f[21]),
+    .Tile_X0Y23_A_I_top_0_t(I_top_0_t[22]),
+    .Tile_X0Y23_A_I_top_0_f(I_top_0_f[22]),
+    .Tile_X0Y23_A_I_top_1_t(I_top_1_t[22]),
+    .Tile_X0Y23_A_I_top_1_f(I_top_1_f[22]),
+    .Tile_X0Y1_A_T_top(T_top[0]),
+    .Tile_X0Y2_A_T_top(T_top[1]),
+    .Tile_X0Y3_A_T_top(T_top[2]),
+    .Tile_X0Y4_A_T_top(T_top[3]),
+    .Tile_X0Y5_A_T_top(T_top[4]),
+    .Tile_X0Y6_A_T_top(T_top[5]),
+    .Tile_X0Y7_A_T_top(T_top[6]),
+    .Tile_X0Y8_A_T_top(T_top[7]),
+    .Tile_X0Y9_A_T_top(T_top[8]),
+    .Tile_X0Y10_A_T_top(T_top[9]),
+    .Tile_X0Y11_A_T_top(T_top[10]),
+    .Tile_X0Y12_A_T_top(T_top[11]),
+    .Tile_X0Y13_A_T_top(T_top[12]),
+    .Tile_X0Y14_A_T_top(T_top[13]),
+    .Tile_X0Y15_A_T_top(T_top[14]),
+    .Tile_X0Y16_A_T_top(T_top[15]),
+    .Tile_X0Y17_A_T_top(T_top[16]),
+    .Tile_X0Y18_A_T_top(T_top[17]),
+    .Tile_X0Y19_A_T_top(T_top[18]),
+    .Tile_X0Y20_A_T_top(T_top[19]),
+    .Tile_X0Y21_A_T_top(T_top[20]),
+    .Tile_X0Y22_A_T_top(T_top[21]),
+    .Tile_X0Y23_A_T_top(T_top[22]),
+    .Tile_X0Y1_A_O_top_0_t(O_top_0_t[0]),
+    .Tile_X0Y1_A_O_top_0_f(O_top_0_f[0]),
+    .Tile_X0Y1_A_O_top_1_t(O_top_1_t[0]),
+    .Tile_X0Y1_A_O_top_1_f(O_top_1_f[0]),
+    .Tile_X0Y2_A_O_top_0_t(O_top_0_t[1]),
+    .Tile_X0Y2_A_O_top_0_f(O_top_0_f[1]),
+    .Tile_X0Y2_A_O_top_1_t(O_top_1_t[1]),
+    .Tile_X0Y2_A_O_top_1_f(O_top_1_f[1]),
+    .Tile_X0Y3_A_O_top_0_t(O_top_0_t[2]),
+    .Tile_X0Y3_A_O_top_0_f(O_top_0_f[2]),
+    .Tile_X0Y3_A_O_top_1_t(O_top_1_t[2]),
+    .Tile_X0Y3_A_O_top_1_f(O_top_1_f[2]),
+    .Tile_X0Y4_A_O_top_0_t(O_top_0_t[3]),
+    .Tile_X0Y4_A_O_top_0_f(O_top_0_f[3]),
+    .Tile_X0Y4_A_O_top_1_t(O_top_1_t[3]),
+    .Tile_X0Y4_A_O_top_1_f(O_top_1_f[3]),
+    .Tile_X0Y5_A_O_top_0_t(O_top_0_t[4]),
+    .Tile_X0Y5_A_O_top_0_f(O_top_0_f[4]),
+    .Tile_X0Y5_A_O_top_1_t(O_top_1_t[4]),
+    .Tile_X0Y5_A_O_top_1_f(O_top_1_f[4]),
+    .Tile_X0Y6_A_O_top_0_t(O_top_0_t[5]),
+    .Tile_X0Y6_A_O_top_0_f(O_top_0_f[5]),
+    .Tile_X0Y6_A_O_top_1_t(O_top_1_t[5]),
+    .Tile_X0Y6_A_O_top_1_f(O_top_1_f[5]),
+    .Tile_X0Y7_A_O_top_0_t(O_top_0_t[6]),
+    .Tile_X0Y7_A_O_top_0_f(O_top_0_f[6]),
+    .Tile_X0Y7_A_O_top_1_t(O_top_1_t[6]),
+    .Tile_X0Y7_A_O_top_1_f(O_top_1_f[6]),
+    .Tile_X0Y8_A_O_top_0_t(O_top_0_t[7]),
+    .Tile_X0Y8_A_O_top_0_f(O_top_0_f[7]),
+    .Tile_X0Y8_A_O_top_1_t(O_top_1_t[7]),
+    .Tile_X0Y8_A_O_top_1_f(O_top_1_f[7]),
+    .Tile_X0Y9_A_O_top_0_t(O_top_0_t[8]),
+    .Tile_X0Y9_A_O_top_0_f(O_top_0_f[8]),
+    .Tile_X0Y9_A_O_top_1_t(O_top_1_t[8]),
+    .Tile_X0Y9_A_O_top_1_f(O_top_1_f[8]),
+    .Tile_X0Y10_A_O_top_0_t(O_top_0_t[9]),
+    .Tile_X0Y10_A_O_top_0_f(O_top_0_f[9]),
+    .Tile_X0Y10_A_O_top_1_t(O_top_1_t[9]),
+    .Tile_X0Y10_A_O_top_1_f(O_top_1_f[9]),
+    .Tile_X0Y11_A_O_top_0_t(O_top_0_t[10]),
+    .Tile_X0Y11_A_O_top_0_f(O_top_0_f[10]),
+    .Tile_X0Y11_A_O_top_1_t(O_top_1_t[10]),
+    .Tile_X0Y11_A_O_top_1_f(O_top_1_f[10]),
+    .Tile_X0Y12_A_O_top_0_t(O_top_0_t[11]),
+    .Tile_X0Y12_A_O_top_0_f(O_top_0_f[11]),
+    .Tile_X0Y12_A_O_top_1_t(O_top_1_t[11]),
+    .Tile_X0Y12_A_O_top_1_f(O_top_1_f[11]),
+    .Tile_X0Y13_A_O_top_0_t(O_top_0_t[12]),
+    .Tile_X0Y13_A_O_top_0_f(O_top_0_f[12]),
+    .Tile_X0Y13_A_O_top_1_t(O_top_1_t[12]),
+    .Tile_X0Y13_A_O_top_1_f(O_top_1_f[12]),
+    .Tile_X0Y14_A_O_top_0_t(O_top_0_t[13]),
+    .Tile_X0Y14_A_O_top_0_f(O_top_0_f[13]),
+    .Tile_X0Y14_A_O_top_1_t(O_top_1_t[13]),
+    .Tile_X0Y14_A_O_top_1_f(O_top_1_f[13]),
+    .Tile_X0Y15_A_O_top_0_t(O_top_0_t[14]),
+    .Tile_X0Y15_A_O_top_0_f(O_top_0_f[14]),
+    .Tile_X0Y15_A_O_top_1_t(O_top_1_t[14]),
+    .Tile_X0Y15_A_O_top_1_f(O_top_1_f[14]),
+    .Tile_X0Y16_A_O_top_0_t(O_top_0_t[15]),
+    .Tile_X0Y16_A_O_top_0_f(O_top_0_f[15]),
+    .Tile_X0Y16_A_O_top_1_t(O_top_1_t[15]),
+    .Tile_X0Y16_A_O_top_1_f(O_top_1_f[15]),
+    .Tile_X0Y17_A_O_top_0_t(O_top_0_t[16]),
+    .Tile_X0Y17_A_O_top_0_f(O_top_0_f[16]),
+    .Tile_X0Y17_A_O_top_1_t(O_top_1_t[16]),
+    .Tile_X0Y17_A_O_top_1_f(O_top_1_f[16]),
+    .Tile_X0Y18_A_O_top_0_t(O_top_0_t[17]),
+    .Tile_X0Y18_A_O_top_0_f(O_top_0_f[17]),
+    .Tile_X0Y18_A_O_top_1_t(O_top_1_t[17]),
+    .Tile_X0Y18_A_O_top_1_f(O_top_1_f[17]),
+    .Tile_X0Y19_A_O_top_0_t(O_top_0_t[18]),
+    .Tile_X0Y19_A_O_top_0_f(O_top_0_f[18]),
+    .Tile_X0Y19_A_O_top_1_t(O_top_1_t[18]),
+    .Tile_X0Y19_A_O_top_1_f(O_top_1_f[18]),
+    .Tile_X0Y20_A_O_top_0_t(O_top_0_t[19]),
+    .Tile_X0Y20_A_O_top_0_f(O_top_0_f[19]),
+    .Tile_X0Y20_A_O_top_1_t(O_top_1_t[19]),
+    .Tile_X0Y20_A_O_top_1_f(O_top_1_f[19]),
+    .Tile_X0Y21_A_O_top_0_t(O_top_0_t[20]),
+    .Tile_X0Y21_A_O_top_0_f(O_top_0_f[20]),
+    .Tile_X0Y21_A_O_top_1_t(O_top_1_t[20]),
+    .Tile_X0Y21_A_O_top_1_f(O_top_1_f[20]),
+    .Tile_X0Y22_A_O_top_0_t(O_top_0_t[21]),
+    .Tile_X0Y22_A_O_top_0_f(O_top_0_f[21]),
+    .Tile_X0Y22_A_O_top_1_t(O_top_1_t[21]),
+    .Tile_X0Y22_A_O_top_1_f(O_top_1_f[21]),
+    .Tile_X0Y23_A_O_top_0_t(O_top_0_t[22]),
+    .Tile_X0Y23_A_O_top_0_f(O_top_0_f[22]),
+    .Tile_X0Y23_A_O_top_1_t(O_top_1_t[22]),
+    .Tile_X0Y23_A_O_top_1_f(O_top_1_f[22]),
+    .Tile_X10Y1_A_I_top_0_t(ctrl_I_top_0_t[0]),
+    .Tile_X10Y1_A_I_top_0_f(ctrl_I_top_0_f[0]),
+    .Tile_X10Y1_A_T_top(ctrl_T_top[0]),
+    .Tile_X10Y1_A_O_top_0_t(ctrl_O_top_0_t[0]),
+    .Tile_X10Y1_A_O_top_0_f(ctrl_O_top_0_f[0]),
+    .Tile_X10Y2_A_I_top_0_t(ctrl_I_top_0_t[1]),
+    .Tile_X10Y2_A_I_top_0_f(ctrl_I_top_0_f[1]),
+    .Tile_X10Y2_A_T_top(ctrl_T_top[1]),
+    .Tile_X10Y2_A_O_top_0_t(ctrl_O_top_0_t[1]),
+    .Tile_X10Y2_A_O_top_0_f(ctrl_O_top_0_f[1]),
+    .Tile_X10Y3_A_I_top_0_t(ctrl_I_top_0_t[2]),
+    .Tile_X10Y3_A_I_top_0_f(ctrl_I_top_0_f[2]),
+    .Tile_X10Y3_A_T_top(ctrl_T_top[2]),
+    .Tile_X10Y3_A_O_top_0_t(ctrl_O_top_0_t[2]),
+    .Tile_X10Y3_A_O_top_0_f(ctrl_O_top_0_f[2]),
+    .Tile_X10Y4_A_I_top_0_t(ctrl_I_top_0_t[3]),
+    .Tile_X10Y4_A_I_top_0_f(ctrl_I_top_0_f[3]),
+    .Tile_X10Y4_A_T_top(ctrl_T_top[3]),
+    .Tile_X10Y4_A_O_top_0_t(ctrl_O_top_0_t[3]),
+    .Tile_X10Y4_A_O_top_0_f(ctrl_O_top_0_f[3]),
+    .Tile_X10Y5_A_I_top_0_t(ctrl_I_top_0_t[4]),
+    .Tile_X10Y5_A_I_top_0_f(ctrl_I_top_0_f[4]),
+    .Tile_X10Y5_A_T_top(ctrl_T_top[4]),
+    .Tile_X10Y5_A_O_top_0_t(ctrl_O_top_0_t[4]),
+    .Tile_X10Y5_A_O_top_0_f(ctrl_O_top_0_f[4]),
+    .Tile_X10Y6_A_I_top_0_t(ctrl_I_top_0_t[5]),
+    .Tile_X10Y6_A_I_top_0_f(ctrl_I_top_0_f[5]),
+    .Tile_X10Y6_A_T_top(ctrl_T_top[5]),
+    .Tile_X10Y6_A_O_top_0_t(ctrl_O_top_0_t[5]),
+    .Tile_X10Y6_A_O_top_0_f(ctrl_O_top_0_f[5]),
+    .Tile_X10Y7_A_I_top_0_t(ctrl_I_top_0_t[6]),
+    .Tile_X10Y7_A_I_top_0_f(ctrl_I_top_0_f[6]),
+    .Tile_X10Y7_A_T_top(ctrl_T_top[6]),
+    .Tile_X10Y7_A_O_top_0_t(ctrl_O_top_0_t[6]),
+    .Tile_X10Y7_A_O_top_0_f(ctrl_O_top_0_f[6]),
+    .Tile_X10Y8_A_I_top_0_t(ctrl_I_top_0_t[7]),
+    .Tile_X10Y8_A_I_top_0_f(ctrl_I_top_0_f[7]),
+    .Tile_X10Y8_A_T_top(ctrl_T_top[7]),
+    .Tile_X10Y8_A_O_top_0_t(ctrl_O_top_0_t[7]),
+    .Tile_X10Y8_A_O_top_0_f(ctrl_O_top_0_f[7]),
+    .Tile_X10Y9_A_I_top_0_t(ctrl_I_top_0_t[8]),
+    .Tile_X10Y9_A_I_top_0_f(ctrl_I_top_0_f[8]),
+    .Tile_X10Y9_A_T_top(ctrl_T_top[8]),
+    .Tile_X10Y9_A_O_top_0_t(ctrl_O_top_0_t[8]),
+    .Tile_X10Y9_A_O_top_0_f(ctrl_O_top_0_f[8]),
+    .Tile_X10Y10_A_I_top_0_t(ctrl_I_top_0_t[9]),
+    .Tile_X10Y10_A_I_top_0_f(ctrl_I_top_0_f[9]),
+    .Tile_X10Y10_A_T_top(ctrl_T_top[9]),
+    .Tile_X10Y10_A_O_top_0_t(ctrl_O_top_0_t[9]),
+    .Tile_X10Y10_A_O_top_0_f(ctrl_O_top_0_f[9]),
+    .Tile_X10Y11_A_I_top_0_t(ctrl_I_top_0_t[10]),
+    .Tile_X10Y11_A_I_top_0_f(ctrl_I_top_0_f[10]),
+    .Tile_X10Y11_A_T_top(ctrl_T_top[10]),
+    .Tile_X10Y11_A_O_top_0_t(ctrl_O_top_0_t[10]),
+    .Tile_X10Y11_A_O_top_0_f(ctrl_O_top_0_f[10]),
+    .Tile_X10Y12_A_I_top_0_t(ctrl_I_top_0_t[11]),
+    .Tile_X10Y12_A_I_top_0_f(ctrl_I_top_0_f[11]),
+    .Tile_X10Y12_A_T_top(ctrl_T_top[11]),
+    .Tile_X10Y12_A_O_top_0_t(ctrl_O_top_0_t[11]),
+    .Tile_X10Y12_A_O_top_0_f(ctrl_O_top_0_f[11]),
+    .Tile_X10Y13_A_I_top_0_t(ctrl_I_top_0_t[12]),
+    .Tile_X10Y13_A_I_top_0_f(ctrl_I_top_0_f[12]),
+    .Tile_X10Y13_A_T_top(ctrl_T_top[12]),
+    .Tile_X10Y13_A_O_top_0_t(ctrl_O_top_0_t[12]),
+    .Tile_X10Y13_A_O_top_0_f(ctrl_O_top_0_f[12]),
+    .Tile_X10Y14_A_I_top_0_t(ctrl_I_top_0_t[13]),
+    .Tile_X10Y14_A_I_top_0_f(ctrl_I_top_0_f[13]),
+    .Tile_X10Y14_A_T_top(ctrl_T_top[13]),
+    .Tile_X10Y14_A_O_top_0_t(ctrl_O_top_0_t[13]),
+    .Tile_X10Y14_A_O_top_0_f(ctrl_O_top_0_f[13]),
+    .Tile_X10Y15_A_I_top_0_t(ctrl_I_top_0_t[14]),
+    .Tile_X10Y15_A_I_top_0_f(ctrl_I_top_0_f[14]),
+    .Tile_X10Y15_A_T_top(ctrl_T_top[14]),
+    .Tile_X10Y15_A_O_top_0_t(ctrl_O_top_0_t[14]),
+    .Tile_X10Y15_A_O_top_0_f(ctrl_O_top_0_f[14]),
+    .Tile_X10Y16_A_I_top_0_t(ctrl_I_top_0_t[15]),
+    .Tile_X10Y16_A_I_top_0_f(ctrl_I_top_0_f[15]),
+    .Tile_X10Y16_A_T_top(ctrl_T_top[15]),
+    .Tile_X10Y16_A_O_top_0_t(ctrl_O_top_0_t[15]),
+    .Tile_X10Y16_A_O_top_0_f(ctrl_O_top_0_f[15]),
+    .Tile_X10Y17_A_I_top_0_t(ctrl_I_top_0_t[16]),
+    .Tile_X10Y17_A_I_top_0_f(ctrl_I_top_0_f[16]),
+    .Tile_X10Y17_A_T_top(ctrl_T_top[16]),
+    .Tile_X10Y17_A_O_top_0_t(ctrl_O_top_0_t[16]),
+    .Tile_X10Y17_A_O_top_0_f(ctrl_O_top_0_f[16]),
+    .Tile_X10Y18_A_I_top_0_t(ctrl_I_top_0_t[17]),
+    .Tile_X10Y18_A_I_top_0_f(ctrl_I_top_0_f[17]),
+    .Tile_X10Y18_A_T_top(ctrl_T_top[17]),
+    .Tile_X10Y18_A_O_top_0_t(ctrl_O_top_0_t[17]),
+    .Tile_X10Y18_A_O_top_0_f(ctrl_O_top_0_f[17]),
+    .Tile_X10Y19_A_I_top_0_t(ctrl_I_top_0_t[18]),
+    .Tile_X10Y19_A_I_top_0_f(ctrl_I_top_0_f[18]),
+    .Tile_X10Y19_A_T_top(ctrl_T_top[18]),
+    .Tile_X10Y19_A_O_top_0_t(ctrl_O_top_0_t[18]),
+    .Tile_X10Y19_A_O_top_0_f(ctrl_O_top_0_f[18]),
+    .Tile_X10Y20_A_I_top_0_t(ctrl_I_top_0_t[19]),
+    .Tile_X10Y20_A_I_top_0_f(ctrl_I_top_0_f[19]),
+    .Tile_X10Y20_A_T_top(ctrl_T_top[19]),
+    .Tile_X10Y20_A_O_top_0_t(ctrl_O_top_0_t[19]),
+    .Tile_X10Y20_A_O_top_0_f(ctrl_O_top_0_f[19]),
+    .Tile_X10Y21_A_I_top_0_t(ctrl_I_top_0_t[20]),
+    .Tile_X10Y21_A_I_top_0_f(ctrl_I_top_0_f[20]),
+    .Tile_X10Y21_A_T_top(ctrl_T_top[20]),
+    .Tile_X10Y21_A_O_top_0_t(ctrl_O_top_0_t[20]),
+    .Tile_X10Y21_A_O_top_0_f(ctrl_O_top_0_f[20]),
+    .Tile_X10Y22_A_I_top_0_t(ctrl_I_top_0_t[21]),
+    .Tile_X10Y22_A_I_top_0_f(ctrl_I_top_0_f[21]),
+    .Tile_X10Y22_A_T_top(ctrl_T_top[21]),
+    .Tile_X10Y22_A_O_top_0_t(ctrl_O_top_0_t[21]),
+    .Tile_X10Y22_A_O_top_0_f(ctrl_O_top_0_f[21]),
+    .Tile_X10Y23_A_I_top_0_t(ctrl_I_top_0_t[22]),
+    .Tile_X10Y23_A_I_top_0_f(ctrl_I_top_0_f[22]),
+    .Tile_X10Y23_A_T_top(ctrl_T_top[22]),
+    .Tile_X10Y23_A_O_top_0_t(ctrl_O_top_0_t[22]),
+    .Tile_X10Y23_A_O_top_0_f(ctrl_O_top_0_f[22]),
+    .rst(rst_fabric),
+    .Tile_X0Y1_A_config_C_bit0(A_config_C[91]),
+    .Tile_X0Y1_A_config_C_bit1(A_config_C[90]),
+    .Tile_X0Y1_A_config_C_bit2(A_config_C[89]),
+    .Tile_X0Y1_A_config_C_bit3(A_config_C[88]),
+    .Tile_X0Y2_A_config_C_bit0(A_config_C[87]),
+    .Tile_X0Y2_A_config_C_bit1(A_config_C[86]),
+    .Tile_X0Y2_A_config_C_bit2(A_config_C[85]),
+    .Tile_X0Y2_A_config_C_bit3(A_config_C[84]),
+    .Tile_X0Y3_A_config_C_bit0(A_config_C[83]),
+    .Tile_X0Y3_A_config_C_bit1(A_config_C[82]),
+    .Tile_X0Y3_A_config_C_bit2(A_config_C[81]),
+    .Tile_X0Y3_A_config_C_bit3(A_config_C[80]),
+    .Tile_X0Y4_A_config_C_bit0(A_config_C[79]),
+    .Tile_X0Y4_A_config_C_bit1(A_config_C[78]),
+    .Tile_X0Y4_A_config_C_bit2(A_config_C[77]),
+    .Tile_X0Y4_A_config_C_bit3(A_config_C[76]),
+    .Tile_X0Y5_A_config_C_bit0(A_config_C[75]),
+    .Tile_X0Y5_A_config_C_bit1(A_config_C[74]),
+    .Tile_X0Y5_A_config_C_bit2(A_config_C[73]),
+    .Tile_X0Y5_A_config_C_bit3(A_config_C[72]),
+    .Tile_X0Y6_A_config_C_bit0(A_config_C[71]),
+    .Tile_X0Y6_A_config_C_bit1(A_config_C[70]),
+    .Tile_X0Y6_A_config_C_bit2(A_config_C[69]),
+    .Tile_X0Y6_A_config_C_bit3(A_config_C[68]),
+    .Tile_X0Y7_A_config_C_bit0(A_config_C[67]),
+    .Tile_X0Y7_A_config_C_bit1(A_config_C[66]),
+    .Tile_X0Y7_A_config_C_bit2(A_config_C[65]),
+    .Tile_X0Y7_A_config_C_bit3(A_config_C[64]),
+    .Tile_X0Y8_A_config_C_bit0(A_config_C[63]),
+    .Tile_X0Y8_A_config_C_bit1(A_config_C[62]),
+    .Tile_X0Y8_A_config_C_bit2(A_config_C[61]),
+    .Tile_X0Y8_A_config_C_bit3(A_config_C[60]),
+    .Tile_X0Y9_A_config_C_bit0(A_config_C[59]),
+    .Tile_X0Y9_A_config_C_bit1(A_config_C[58]),
+    .Tile_X0Y9_A_config_C_bit2(A_config_C[57]),
+    .Tile_X0Y9_A_config_C_bit3(A_config_C[56]),
+    .Tile_X0Y10_A_config_C_bit0(A_config_C[55]),
+    .Tile_X0Y10_A_config_C_bit1(A_config_C[54]),
+    .Tile_X0Y10_A_config_C_bit2(A_config_C[53]),
+    .Tile_X0Y10_A_config_C_bit3(A_config_C[52]),
+    .Tile_X0Y11_A_config_C_bit0(A_config_C[51]),
+    .Tile_X0Y11_A_config_C_bit1(A_config_C[50]),
+    .Tile_X0Y11_A_config_C_bit2(A_config_C[49]),
+    .Tile_X0Y11_A_config_C_bit3(A_config_C[48]),
+    .Tile_X0Y12_A_config_C_bit0(A_config_C[47]),
+    .Tile_X0Y12_A_config_C_bit1(A_config_C[46]),
+    .Tile_X0Y12_A_config_C_bit2(A_config_C[45]),
+    .Tile_X0Y12_A_config_C_bit3(A_config_C[44]),
+    .Tile_X0Y13_A_config_C_bit0(A_config_C[43]),
+    .Tile_X0Y13_A_config_C_bit1(A_config_C[42]),
+    .Tile_X0Y13_A_config_C_bit2(A_config_C[41]),
+    .Tile_X0Y13_A_config_C_bit3(A_config_C[40]),
+    .Tile_X0Y14_A_config_C_bit0(A_config_C[39]),
+    .Tile_X0Y14_A_config_C_bit1(A_config_C[38]),
+    .Tile_X0Y14_A_config_C_bit2(A_config_C[37]),
+    .Tile_X0Y14_A_config_C_bit3(A_config_C[36]),
+    .Tile_X0Y15_A_config_C_bit0(A_config_C[35]),
+    .Tile_X0Y15_A_config_C_bit1(A_config_C[34]),
+    .Tile_X0Y15_A_config_C_bit2(A_config_C[33]),
+    .Tile_X0Y15_A_config_C_bit3(A_config_C[32]),
+    .Tile_X0Y16_A_config_C_bit0(A_config_C[31]),
+    .Tile_X0Y16_A_config_C_bit1(A_config_C[30]),
+    .Tile_X0Y16_A_config_C_bit2(A_config_C[29]),
+    .Tile_X0Y16_A_config_C_bit3(A_config_C[28]),
+    .Tile_X0Y17_A_config_C_bit0(A_config_C[27]),
+    .Tile_X0Y17_A_config_C_bit1(A_config_C[26]),
+    .Tile_X0Y17_A_config_C_bit2(A_config_C[25]),
+    .Tile_X0Y17_A_config_C_bit3(A_config_C[24]),
+    .Tile_X0Y18_A_config_C_bit0(A_config_C[23]),
+    .Tile_X0Y18_A_config_C_bit1(A_config_C[22]),
+    .Tile_X0Y18_A_config_C_bit2(A_config_C[21]),
+    .Tile_X0Y18_A_config_C_bit3(A_config_C[20]),
+    .Tile_X0Y19_A_config_C_bit0(A_config_C[19]),
+    .Tile_X0Y19_A_config_C_bit1(A_config_C[18]),
+    .Tile_X0Y19_A_config_C_bit2(A_config_C[17]),
+    .Tile_X0Y19_A_config_C_bit3(A_config_C[16]),
+    .Tile_X0Y20_A_config_C_bit0(A_config_C[15]),
+    .Tile_X0Y20_A_config_C_bit1(A_config_C[14]),
+    .Tile_X0Y20_A_config_C_bit2(A_config_C[13]),
+    .Tile_X0Y20_A_config_C_bit3(A_config_C[12]),
+    .Tile_X0Y21_A_config_C_bit0(A_config_C[11]),
+    .Tile_X0Y21_A_config_C_bit1(A_config_C[10]),
+    .Tile_X0Y21_A_config_C_bit2(A_config_C[9]),
+    .Tile_X0Y21_A_config_C_bit3(A_config_C[8]),
+    .Tile_X0Y22_A_config_C_bit0(A_config_C[7]),
+    .Tile_X0Y22_A_config_C_bit1(A_config_C[6]),
+    .Tile_X0Y22_A_config_C_bit2(A_config_C[5]),
+    .Tile_X0Y22_A_config_C_bit3(A_config_C[4]),
+    .Tile_X0Y23_A_config_C_bit0(A_config_C[3]),
+    .Tile_X0Y23_A_config_C_bit1(A_config_C[2]),
+    .Tile_X0Y23_A_config_C_bit2(A_config_C[1]),
+    .Tile_X0Y23_A_config_C_bit3(A_config_C[0]),
+    .Tile_X0Y1_B_config_C_bit0(B_config_C[91]),
+    .Tile_X0Y1_B_config_C_bit1(B_config_C[90]),
+    .Tile_X0Y1_B_config_C_bit2(B_config_C[89]),
+    .Tile_X0Y1_B_config_C_bit3(B_config_C[88]),
+    .Tile_X0Y2_B_config_C_bit0(B_config_C[87]),
+    .Tile_X0Y2_B_config_C_bit1(B_config_C[86]),
+    .Tile_X0Y2_B_config_C_bit2(B_config_C[85]),
+    .Tile_X0Y2_B_config_C_bit3(B_config_C[84]),
+    .Tile_X0Y3_B_config_C_bit0(B_config_C[83]),
+    .Tile_X0Y3_B_config_C_bit1(B_config_C[82]),
+    .Tile_X0Y3_B_config_C_bit2(B_config_C[81]),
+    .Tile_X0Y3_B_config_C_bit3(B_config_C[80]),
+    .Tile_X0Y4_B_config_C_bit0(B_config_C[79]),
+    .Tile_X0Y4_B_config_C_bit1(B_config_C[78]),
+    .Tile_X0Y4_B_config_C_bit2(B_config_C[77]),
+    .Tile_X0Y4_B_config_C_bit3(B_config_C[76]),
+    .Tile_X0Y5_B_config_C_bit0(B_config_C[75]),
+    .Tile_X0Y5_B_config_C_bit1(B_config_C[74]),
+    .Tile_X0Y5_B_config_C_bit2(B_config_C[73]),
+    .Tile_X0Y5_B_config_C_bit3(B_config_C[72]),
+    .Tile_X0Y6_B_config_C_bit0(B_config_C[71]),
+    .Tile_X0Y6_B_config_C_bit1(B_config_C[70]),
+    .Tile_X0Y6_B_config_C_bit2(B_config_C[69]),
+    .Tile_X0Y6_B_config_C_bit3(B_config_C[68]),
+    .Tile_X0Y7_B_config_C_bit0(B_config_C[67]),
+    .Tile_X0Y7_B_config_C_bit1(B_config_C[66]),
+    .Tile_X0Y7_B_config_C_bit2(B_config_C[65]),
+    .Tile_X0Y7_B_config_C_bit3(B_config_C[64]),
+    .Tile_X0Y8_B_config_C_bit0(B_config_C[63]),
+    .Tile_X0Y8_B_config_C_bit1(B_config_C[62]),
+    .Tile_X0Y8_B_config_C_bit2(B_config_C[61]),
+    .Tile_X0Y8_B_config_C_bit3(B_config_C[60]),
+    .Tile_X0Y9_B_config_C_bit0(B_config_C[59]),
+    .Tile_X0Y9_B_config_C_bit1(B_config_C[58]),
+    .Tile_X0Y9_B_config_C_bit2(B_config_C[57]),
+    .Tile_X0Y9_B_config_C_bit3(B_config_C[56]),
+    .Tile_X0Y10_B_config_C_bit0(B_config_C[55]),
+    .Tile_X0Y10_B_config_C_bit1(B_config_C[54]),
+    .Tile_X0Y10_B_config_C_bit2(B_config_C[53]),
+    .Tile_X0Y10_B_config_C_bit3(B_config_C[52]),
+    .Tile_X0Y11_B_config_C_bit0(B_config_C[51]),
+    .Tile_X0Y11_B_config_C_bit1(B_config_C[50]),
+    .Tile_X0Y11_B_config_C_bit2(B_config_C[49]),
+    .Tile_X0Y11_B_config_C_bit3(B_config_C[48]),
+    .Tile_X0Y12_B_config_C_bit0(B_config_C[47]),
+    .Tile_X0Y12_B_config_C_bit1(B_config_C[46]),
+    .Tile_X0Y12_B_config_C_bit2(B_config_C[45]),
+    .Tile_X0Y12_B_config_C_bit3(B_config_C[44]),
+    .Tile_X0Y13_B_config_C_bit0(B_config_C[43]),
+    .Tile_X0Y13_B_config_C_bit1(B_config_C[42]),
+    .Tile_X0Y13_B_config_C_bit2(B_config_C[41]),
+    .Tile_X0Y13_B_config_C_bit3(B_config_C[40]),
+    .Tile_X0Y14_B_config_C_bit0(B_config_C[39]),
+    .Tile_X0Y14_B_config_C_bit1(B_config_C[38]),
+    .Tile_X0Y14_B_config_C_bit2(B_config_C[37]),
+    .Tile_X0Y14_B_config_C_bit3(B_config_C[36]),
+    .Tile_X0Y15_B_config_C_bit0(B_config_C[35]),
+    .Tile_X0Y15_B_config_C_bit1(B_config_C[34]),
+    .Tile_X0Y15_B_config_C_bit2(B_config_C[33]),
+    .Tile_X0Y15_B_config_C_bit3(B_config_C[32]),
+    .Tile_X0Y16_B_config_C_bit0(B_config_C[31]),
+    .Tile_X0Y16_B_config_C_bit1(B_config_C[30]),
+    .Tile_X0Y16_B_config_C_bit2(B_config_C[29]),
+    .Tile_X0Y16_B_config_C_bit3(B_config_C[28]),
+    .Tile_X0Y17_B_config_C_bit0(B_config_C[27]),
+    .Tile_X0Y17_B_config_C_bit1(B_config_C[26]),
+    .Tile_X0Y17_B_config_C_bit2(B_config_C[25]),
+    .Tile_X0Y17_B_config_C_bit3(B_config_C[24]),
+    .Tile_X0Y18_B_config_C_bit0(B_config_C[23]),
+    .Tile_X0Y18_B_config_C_bit1(B_config_C[22]),
+    .Tile_X0Y18_B_config_C_bit2(B_config_C[21]),
+    .Tile_X0Y18_B_config_C_bit3(B_config_C[20]),
+    .Tile_X0Y19_B_config_C_bit0(B_config_C[19]),
+    .Tile_X0Y19_B_config_C_bit1(B_config_C[18]),
+    .Tile_X0Y19_B_config_C_bit2(B_config_C[17]),
+    .Tile_X0Y19_B_config_C_bit3(B_config_C[16]),
+    .Tile_X0Y20_B_config_C_bit0(B_config_C[15]),
+    .Tile_X0Y20_B_config_C_bit1(B_config_C[14]),
+    .Tile_X0Y20_B_config_C_bit2(B_config_C[13]),
+    .Tile_X0Y20_B_config_C_bit3(B_config_C[12]),
+    .Tile_X0Y21_B_config_C_bit0(B_config_C[11]),
+    .Tile_X0Y21_B_config_C_bit1(B_config_C[10]),
+    .Tile_X0Y21_B_config_C_bit2(B_config_C[9]),
+    .Tile_X0Y21_B_config_C_bit3(B_config_C[8]),
+    .Tile_X0Y22_B_config_C_bit0(B_config_C[7]),
+    .Tile_X0Y22_B_config_C_bit1(B_config_C[6]),
+    .Tile_X0Y22_B_config_C_bit2(B_config_C[5]),
+    .Tile_X0Y22_B_config_C_bit3(B_config_C[4]),
+    .Tile_X0Y23_B_config_C_bit0(B_config_C[3]),
+    .Tile_X0Y23_B_config_C_bit1(B_config_C[2]),
+    .Tile_X0Y23_B_config_C_bit2(B_config_C[1]),
+    .Tile_X0Y23_B_config_C_bit3(B_config_C[0]),
+    .UserCLK(CLK),
+    .FrameData(FrameData),
+    .FrameStrobe(FrameSelect)
+);
+
+
+fault_detector  #(.Nm1(22), .Nm2(22), .Nctrl(22)) DR_check (
+    .CLK(CLK),
+    .rst(rst_fabric),
+    .prech1(prech1),
+    .prech2(prech2),
+    .f_m1(F_masked1_top),
+    .f_m2(F_masked2_top),
+    .f_ctrl(F_ctrl_top),
+    .f_detected(f_detected)
+);
+
+/*prech_signal_module prech_signal_module_i (
+    .rst(rst_async_full),
+    .CLK(CLK),
+    .prech1(prech1),
+    .prech2(prech2)
+);*/
+
+prech_and_reset_signal_module prech_and_reset_signal_module_i (
+	.rst_full_in(rst_async_full),
+	.rst_fabric_in(rst_sync_fabric),
+    .CLK(CLK),
+    .prech1(prech1),
+    .prech2(prech2),
+    .prech_unmasked(prech_rng),
+	.rst_fabric_out(rst_fabric),
+    .rst_rng(rst_rng)
+);
+
+Trivium_DRP  #(.output_bits(46)) Trivium_DRP_i (
+    .clk(CLK),
+    .rst(rst_rng),
+    .prech1(prech_rng),
+    .key_t(key_t),
+    .key_f(key_f),
+    .iv_t(iv_t),
+    .iv_f(iv_f),
+    .stream_out_t(R_t_top),
+    .stream_out_f(R_f_top)
+);
+
+assign FrameData = {32'h12345678,FrameRegister,32'h12345678};
+endmodule

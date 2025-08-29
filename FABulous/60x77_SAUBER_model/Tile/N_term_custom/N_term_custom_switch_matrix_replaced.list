@@ -1,0 +1,14 @@
+# N-term
+# turns
+to_SA[0] , from_NA[0]
+to_SB[0] , from_NB[0]
+to_SC[0] , from_NC[0]
+to_SD[0] , from_ND[0]
+to_SF[0] , from_NF[0]
+to_SG[0] , from_NG[0]
+to_SG[1] , from_NG[1]
+to_SH[0] , from_NH[0]
+to_SH[1] , from_NH[1]
+to_SI[0] , from_NI[0]
+to_SI[1] , from_NI[1]
+to_SI[2] , from_NI[2]

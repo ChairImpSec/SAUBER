@@ -1,0 +1,155 @@
+# ctrl_to_sec
+# MUX(3) for NA
+to_NA[0] , from_NA[0]
+to_NA[0] , from_SA[0]
+to_NA[0] , from_EA[0]
+to_NA[0] , [from_WA_1s0]
+
+# MUX(3) for NB
+to_NB[0] , from_NB[0]
+to_NB[0] , from_SB[0]
+to_NB[0] , from_EB[0]
+to_NB[0] , [from_WB_1s0]
+
+# MUX(3) for NC
+to_NC[0] , from_NC[0]
+to_NC[0] , from_SC[0]
+to_NC[0] , from_EC[0]
+to_NC[0] , [from_WC_1s0]
+
+# MUX(3) for ND
+to_ND[0] , from_ND[0]
+to_ND[0] , from_SD[0]
+to_ND[0] , from_ED[0]
+to_ND[0] , [from_WD_1s0]
+
+# MUX(3) for NF
+to_NF[0] , from_NF[0]
+to_NF[0] , from_SF[0]
+to_NF[0] , from_EF[0]
+to_NF[0] , [from_WF_1s0]
+
+
+# MUX(3) for NG
+to_NG[0] , from_NG[0]
+to_NG[0] , from_SG[0]
+to_NG[0] , from_EG[0]
+to_NG[0] , [from_WG_1s0]
+
+
+# MUX(3) for NH
+to_NH[0] , from_NH[0]
+to_NH[0] , from_SH[0]
+to_NH[0] , from_EH[0]
+to_NH[0] , [from_WH_1s0]
+
+
+# MUX(3) for NI
+to_NI[0] , from_NI[0]
+to_NI[0] , from_SI[0]
+to_NI[0] , from_EI[0]
+to_NI[0] , [from_WI_1s0]
+
+# MUX(3) for SA
+to_SA[0] , from_EA[0]
+to_SA[0] , from_SA[0]
+to_SA[0] , from_NA[0]
+to_SA[0] , [from_WA_1s0]
+
+# MUX(3) for SB
+to_SB[0] , from_EB[0]
+to_SB[0] , from_SB[0]
+to_SB[0] , from_NB[0]
+to_SB[0] , [from_WB_1s0]
+
+# MUX(3) for SC
+to_SC[0] , from_EC[0]
+to_SC[0] , from_SC[0]
+to_SC[0] , from_NC[0]
+to_SC[0] , [from_WC_1s0]
+
+# MUX(3) for SD
+to_SD[0] , from_ED[0]
+to_SD[0] , from_SD[0]
+to_SD[0] , from_ND[0]
+to_SD[0] , [from_WD_1s0]
+
+# MUX(3) for SF
+to_SF[0] , from_EF[0]
+to_SF[0] , from_SF[0]
+to_SF[0] , from_NF[0]
+to_SF[0] , [from_WF_1s0]
+
+# MUX(3) for SG
+to_SG[0] , from_EG[0]
+to_SG[0] , from_SG[0]
+to_SG[0] , from_NG[0]
+to_SG[0] , [from_WG_1s0]
+
+# MUX(3) for SH
+to_SH[0] , from_EH[0]
+to_SH[0] , from_SH[0]
+to_SH[0] , from_NH[0]
+to_SH[0] , [from_WH_1s0]
+
+# MUX(3) for SI
+to_SI[0] , from_EI[0]
+to_SI[0] , from_SI[0]
+to_SI[0] , from_NI[0]
+to_SI[0] , [from_WI_1s0]
+
+# MUX(4) for WA
+to_WA[0] , from_NA[0]
+to_WA[0] , from_SA[0]
+to_WA[0] , from_NA[0]
+to_WA[0] , [from_WA_1s0]
+
+# MUX(4) for WB
+to_WB[0] , from_NB[0]
+to_WB[0] , from_SB[0]
+to_WB[0] , from_EB[0]
+to_WB[0] , [from_WB_1s0]
+
+# MUX(4) for WC
+to_WC[0] , from_NC[0]
+to_WC[0] , from_SC[0]
+to_WC[0] , from_EC[0]
+to_WC[0] , [from_WC_1s0]
+
+# MUX(2) for WD
+to_WD[0] , from_ND[0]
+to_WD[0] , from_SD[0]
+to_WD[0] , from_ED[0]
+to_WD[0] , [from_WD_1s0]
+
+# MUX(2) for WF
+to_WF[0] , from_NF[0]
+to_WF[0] , from_SF[0]
+to_WF[0] , from_EF[0]
+to_WF[0] , [from_WF_1s0]
+
+
+# MUX(2) for WG
+to_WG[0] , from_NG[0]
+to_WG[0] , from_SG[0]
+to_WG[0] , from_EG[0]
+to_WG[0] , [from_WG_1s0]
+
+
+# MUX(2) for WH
+to_WH[0] , from_NH[0]
+to_WH[0] , from_SH[0]
+to_WH[0] , from_EH[0]
+to_WH[0] , [from_WH_1s0]
+
+# MUX(2) for WI
+to_WI[0] , from_NI[0]
+to_WI[0] , from_SI[0]
+to_WI[0] , from_EI[0]
+to_WI[0] , [from_WI_1s0]
+
+# turns
+to_WG[1] , from_EG[1]
+to_WH[1] , from_EH[1]
+to_WI[1] , from_EI[1]
+to_WI[2] , from_EI[2]

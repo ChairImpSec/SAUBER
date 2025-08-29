@@ -1,0 +1,299 @@
+module S_term_s1
+    #(
+`ifdef EMULATION
+        parameter [639:0] Emulate_Bitstream=640'b0,
+`endif
+        parameter MaxFramesPerCol=20,
+        parameter FrameBitsPerRow=32,
+        parameter NoConfigBits=0
+    )
+    (
+ //Side.NORTH
+        output [1:0] to_NA_1s,        //Port(Name=to_NA_1s, IO=OUTPUT, XOffset=0, YOffset=-1, WireCount=2, Side=NORTH)
+        output [1:0] to_NB_1s,        //Port(Name=to_NB_1s, IO=OUTPUT, XOffset=0, YOffset=-1, WireCount=2, Side=NORTH)
+        output [1:0] to_NC_1s,        //Port(Name=to_NC_1s, IO=OUTPUT, XOffset=0, YOffset=-1, WireCount=2, Side=NORTH)
+        output [1:0] to_ND_1s,        //Port(Name=to_ND_1s, IO=OUTPUT, XOffset=0, YOffset=-1, WireCount=2, Side=NORTH)
+        output [1:0] to_NF_1s,        //Port(Name=to_NF_1s, IO=OUTPUT, XOffset=0, YOffset=-1, WireCount=2, Side=NORTH)
+        output [1:0] to_NG_1s,        //Port(Name=to_NG_1s, IO=OUTPUT, XOffset=0, YOffset=-1, WireCount=2, Side=NORTH)
+        output [1:0] to_NH_1s,        //Port(Name=to_NH_1s, IO=OUTPUT, XOffset=0, YOffset=-1, WireCount=2, Side=NORTH)
+        output [1:0] to_NI_1s,        //Port(Name=to_NI_1s, IO=OUTPUT, XOffset=0, YOffset=-1, WireCount=2, Side=NORTH)
+        input [1:0] from_SA_1s,        //Port(Name=from_SA_1s, IO=INPUT, XOffset=0, YOffset=1, WireCount=2, Side=NORTH)
+        input [1:0] from_SB_1s,        //Port(Name=from_SB_1s, IO=INPUT, XOffset=0, YOffset=1, WireCount=2, Side=NORTH)
+        input [1:0] from_SC_1s,        //Port(Name=from_SC_1s, IO=INPUT, XOffset=0, YOffset=1, WireCount=2, Side=NORTH)
+        input [1:0] from_SD_1s,        //Port(Name=from_SD_1s, IO=INPUT, XOffset=0, YOffset=1, WireCount=2, Side=NORTH)
+        input [1:0] from_SF_1s,        //Port(Name=from_SF_1s, IO=INPUT, XOffset=0, YOffset=1, WireCount=2, Side=NORTH)
+        input [1:0] from_SG_1s,        //Port(Name=from_SG_1s, IO=INPUT, XOffset=0, YOffset=1, WireCount=2, Side=NORTH)
+        input [1:0] from_SH_1s,        //Port(Name=from_SH_1s, IO=INPUT, XOffset=0, YOffset=1, WireCount=2, Side=NORTH)
+        input [1:0] from_SI_1s,        //Port(Name=from_SI_1s, IO=INPUT, XOffset=0, YOffset=1, WireCount=2, Side=NORTH)
+    //Tile IO ports from BELs
+        input UserCLK,
+        output UserCLKo,
+        input rst,
+        output rsto,
+        input [MaxFramesPerCol -1:0] FrameStrobe,
+        output [MaxFramesPerCol -1:0] FrameStrobe_O
+    //global
+);
+ //signal declarations
+ //BEL ports (e.g., slices)
+ //Jump wires
+ //internal configuration data signal to daisy-chain all BELs (if any and in the order they are listed in the fabric.csv)
+wire[NoConfigBits-1:0] ConfigBits;
+wire[NoConfigBits-1:0] ConfigBits_N;
+
+ //Connection for outgoing wires
+wire[FrameBitsPerRow-1:0] FrameData_i;
+wire[FrameBitsPerRow-1:0] FrameData_O_i;
+wire[MaxFramesPerCol-1:0] FrameStrobe_i;
+wire[MaxFramesPerCol-1:0] FrameStrobe_O_i;
+
+assign FrameStrobe_O_i = FrameStrobe_i;
+
+my_buf strobe_inbuf_0 (
+    .A(FrameStrobe[0]),
+    .X(FrameStrobe_i[0])
+);
+
+my_buf strobe_inbuf_1 (
+    .A(FrameStrobe[1]),
+    .X(FrameStrobe_i[1])
+);
+
+my_buf strobe_inbuf_2 (
+    .A(FrameStrobe[2]),
+    .X(FrameStrobe_i[2])
+);
+
+my_buf strobe_inbuf_3 (
+    .A(FrameStrobe[3]),
+    .X(FrameStrobe_i[3])
+);
+
+my_buf strobe_inbuf_4 (
+    .A(FrameStrobe[4]),
+    .X(FrameStrobe_i[4])
+);
+
+my_buf strobe_inbuf_5 (
+    .A(FrameStrobe[5]),
+    .X(FrameStrobe_i[5])
+);
+
+my_buf strobe_inbuf_6 (
+    .A(FrameStrobe[6]),
+    .X(FrameStrobe_i[6])
+);
+
+my_buf strobe_inbuf_7 (
+    .A(FrameStrobe[7]),
+    .X(FrameStrobe_i[7])
+);
+
+my_buf strobe_inbuf_8 (
+    .A(FrameStrobe[8]),
+    .X(FrameStrobe_i[8])
+);
+
+my_buf strobe_inbuf_9 (
+    .A(FrameStrobe[9]),
+    .X(FrameStrobe_i[9])
+);
+
+my_buf strobe_inbuf_10 (
+    .A(FrameStrobe[10]),
+    .X(FrameStrobe_i[10])
+);
+
+my_buf strobe_inbuf_11 (
+    .A(FrameStrobe[11]),
+    .X(FrameStrobe_i[11])
+);
+
+my_buf strobe_inbuf_12 (
+    .A(FrameStrobe[12]),
+    .X(FrameStrobe_i[12])
+);
+
+my_buf strobe_inbuf_13 (
+    .A(FrameStrobe[13]),
+    .X(FrameStrobe_i[13])
+);
+
+my_buf strobe_inbuf_14 (
+    .A(FrameStrobe[14]),
+    .X(FrameStrobe_i[14])
+);
+
+my_buf strobe_inbuf_15 (
+    .A(FrameStrobe[15]),
+    .X(FrameStrobe_i[15])
+);
+
+my_buf strobe_inbuf_16 (
+    .A(FrameStrobe[16]),
+    .X(FrameStrobe_i[16])
+);
+
+my_buf strobe_inbuf_17 (
+    .A(FrameStrobe[17]),
+    .X(FrameStrobe_i[17])
+);
+
+my_buf strobe_inbuf_18 (
+    .A(FrameStrobe[18]),
+    .X(FrameStrobe_i[18])
+);
+
+my_buf strobe_inbuf_19 (
+    .A(FrameStrobe[19]),
+    .X(FrameStrobe_i[19])
+);
+
+my_buf strobe_outbuf_0 (
+    .A(FrameStrobe_O_i[0]),
+    .X(FrameStrobe_O[0])
+);
+
+my_buf strobe_outbuf_1 (
+    .A(FrameStrobe_O_i[1]),
+    .X(FrameStrobe_O[1])
+);
+
+my_buf strobe_outbuf_2 (
+    .A(FrameStrobe_O_i[2]),
+    .X(FrameStrobe_O[2])
+);
+
+my_buf strobe_outbuf_3 (
+    .A(FrameStrobe_O_i[3]),
+    .X(FrameStrobe_O[3])
+);
+
+my_buf strobe_outbuf_4 (
+    .A(FrameStrobe_O_i[4]),
+    .X(FrameStrobe_O[4])
+);
+
+my_buf strobe_outbuf_5 (
+    .A(FrameStrobe_O_i[5]),
+    .X(FrameStrobe_O[5])
+);
+
+my_buf strobe_outbuf_6 (
+    .A(FrameStrobe_O_i[6]),
+    .X(FrameStrobe_O[6])
+);
+
+my_buf strobe_outbuf_7 (
+    .A(FrameStrobe_O_i[7]),
+    .X(FrameStrobe_O[7])
+);
+
+my_buf strobe_outbuf_8 (
+    .A(FrameStrobe_O_i[8]),
+    .X(FrameStrobe_O[8])
+);
+
+my_buf strobe_outbuf_9 (
+    .A(FrameStrobe_O_i[9]),
+    .X(FrameStrobe_O[9])
+);
+
+my_buf strobe_outbuf_10 (
+    .A(FrameStrobe_O_i[10]),
+    .X(FrameStrobe_O[10])
+);
+
+my_buf strobe_outbuf_11 (
+    .A(FrameStrobe_O_i[11]),
+    .X(FrameStrobe_O[11])
+);
+
+my_buf strobe_outbuf_12 (
+    .A(FrameStrobe_O_i[12]),
+    .X(FrameStrobe_O[12])
+);
+
+my_buf strobe_outbuf_13 (
+    .A(FrameStrobe_O_i[13]),
+    .X(FrameStrobe_O[13])
+);
+
+my_buf strobe_outbuf_14 (
+    .A(FrameStrobe_O_i[14]),
+    .X(FrameStrobe_O[14])
+);
+
+my_buf strobe_outbuf_15 (
+    .A(FrameStrobe_O_i[15]),
+    .X(FrameStrobe_O[15])
+);
+
+my_buf strobe_outbuf_16 (
+    .A(FrameStrobe_O_i[16]),
+    .X(FrameStrobe_O[16])
+);
+
+my_buf strobe_outbuf_17 (
+    .A(FrameStrobe_O_i[17]),
+    .X(FrameStrobe_O[17])
+);
+
+my_buf strobe_outbuf_18 (
+    .A(FrameStrobe_O_i[18]),
+    .X(FrameStrobe_O[18])
+);
+
+my_buf strobe_outbuf_19 (
+    .A(FrameStrobe_O_i[19]),
+    .X(FrameStrobe_O[19])
+);
+
+clk_buf inst_clk_buf (
+    .A(UserCLK),
+    .X(UserCLKo)
+);
+
+my_buf inst_rst_buf (
+    .A(rst),
+    .X(rsto)
+);
+
+
+ //BEL component instantiations
+S_term_s1_switch_matrix Inst_S_term_s1_switch_matrix (
+    .from_SA_1s0(from_SA_1s[0]),
+    .from_SA_1s1(from_SA_1s[1]),
+    .from_SB_1s0(from_SB_1s[0]),
+    .from_SB_1s1(from_SB_1s[1]),
+    .from_SC_1s0(from_SC_1s[0]),
+    .from_SC_1s1(from_SC_1s[1]),
+    .from_SD_1s0(from_SD_1s[0]),
+    .from_SD_1s1(from_SD_1s[1]),
+    .from_SF_1s0(from_SF_1s[0]),
+    .from_SF_1s1(from_SF_1s[1]),
+    .from_SG_1s0(from_SG_1s[0]),
+    .from_SG_1s1(from_SG_1s[1]),
+    .from_SH_1s0(from_SH_1s[0]),
+    .from_SH_1s1(from_SH_1s[1]),
+    .from_SI_1s0(from_SI_1s[0]),
+    .from_SI_1s1(from_SI_1s[1]),
+    .to_NA_1s0(to_NA_1s[0]),
+    .to_NA_1s1(to_NA_1s[1]),
+    .to_NB_1s0(to_NB_1s[0]),
+    .to_NB_1s1(to_NB_1s[1]),
+    .to_NC_1s0(to_NC_1s[0]),
+    .to_NC_1s1(to_NC_1s[1]),
+    .to_ND_1s0(to_ND_1s[0]),
+    .to_ND_1s1(to_ND_1s[1]),
+    .to_NF_1s0(to_NF_1s[0]),
+    .to_NF_1s1(to_NF_1s[1]),
+    .to_NG_1s0(to_NG_1s[0]),
+    .to_NG_1s1(to_NG_1s[1]),
+    .to_NH_1s0(to_NH_1s[0]),
+    .to_NH_1s1(to_NH_1s[1]),
+    .to_NI_1s0(to_NI_1s[0]),
+    .to_NI_1s1(to_NI_1s[1])
+);
+
+endmodule

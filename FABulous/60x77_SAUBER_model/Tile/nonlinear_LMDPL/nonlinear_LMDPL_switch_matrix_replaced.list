@@ -1,0 +1,276 @@
+# MUX(4) for NA
+to_NA[0] , [Z0_t]
+to_NA[0] , from_NA[0]
+to_NA[0] , from_EA[0]
+to_NA[0] , from_WA[0]
+
+# MUX(4) for NB
+to_NB[0] , [Z0_t]
+to_NB[0] , from_NB[0]
+to_NB[0] , from_EB[0]
+to_NB[0] , from_WB[0]
+
+# MUX(4) for NC
+to_NC[0] , [Z0_t]
+to_NC[0] , from_NC[0]
+to_NC[0] , from_EC[0]
+to_NC[0] , from_WC[0]
+
+# MUX(4) for ND
+to_ND[0] , [Z0_t]
+to_ND[0] , from_ND[0]
+to_ND[0] , from_ED[0]
+to_ND[0] , from_WD[0]
+
+# MUX(4) for NF
+to_NF[0] , [Z0_t]
+to_NF[0] , from_NF[0]
+to_NF[0] , from_EF[0]
+to_NF[0] , from_WF[0]
+
+# MUX(4) for NG
+to_NG[0] , [Z0_t]
+to_NG[0] , from_NG[0]
+to_NG[0] , from_EG[0]
+to_NG[0] , from_WG[0]
+
+# MUX(4) for NH
+to_NH[0] , [Z0_t]
+to_NH[0] , from_NH[0]
+to_NH[0] , from_EH[0]
+to_NH[0] , from_WH[0]
+
+# MUX(4) for NI
+to_NI[0] , [Z0_t]
+to_NI[0] , from_NI[0]
+to_NI[0] , from_EI[0]
+to_NI[0] , from_WI[0]
+
+# MUX(4) for EA
+to_EA[0] , [Z0_t]
+to_EA[0] , from_NA[0]
+to_EA[0] , from_EA[0]
+to_EA[0] , from_SA[0]
+
+# MUX(4) for EB
+to_EB[0] , [Z0_t]
+to_EB[0] , from_NB[0]
+to_EB[0] , from_EB[0]
+to_EB[0] , from_SB[0]
+
+# MUX(4) for EC
+to_EC[0] , [Z0_t]
+to_EC[0] , from_NC[0]
+to_EC[0] , from_EC[0]
+to_EC[0] , from_SC[0]
+
+# MUX(4) for ED
+to_ED[0] , [Z0_t]
+to_ED[0] , from_ND[0]
+to_ED[0] , from_ED[0]
+to_ED[0] , from_SD[0]
+
+# MUX(4) for EF
+to_EF[0] , [Z0_t]
+to_EF[0] , from_NF[0]
+to_EF[0] , from_EF[0]
+to_EF[0] , from_SF[0]
+
+# MUX(4) for EG
+to_EG[0] , [Z0_t]
+to_EG[0] , from_NG[0]
+to_EG[0] , from_EG[0]
+to_EG[0] , from_SG[0]
+
+# MUX(4) for EH
+to_EH[0] , [Z0_t]
+to_EH[0] , from_NH[0]
+to_EH[0] , from_EH[0]
+to_EH[0] , from_SH[0]
+
+# MUX(4) for EI
+to_EI[0] , [Z0_t]
+to_EI[0] , from_NI[0]
+to_EI[0] , from_EI[0]
+to_EI[0] , from_SI[0]
+
+# MUX(4) for SA
+to_SA[0] , [Z0_t]
+to_SA[0] , from_EA[0]
+to_SA[0] , from_SA[0]
+to_SA[0] , from_WA[0]
+
+# MUX(4) for SB
+to_SB[0] , [Z0_t]
+to_SB[0] , from_EB[0]
+to_SB[0] , from_SB[0]
+to_SB[0] , from_WB[0]
+
+# MUX(4) for SC
+to_SC[0] , [Z0_t]
+to_SC[0] , from_EC[0]
+to_SC[0] , from_SC[0]
+to_SC[0] , from_WC[0]
+
+# MUX(4) for SD
+to_SD[0] , [Z0_t]
+to_SD[0] , from_ED[0]
+to_SD[0] , from_SD[0]
+to_SD[0] , from_WD[0]
+
+# MUX(4) for SF
+to_SF[0] , [Z0_t]
+to_SF[0] , from_EF[0]
+to_SF[0] , from_SF[0]
+to_SF[0] , from_WF[0]
+
+# MUX(4) for SG
+to_SG[0] , [Z0_t]
+to_SG[0] , from_EG[0]
+to_SG[0] , from_SG[0]
+to_SG[0] , from_WG[0]
+
+# MUX(4) for SH
+to_SH[0] , [Z0_t]
+to_SH[0] , from_EH[0]
+to_SH[0] , from_SH[0]
+to_SH[0] , from_WH[0]
+
+# MUX(4) for SI
+to_SI[0] , [Z0_t]
+to_SI[0] , from_EI[0]
+to_SI[0] , from_SI[0]
+to_SI[0] , from_WI[0]
+
+# MUX(4) for WA
+to_WA[0] , [Z0_t]
+to_WA[0] , from_NA[0]
+to_WA[0] , from_SA[0]
+to_WA[0] , from_WA[0]
+
+# MUX(4) for WB
+to_WB[0] , [Z0_t]
+to_WB[0] , from_NB[0]
+to_WB[0] , from_SB[0]
+to_WB[0] , from_WB[0]
+
+# MUX(4) for WC
+to_WC[0] , [Z0_t]
+to_WC[0] , from_NC[0]
+to_WC[0] , from_SC[0]
+to_WC[0] , from_WC[0]
+
+# MUX(4) for WD
+to_WD[0] , [Z0_t]
+to_WD[0] , from_ND[0]
+to_WD[0] , from_SD[0]
+to_WD[0] , from_WD[0]
+
+# MUX(4) for WF
+to_WF[0] , [Z0_t]
+to_WF[0] , from_NF[0]
+to_WF[0] , from_SF[0]
+to_WF[0] , from_WF[0]
+
+# MUX(4) for WG
+to_WG[0] , [Z0_t]
+to_WG[0] , from_NG[0]
+to_WG[0] , from_SG[0]
+to_WG[0] , from_WG[0]
+
+# MUX(4) for WH
+to_WH[0] , [Z0_t]
+to_WH[0] , from_NH[0]
+to_WH[0] , from_SH[0]
+to_WH[0] , from_WH[0]
+
+# MUX(4) for WI
+to_WI[0] , [Z0_t]
+to_WI[0] , from_NI[0]
+to_WI[0] , from_SI[0]
+to_WI[0] , from_WI[0]
+
+# MUX(16) for J_I1A
+to_J_I1A[0] , from_NA[0]
+to_J_I1A[0] , from_NB[0]
+to_J_I1A[0] , from_NC[0]
+to_J_I1A[0] , from_ND[0]
+to_J_I1A[0] , from_NF[0]
+to_J_I1A[0] , from_NG[0]
+to_J_I1A[0] , from_NH[0]
+to_J_I1A[0] , from_NI[0]
+to_J_I1A[0] , from_EA[0]
+to_J_I1A[0] , from_EB[0]
+to_J_I1A[0] , from_EC[0]
+to_J_I1A[0] , from_ED[0]
+to_J_I1A[0] , from_EF[0]
+to_J_I1A[0] , from_EG[0]
+to_J_I1A[0] , from_EH[0]
+to_J_I1A[0] , from_EI[0]
+
+# MUX(16) for J_I1B
+to_J_I1B[0] , from_NA[0]
+to_J_I1B[0] , from_NB[0]
+to_J_I1B[0] , from_NC[0]
+to_J_I1B[0] , from_ND[0]
+to_J_I1B[0] , from_NF[0]
+to_J_I1B[0] , from_NG[0]
+to_J_I1B[0] , from_NH[0]
+to_J_I1B[0] , from_NI[0]
+to_J_I1B[0] , from_EA[0]
+to_J_I1B[0] , from_EB[0]
+to_J_I1B[0] , from_EC[0]
+to_J_I1B[0] , from_ED[0]
+to_J_I1B[0] , from_EF[0]
+to_J_I1B[0] , from_EG[0]
+to_J_I1B[0] , from_EH[0]
+to_J_I1B[0] , from_EI[0]
+
+# MUX(16) for J_I2A
+to_J_I2A[0] , from_SA[0]
+to_J_I2A[0] , from_SB[0]
+to_J_I2A[0] , from_SC[0]
+to_J_I2A[0] , from_SD[0]
+to_J_I2A[0] , from_SF[0]
+to_J_I2A[0] , from_SG[0]
+to_J_I2A[0] , from_SH[0]
+to_J_I2A[0] , from_SI[0]
+to_J_I2A[0] , from_WA[0]
+to_J_I2A[0] , from_WB[0]
+to_J_I2A[0] , from_WC[0]
+to_J_I2A[0] , from_WD[0]
+to_J_I2A[0] , from_WF[0]
+to_J_I2A[0] , from_WG[0]
+to_J_I2A[0] , from_WH[0]
+to_J_I2A[0] , from_WI[0]
+
+# MUX(16) for J_I2B
+to_J_I2B[0] , from_SA[0]
+to_J_I2B[0] , from_SB[0]
+to_J_I2B[0] , from_SC[0]
+to_J_I2B[0] , from_SD[0]
+to_J_I2B[0] , from_SF[0]
+to_J_I2B[0] , from_SG[0]
+to_J_I2B[0] , from_SH[0]
+to_J_I2B[0] , from_SI[0]
+to_J_I2B[0] , from_WA[0]
+to_J_I2B[0] , from_WB[0]
+to_J_I2B[0] , from_WC[0]
+to_J_I2B[0] , from_WD[0]
+to_J_I2B[0] , from_WF[0]
+to_J_I2B[0] , from_WG[0]
+to_J_I2B[0] , from_WH[0]
+to_J_I2B[0] , from_WI[0]
+
+# MUX(4) for Inputs_A
+[A0_t] , from_J_I1A[0]
+[A0_t] , from_J_I2A[0]
+[A0_t] , [VCC0]
+[A0_t] , [GND0]
+
+# MUX(4) for Inputs_B
+[B0_t] , from_J_I1B[0]
+[B0_t] , from_J_I2B[0]
+[B0_t] , [VCC0]
+[B0_t] , [GND0]
+

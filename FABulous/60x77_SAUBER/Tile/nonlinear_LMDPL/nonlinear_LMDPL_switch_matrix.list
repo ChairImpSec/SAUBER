@@ -1,0 +1,276 @@
+# MUX(4) for NA
+to_NA[0|1|2|3] , [Z0_t|Z0_f|Z1_t|Z1_f]
+to_NA[0|1|2|3] , from_NA[0|1|2|3]
+to_NA[0|1|2|3] , from_EA[0|1|2|3]
+to_NA[0|1|2|3] , from_WA[0|1|2|3]
+
+# MUX(4) for NB
+to_NB[0|1|2|3] , [Z0_t|Z0_f|Z1_t|Z1_f]
+to_NB[0|1|2|3] , from_NB[0|1|2|3]
+to_NB[0|1|2|3] , from_EB[0|1|2|3]
+to_NB[0|1|2|3] , from_WB[0|1|2|3]
+
+# MUX(4) for NC
+to_NC[0|1|2|3] , [Z0_t|Z0_f|Z1_t|Z1_f]
+to_NC[0|1|2|3] , from_NC[0|1|2|3]
+to_NC[0|1|2|3] , from_EC[0|1|2|3]
+to_NC[0|1|2|3] , from_WC[0|1|2|3]
+
+# MUX(4) for ND
+to_ND[0|1|2|3] , [Z0_t|Z0_f|Z1_t|Z1_f]
+to_ND[0|1|2|3] , from_ND[0|1|2|3]
+to_ND[0|1|2|3] , from_ED[0|1|2|3]
+to_ND[0|1|2|3] , from_WD[0|1|2|3]
+
+# MUX(4) for NF
+to_NF[0|1|2|3] , [Z0_t|Z0_f|Z1_t|Z1_f]
+to_NF[0|1|2|3] , from_NF[0|1|2|3]
+to_NF[0|1|2|3] , from_EF[0|1|2|3]
+to_NF[0|1|2|3] , from_WF[0|1|2|3]
+
+# MUX(4) for NG
+to_NG[0|1|2|3] , [Z0_t|Z0_f|Z1_t|Z1_f]
+to_NG[0|1|2|3] , from_NG[0|1|2|3]
+to_NG[0|1|2|3] , from_EG[0|1|2|3]
+to_NG[0|1|2|3] , from_WG[0|1|2|3]
+
+# MUX(4) for NH
+to_NH[0|1|2|3] , [Z0_t|Z0_f|Z1_t|Z1_f]
+to_NH[0|1|2|3] , from_NH[0|1|2|3]
+to_NH[0|1|2|3] , from_EH[0|1|2|3]
+to_NH[0|1|2|3] , from_WH[0|1|2|3]
+
+# MUX(4) for NI
+to_NI[0|1|2|3] , [Z0_t|Z0_f|Z1_t|Z1_f]
+to_NI[0|1|2|3] , from_NI[0|1|2|3]
+to_NI[0|1|2|3] , from_EI[0|1|2|3]
+to_NI[0|1|2|3] , from_WI[0|1|2|3]
+
+# MUX(4) for EA
+to_EA[0|1|2|3] , [Z0_t|Z0_f|Z1_t|Z1_f]
+to_EA[0|1|2|3] , from_NA[0|1|2|3]
+to_EA[0|1|2|3] , from_EA[0|1|2|3]
+to_EA[0|1|2|3] , from_SA[0|1|2|3]
+
+# MUX(4) for EB
+to_EB[0|1|2|3] , [Z0_t|Z0_f|Z1_t|Z1_f]
+to_EB[0|1|2|3] , from_NB[0|1|2|3]
+to_EB[0|1|2|3] , from_EB[0|1|2|3]
+to_EB[0|1|2|3] , from_SB[0|1|2|3]
+
+# MUX(4) for EC
+to_EC[0|1|2|3] , [Z0_t|Z0_f|Z1_t|Z1_f]
+to_EC[0|1|2|3] , from_NC[0|1|2|3]
+to_EC[0|1|2|3] , from_EC[0|1|2|3]
+to_EC[0|1|2|3] , from_SC[0|1|2|3]
+
+# MUX(4) for ED
+to_ED[0|1|2|3] , [Z0_t|Z0_f|Z1_t|Z1_f]
+to_ED[0|1|2|3] , from_ND[0|1|2|3]
+to_ED[0|1|2|3] , from_ED[0|1|2|3]
+to_ED[0|1|2|3] , from_SD[0|1|2|3]
+
+# MUX(4) for EF
+to_EF[0|1|2|3] , [Z0_t|Z0_f|Z1_t|Z1_f]
+to_EF[0|1|2|3] , from_NF[0|1|2|3]
+to_EF[0|1|2|3] , from_EF[0|1|2|3]
+to_EF[0|1|2|3] , from_SF[0|1|2|3]
+
+# MUX(4) for EG
+to_EG[0|1|2|3] , [Z0_t|Z0_f|Z1_t|Z1_f]
+to_EG[0|1|2|3] , from_NG[0|1|2|3]
+to_EG[0|1|2|3] , from_EG[0|1|2|3]
+to_EG[0|1|2|3] , from_SG[0|1|2|3]
+
+# MUX(4) for EH
+to_EH[0|1|2|3] , [Z0_t|Z0_f|Z1_t|Z1_f]
+to_EH[0|1|2|3] , from_NH[0|1|2|3]
+to_EH[0|1|2|3] , from_EH[0|1|2|3]
+to_EH[0|1|2|3] , from_SH[0|1|2|3]
+
+# MUX(4) for EI
+to_EI[0|1|2|3] , [Z0_t|Z0_f|Z1_t|Z1_f]
+to_EI[0|1|2|3] , from_NI[0|1|2|3]
+to_EI[0|1|2|3] , from_EI[0|1|2|3]
+to_EI[0|1|2|3] , from_SI[0|1|2|3]
+
+# MUX(4) for SA
+to_SA[0|1|2|3] , [Z0_t|Z0_f|Z1_t|Z1_f]
+to_SA[0|1|2|3] , from_EA[0|1|2|3]
+to_SA[0|1|2|3] , from_SA[0|1|2|3]
+to_SA[0|1|2|3] , from_WA[0|1|2|3]
+
+# MUX(4) for SB
+to_SB[0|1|2|3] , [Z0_t|Z0_f|Z1_t|Z1_f]
+to_SB[0|1|2|3] , from_EB[0|1|2|3]
+to_SB[0|1|2|3] , from_SB[0|1|2|3]
+to_SB[0|1|2|3] , from_WB[0|1|2|3]
+
+# MUX(4) for SC
+to_SC[0|1|2|3] , [Z0_t|Z0_f|Z1_t|Z1_f]
+to_SC[0|1|2|3] , from_EC[0|1|2|3]
+to_SC[0|1|2|3] , from_SC[0|1|2|3]
+to_SC[0|1|2|3] , from_WC[0|1|2|3]
+
+# MUX(4) for SD
+to_SD[0|1|2|3] , [Z0_t|Z0_f|Z1_t|Z1_f]
+to_SD[0|1|2|3] , from_ED[0|1|2|3]
+to_SD[0|1|2|3] , from_SD[0|1|2|3]
+to_SD[0|1|2|3] , from_WD[0|1|2|3]
+
+# MUX(4) for SF
+to_SF[0|1|2|3] , [Z0_t|Z0_f|Z1_t|Z1_f]
+to_SF[0|1|2|3] , from_EF[0|1|2|3]
+to_SF[0|1|2|3] , from_SF[0|1|2|3]
+to_SF[0|1|2|3] , from_WF[0|1|2|3]
+
+# MUX(4) for SG
+to_SG[0|1|2|3] , [Z0_t|Z0_f|Z1_t|Z1_f]
+to_SG[0|1|2|3] , from_EG[0|1|2|3]
+to_SG[0|1|2|3] , from_SG[0|1|2|3]
+to_SG[0|1|2|3] , from_WG[0|1|2|3]
+
+# MUX(4) for SH
+to_SH[0|1|2|3] , [Z0_t|Z0_f|Z1_t|Z1_f]
+to_SH[0|1|2|3] , from_EH[0|1|2|3]
+to_SH[0|1|2|3] , from_SH[0|1|2|3]
+to_SH[0|1|2|3] , from_WH[0|1|2|3]
+
+# MUX(4) for SI
+to_SI[0|1|2|3] , [Z0_t|Z0_f|Z1_t|Z1_f]
+to_SI[0|1|2|3] , from_EI[0|1|2|3]
+to_SI[0|1|2|3] , from_SI[0|1|2|3]
+to_SI[0|1|2|3] , from_WI[0|1|2|3]
+
+# MUX(4) for WA
+to_WA[0|1|2|3] , [Z0_t|Z0_f|Z1_t|Z1_f]
+to_WA[0|1|2|3] , from_NA[0|1|2|3]
+to_WA[0|1|2|3] , from_SA[0|1|2|3]
+to_WA[0|1|2|3] , from_WA[0|1|2|3]
+
+# MUX(4) for WB
+to_WB[0|1|2|3] , [Z0_t|Z0_f|Z1_t|Z1_f]
+to_WB[0|1|2|3] , from_NB[0|1|2|3]
+to_WB[0|1|2|3] , from_SB[0|1|2|3]
+to_WB[0|1|2|3] , from_WB[0|1|2|3]
+
+# MUX(4) for WC
+to_WC[0|1|2|3] , [Z0_t|Z0_f|Z1_t|Z1_f]
+to_WC[0|1|2|3] , from_NC[0|1|2|3]
+to_WC[0|1|2|3] , from_SC[0|1|2|3]
+to_WC[0|1|2|3] , from_WC[0|1|2|3]
+
+# MUX(4) for WD
+to_WD[0|1|2|3] , [Z0_t|Z0_f|Z1_t|Z1_f]
+to_WD[0|1|2|3] , from_ND[0|1|2|3]
+to_WD[0|1|2|3] , from_SD[0|1|2|3]
+to_WD[0|1|2|3] , from_WD[0|1|2|3]
+
+# MUX(4) for WF
+to_WF[0|1|2|3] , [Z0_t|Z0_f|Z1_t|Z1_f]
+to_WF[0|1|2|3] , from_NF[0|1|2|3]
+to_WF[0|1|2|3] , from_SF[0|1|2|3]
+to_WF[0|1|2|3] , from_WF[0|1|2|3]
+
+# MUX(4) for WG
+to_WG[0|1|2|3] , [Z0_t|Z0_f|Z1_t|Z1_f]
+to_WG[0|1|2|3] , from_NG[0|1|2|3]
+to_WG[0|1|2|3] , from_SG[0|1|2|3]
+to_WG[0|1|2|3] , from_WG[0|1|2|3]
+
+# MUX(4) for WH
+to_WH[0|1|2|3] , [Z0_t|Z0_f|Z1_t|Z1_f]
+to_WH[0|1|2|3] , from_NH[0|1|2|3]
+to_WH[0|1|2|3] , from_SH[0|1|2|3]
+to_WH[0|1|2|3] , from_WH[0|1|2|3]
+
+# MUX(4) for WI
+to_WI[0|1|2|3] , [Z0_t|Z0_f|Z1_t|Z1_f]
+to_WI[0|1|2|3] , from_NI[0|1|2|3]
+to_WI[0|1|2|3] , from_SI[0|1|2|3]
+to_WI[0|1|2|3] , from_WI[0|1|2|3]
+
+# MUX(16) for J_I1A
+to_J_I1A[0|1|2|3] , from_NA[0|1|2|3]
+to_J_I1A[0|1|2|3] , from_NB[0|1|2|3]
+to_J_I1A[0|1|2|3] , from_NC[0|1|2|3]
+to_J_I1A[0|1|2|3] , from_ND[0|1|2|3]
+to_J_I1A[0|1|2|3] , from_NF[0|1|2|3]
+to_J_I1A[0|1|2|3] , from_NG[0|1|2|3]
+to_J_I1A[0|1|2|3] , from_NH[0|1|2|3]
+to_J_I1A[0|1|2|3] , from_NI[0|1|2|3]
+to_J_I1A[0|1|2|3] , from_EA[0|1|2|3]
+to_J_I1A[0|1|2|3] , from_EB[0|1|2|3]
+to_J_I1A[0|1|2|3] , from_EC[0|1|2|3]
+to_J_I1A[0|1|2|3] , from_ED[0|1|2|3]
+to_J_I1A[0|1|2|3] , from_EF[0|1|2|3]
+to_J_I1A[0|1|2|3] , from_EG[0|1|2|3]
+to_J_I1A[0|1|2|3] , from_EH[0|1|2|3]
+to_J_I1A[0|1|2|3] , from_EI[0|1|2|3]
+
+# MUX(16) for J_I1B
+to_J_I1B[0|1|2|3] , from_NA[0|1|2|3]
+to_J_I1B[0|1|2|3] , from_NB[0|1|2|3]
+to_J_I1B[0|1|2|3] , from_NC[0|1|2|3]
+to_J_I1B[0|1|2|3] , from_ND[0|1|2|3]
+to_J_I1B[0|1|2|3] , from_NF[0|1|2|3]
+to_J_I1B[0|1|2|3] , from_NG[0|1|2|3]
+to_J_I1B[0|1|2|3] , from_NH[0|1|2|3]
+to_J_I1B[0|1|2|3] , from_NI[0|1|2|3]
+to_J_I1B[0|1|2|3] , from_EA[0|1|2|3]
+to_J_I1B[0|1|2|3] , from_EB[0|1|2|3]
+to_J_I1B[0|1|2|3] , from_EC[0|1|2|3]
+to_J_I1B[0|1|2|3] , from_ED[0|1|2|3]
+to_J_I1B[0|1|2|3] , from_EF[0|1|2|3]
+to_J_I1B[0|1|2|3] , from_EG[0|1|2|3]
+to_J_I1B[0|1|2|3] , from_EH[0|1|2|3]
+to_J_I1B[0|1|2|3] , from_EI[0|1|2|3]
+
+# MUX(16) for J_I2A
+to_J_I2A[0|1|2|3] , from_SA[0|1|2|3]
+to_J_I2A[0|1|2|3] , from_SB[0|1|2|3]
+to_J_I2A[0|1|2|3] , from_SC[0|1|2|3]
+to_J_I2A[0|1|2|3] , from_SD[0|1|2|3]
+to_J_I2A[0|1|2|3] , from_SF[0|1|2|3]
+to_J_I2A[0|1|2|3] , from_SG[0|1|2|3]
+to_J_I2A[0|1|2|3] , from_SH[0|1|2|3]
+to_J_I2A[0|1|2|3] , from_SI[0|1|2|3]
+to_J_I2A[0|1|2|3] , from_WA[0|1|2|3]
+to_J_I2A[0|1|2|3] , from_WB[0|1|2|3]
+to_J_I2A[0|1|2|3] , from_WC[0|1|2|3]
+to_J_I2A[0|1|2|3] , from_WD[0|1|2|3]
+to_J_I2A[0|1|2|3] , from_WF[0|1|2|3]
+to_J_I2A[0|1|2|3] , from_WG[0|1|2|3]
+to_J_I2A[0|1|2|3] , from_WH[0|1|2|3]
+to_J_I2A[0|1|2|3] , from_WI[0|1|2|3]
+
+# MUX(16) for J_I2B
+to_J_I2B[0|1|2|3] , from_SA[0|1|2|3]
+to_J_I2B[0|1|2|3] , from_SB[0|1|2|3]
+to_J_I2B[0|1|2|3] , from_SC[0|1|2|3]
+to_J_I2B[0|1|2|3] , from_SD[0|1|2|3]
+to_J_I2B[0|1|2|3] , from_SF[0|1|2|3]
+to_J_I2B[0|1|2|3] , from_SG[0|1|2|3]
+to_J_I2B[0|1|2|3] , from_SH[0|1|2|3]
+to_J_I2B[0|1|2|3] , from_SI[0|1|2|3]
+to_J_I2B[0|1|2|3] , from_WA[0|1|2|3]
+to_J_I2B[0|1|2|3] , from_WB[0|1|2|3]
+to_J_I2B[0|1|2|3] , from_WC[0|1|2|3]
+to_J_I2B[0|1|2|3] , from_WD[0|1|2|3]
+to_J_I2B[0|1|2|3] , from_WF[0|1|2|3]
+to_J_I2B[0|1|2|3] , from_WG[0|1|2|3]
+to_J_I2B[0|1|2|3] , from_WH[0|1|2|3]
+to_J_I2B[0|1|2|3] , from_WI[0|1|2|3]
+
+# MUX(4) for Inputs_A
+[A0_t|A0_f|A1_t|A1_f] , from_J_I1A[0|1|2|3]
+[A0_t|A0_f|A1_t|A1_f] , from_J_I2A[0|1|2|3]
+[A0_t|A0_f|A1_t|A1_f] , [VCC0|VCC0|VCC0|VCC0]
+[A0_t|A0_f|A1_t|A1_f] , [GND0|GND0|GND0|GND0]
+
+# MUX(4) for Inputs_B
+[B0_t|B0_f|B1_t|B1_f] , from_J_I1B[0|1|2|3]
+[B0_t|B0_f|B1_t|B1_f] , from_J_I2B[0|1|2|3]
+[B0_t|B0_f|B1_t|B1_f] , [VCC0|VCC0|VCC0|VCC0]
+[B0_t|B0_f|B1_t|B1_f] , [GND0|GND0|GND0|GND0]
+

@@ -1,0 +1,160 @@
+Info: Detected FABulous 2.0 format project.
+
+Info: Checksum: 0x9185e19b
+
+Info: Annotating ports with timing budgets for target frequency 12.00 MHz
+Info: Checksum: 0x9185e19b
+
+Info: Device utilisation:
+Info: 	IO_1_bidirectional_frame_config_pass:    60/   60   100%
+Info: 	        Global_Clock:     0/    1     0%
+Info: 	       Config_access:     0/  120     0%
+Info: 	linear_LMDPL_primitive:   110/ 3120     3%
+Info: 	nonlinear_LMDPL_primitive:    42/ 1500     2%
+Info: 	combined_WDDL_primitive:    19/  120    15%
+Info: 	ctrl_IO_1_bidirectional_frame_config_pass:    60/   60   100%
+
+Info: Placed 120 cells based on constraints.
+Info: Creating initial analytic placement for 173 cells, random placement wirelen = 41720.
+Info:     at initial placer iter 0, wirelen = 622
+Info:     at initial placer iter 1, wirelen = 618
+Info:     at initial placer iter 2, wirelen = 626
+Info:     at initial placer iter 3, wirelen = 626
+Info: Running main analytical placer, max placement attempts per cell = 10731.
+Info:     at iteration #1, type nonlinear_LMDPL_primitive: wirelen solved = 808, spread = 4146, legal = 4202; time = 0.00s
+Info:     at iteration #1, type combined_WDDL_primitive: wirelen solved = 4206, spread = 4366, legal = 4366; time = 0.00s
+Info:     at iteration #1, type linear_LMDPL_primitive: wirelen solved = 3338, spread = 5230, legal = 5230; time = 0.00s
+Info:     at iteration #1, type _CONST0_DRV: wirelen solved = 5230, spread = 5230, legal = 5230; time = 0.00s
+Info:     at iteration #1, type _CONST1_DRV: wirelen solved = 5230, spread = 5230, legal = 5230; time = 0.00s
+Info:     at iteration #1, type ALL: wirelen solved = 716, spread = 6114, legal = 6158; time = 0.01s
+Info:     at iteration #2, type nonlinear_LMDPL_primitive: wirelen solved = 5136, spread = 5624, legal = 5772; time = 0.00s
+Info:     at iteration #2, type combined_WDDL_primitive: wirelen solved = 5606, spread = 5766, legal = 5766; time = 0.00s
+Info:     at iteration #2, type linear_LMDPL_primitive: wirelen solved = 3842, spread = 5242, legal = 5242; time = 0.00s
+Info:     at iteration #2, type _CONST0_DRV: wirelen solved = 5242, spread = 5242, legal = 5242; time = 0.00s
+Info:     at iteration #2, type _CONST1_DRV: wirelen solved = 5242, spread = 5242, legal = 5242; time = 0.00s
+Info:     at iteration #2, type ALL: wirelen solved = 616, spread = 4532, legal = 4904; time = 0.01s
+Info:     at iteration #3, type nonlinear_LMDPL_primitive: wirelen solved = 4164, spread = 4694, legal = 4862; time = 0.00s
+Info:     at iteration #3, type combined_WDDL_primitive: wirelen solved = 4700, spread = 4864, legal = 4864; time = 0.00s
+Info:     at iteration #3, type linear_LMDPL_primitive: wirelen solved = 3156, spread = 4764, legal = 4764; time = 0.00s
+Info:     at iteration #3, type _CONST0_DRV: wirelen solved = 4764, spread = 4764, legal = 4764; time = 0.00s
+Info:     at iteration #3, type _CONST1_DRV: wirelen solved = 4764, spread = 4764, legal = 4764; time = 0.00s
+Info:     at iteration #3, type ALL: wirelen solved = 704, spread = 4388, legal = 4796; time = 0.01s
+Info:     at iteration #4, type nonlinear_LMDPL_primitive: wirelen solved = 4140, spread = 4592, legal = 4660; time = 0.00s
+Info:     at iteration #4, type combined_WDDL_primitive: wirelen solved = 4506, spread = 4658, legal = 4658; time = 0.00s
+Info:     at iteration #4, type linear_LMDPL_primitive: wirelen solved = 3214, spread = 4310, legal = 4310; time = 0.00s
+Info:     at iteration #4, type _CONST0_DRV: wirelen solved = 4310, spread = 4310, legal = 4310; time = 0.00s
+Info:     at iteration #4, type _CONST1_DRV: wirelen solved = 4310, spread = 4310, legal = 4310; time = 0.00s
+Info:     at iteration #4, type ALL: wirelen solved = 762, spread = 4628, legal = 4624; time = 0.01s
+Info:     at iteration #5, type nonlinear_LMDPL_primitive: wirelen solved = 3896, spread = 4484, legal = 4496; time = 0.00s
+Info:     at iteration #5, type combined_WDDL_primitive: wirelen solved = 4342, spread = 4496, legal = 4496; time = 0.00s
+Info:     at iteration #5, type linear_LMDPL_primitive: wirelen solved = 3128, spread = 4276, legal = 4276; time = 0.00s
+Info:     at iteration #5, type _CONST0_DRV: wirelen solved = 4276, spread = 4276, legal = 4276; time = 0.00s
+Info:     at iteration #5, type _CONST1_DRV: wirelen solved = 4276, spread = 4276, legal = 4276; time = 0.00s
+Info:     at iteration #5, type ALL: wirelen solved = 830, spread = 4576, legal = 4632; time = 0.01s
+Info:     at iteration #6, type nonlinear_LMDPL_primitive: wirelen solved = 3816, spread = 4480, legal = 4484; time = 0.00s
+Info:     at iteration #6, type combined_WDDL_primitive: wirelen solved = 4332, spread = 4484, legal = 4484; time = 0.00s
+Info:     at iteration #6, type linear_LMDPL_primitive: wirelen solved = 3172, spread = 4436, legal = 4436; time = 0.00s
+Info:     at iteration #6, type _CONST0_DRV: wirelen solved = 4436, spread = 4436, legal = 4436; time = 0.00s
+Info:     at iteration #6, type _CONST1_DRV: wirelen solved = 4436, spread = 4436, legal = 4436; time = 0.00s
+Info:     at iteration #6, type ALL: wirelen solved = 826, spread = 4644, legal = 4664; time = 0.01s
+Info:     at iteration #7, type nonlinear_LMDPL_primitive: wirelen solved = 3830, spread = 4490, legal = 4546; time = 0.00s
+Info:     at iteration #7, type combined_WDDL_primitive: wirelen solved = 4396, spread = 4546, legal = 4546; time = 0.00s
+Info:     at iteration #7, type linear_LMDPL_primitive: wirelen solved = 3110, spread = 4174, legal = 4174; time = 0.00s
+Info:     at iteration #7, type _CONST0_DRV: wirelen solved = 4174, spread = 4174, legal = 4174; time = 0.00s
+Info:     at iteration #7, type _CONST1_DRV: wirelen solved = 4174, spread = 4174, legal = 4174; time = 0.00s
+Info:     at iteration #7, type ALL: wirelen solved = 912, spread = 4472, legal = 4452; time = 0.01s
+Info:     at iteration #8, type nonlinear_LMDPL_primitive: wirelen solved = 3750, spread = 4412, legal = 4408; time = 0.00s
+Info:     at iteration #8, type combined_WDDL_primitive: wirelen solved = 4258, spread = 4408, legal = 4408; time = 0.00s
+Info:     at iteration #8, type linear_LMDPL_primitive: wirelen solved = 3076, spread = 4432, legal = 4432; time = 0.00s
+Info:     at iteration #8, type _CONST0_DRV: wirelen solved = 4432, spread = 4432, legal = 4432; time = 0.00s
+Info:     at iteration #8, type _CONST1_DRV: wirelen solved = 4432, spread = 4432, legal = 4432; time = 0.00s
+Info:     at iteration #8, type ALL: wirelen solved = 1010, spread = 4330, legal = 4506; time = 0.01s
+Info:     at iteration #9, type nonlinear_LMDPL_primitive: wirelen solved = 3714, spread = 4318, legal = 4494; time = 0.00s
+Info:     at iteration #9, type combined_WDDL_primitive: wirelen solved = 4340, spread = 4494, legal = 4494; time = 0.00s
+Info:     at iteration #9, type linear_LMDPL_primitive: wirelen solved = 3146, spread = 4262, legal = 4262; time = 0.00s
+Info:     at iteration #9, type _CONST0_DRV: wirelen solved = 4262, spread = 4262, legal = 4262; time = 0.00s
+Info:     at iteration #9, type _CONST1_DRV: wirelen solved = 4262, spread = 4262, legal = 4262; time = 0.00s
+Info:     at iteration #9, type ALL: wirelen solved = 1006, spread = 4236, legal = 4304; time = 0.01s
+Info:     at iteration #10, type nonlinear_LMDPL_primitive: wirelen solved = 3566, spread = 4174, legal = 4250; time = 0.00s
+Info:     at iteration #10, type combined_WDDL_primitive: wirelen solved = 4096, spread = 4250, legal = 4250; time = 0.00s
+Info:     at iteration #10, type linear_LMDPL_primitive: wirelen solved = 3414, spread = 4398, legal = 4398; time = 0.00s
+Info:     at iteration #10, type _CONST0_DRV: wirelen solved = 4398, spread = 4398, legal = 4398; time = 0.00s
+Info:     at iteration #10, type _CONST1_DRV: wirelen solved = 4398, spread = 4398, legal = 4398; time = 0.00s
+Info:     at iteration #10, type ALL: wirelen solved = 1160, spread = 4388, legal = 4420; time = 0.01s
+Info:     at iteration #11, type nonlinear_LMDPL_primitive: wirelen solved = 3692, spread = 4196, legal = 4284; time = 0.00s
+Info:     at iteration #11, type combined_WDDL_primitive: wirelen solved = 4130, spread = 4284, legal = 4284; time = 0.00s
+Info:     at iteration #11, type linear_LMDPL_primitive: wirelen solved = 3392, spread = 4052, legal = 4052; time = 0.00s
+Info:     at iteration #11, type _CONST0_DRV: wirelen solved = 4052, spread = 4052, legal = 4052; time = 0.00s
+Info:     at iteration #11, type _CONST1_DRV: wirelen solved = 4052, spread = 4052, legal = 4052; time = 0.00s
+Info:     at iteration #11, type ALL: wirelen solved = 1184, spread = 4244, legal = 4252; time = 0.01s
+Info:     at iteration #12, type nonlinear_LMDPL_primitive: wirelen solved = 3552, spread = 4148, legal = 4144; time = 0.00s
+Info:     at iteration #12, type combined_WDDL_primitive: wirelen solved = 3992, spread = 4146, legal = 4146; time = 0.00s
+Info:     at iteration #12, type linear_LMDPL_primitive: wirelen solved = 3094, spread = 3990, legal = 3990; time = 0.00s
+Info:     at iteration #12, type _CONST0_DRV: wirelen solved = 3990, spread = 3990, legal = 3990; time = 0.00s
+Info:     at iteration #12, type _CONST1_DRV: wirelen solved = 3990, spread = 3990, legal = 3990; time = 0.00s
+Info:     at iteration #12, type ALL: wirelen solved = 1216, spread = 4254, legal = 4282; time = 0.01s
+Info:     at iteration #13, type nonlinear_LMDPL_primitive: wirelen solved = 3506, spread = 4192, legal = 4204; time = 0.00s
+Info:     at iteration #13, type combined_WDDL_primitive: wirelen solved = 4056, spread = 4204, legal = 4204; time = 0.00s
+Info:     at iteration #13, type linear_LMDPL_primitive: wirelen solved = 3084, spread = 4100, legal = 4100; time = 0.00s
+Info:     at iteration #13, type _CONST0_DRV: wirelen solved = 4100, spread = 4100, legal = 4100; time = 0.00s
+Info:     at iteration #13, type _CONST1_DRV: wirelen solved = 4100, spread = 4100, legal = 4100; time = 0.00s
+Info:     at iteration #13, type ALL: wirelen solved = 1284, spread = 4330, legal = 4414; time = 0.01s
+Info:     at iteration #14, type nonlinear_LMDPL_primitive: wirelen solved = 3670, spread = 4202, legal = 4298; time = 0.00s
+Info:     at iteration #14, type combined_WDDL_primitive: wirelen solved = 4144, spread = 4282, legal = 4282; time = 0.00s
+Info:     at iteration #14, type linear_LMDPL_primitive: wirelen solved = 3362, spread = 4254, legal = 4254; time = 0.00s
+Info:     at iteration #14, type _CONST0_DRV: wirelen solved = 4254, spread = 4254, legal = 4254; time = 0.00s
+Info:     at iteration #14, type _CONST1_DRV: wirelen solved = 4254, spread = 4254, legal = 4254; time = 0.00s
+Info:     at iteration #14, type ALL: wirelen solved = 1360, spread = 4530, legal = 4614; time = 0.01s
+Info:     at iteration #15, type nonlinear_LMDPL_primitive: wirelen solved = 3866, spread = 4450, legal = 4546; time = 0.00s
+Info:     at iteration #15, type combined_WDDL_primitive: wirelen solved = 4396, spread = 4534, legal = 4534; time = 0.00s
+Info:     at iteration #15, type linear_LMDPL_primitive: wirelen solved = 3278, spread = 4034, legal = 4034; time = 0.00s
+Info:     at iteration #15, type _CONST0_DRV: wirelen solved = 4034, spread = 4034, legal = 4034; time = 0.00s
+Info:     at iteration #15, type _CONST1_DRV: wirelen solved = 4034, spread = 4034, legal = 4034; time = 0.00s
+Info:     at iteration #15, type ALL: wirelen solved = 1460, spread = 4420, legal = 4460; time = 0.01s
+Info:     at iteration #16, type nonlinear_LMDPL_primitive: wirelen solved = 3772, spread = 4448, legal = 4542; time = 0.00s
+Info:     at iteration #16, type combined_WDDL_primitive: wirelen solved = 4416, spread = 4542, legal = 4542; time = 0.00s
+Info:     at iteration #16, type linear_LMDPL_primitive: wirelen solved = 3190, spread = 4366, legal = 4366; time = 0.00s
+Info:     at iteration #16, type _CONST0_DRV: wirelen solved = 4366, spread = 4366, legal = 4366; time = 0.00s
+Info:     at iteration #16, type _CONST1_DRV: wirelen solved = 4366, spread = 4366, legal = 4366; time = 0.00s
+Info:     at iteration #16, type ALL: wirelen solved = 1464, spread = 4228, legal = 4380; time = 0.01s
+Info: HeAP Placer Time: 0.31s
+Info:   of which solving equations: 0.22s
+Info:   of which spreading cells: 0.05s
+Info:   of which strict legalisation: 0.00s
+
+Info: Running simulated annealing placer for refinement.
+Info:   at iteration #1: temp = 0.000000, timing cost = 0, wirelen = 4252
+iter #1: temp = 0.000000, timing cost = 0, wirelen = 3554, dia = 3, Ra = 0.09 
+iter #2: temp = 0.000000, timing cost = 0, wirelen = 3430, dia = 3, Ra = 0.04 
+iter #3: temp = 0.000000, timing cost = 0, wirelen = 3354, dia = 3, Ra = 0.03 
+iter #4: temp = 0.000000, timing cost = 0, wirelen = 3298, dia = 3, Ra = 0.03 
+Info:   at iteration #5: temp = 0.000000, timing cost = 0, wirelen = 3298
+iter #5: temp = 0.000000, timing cost = 0, wirelen = 3270, dia = 3, Ra = 0.02 
+iter #6: temp = 0.000000, timing cost = 0, wirelen = 3266, dia = 3, Ra = 0.02 
+iter #7: temp = 0.000000, timing cost = 0, wirelen = 3250, dia = 3, Ra = 0.01 
+iter #8: temp = 0.000000, timing cost = 0, wirelen = 3250, dia = 3, Ra = 0.01 
+iter #9: temp = 0.000000, timing cost = 0, wirelen = 3238, dia = 3, Ra = 0.02 
+Info:   at iteration #10: temp = 0.000000, timing cost = 0, wirelen = 3238
+iter #10: temp = 0.000000, timing cost = 0, wirelen = 3238, dia = 3, Ra = 0.02 
+iter #11: temp = 0.000000, timing cost = 0, wirelen = 3216, dia = 3, Ra = 0.02 
+iter #12: temp = 0.000000, timing cost = 0, wirelen = 3212, dia = 2, Ra = 0.03 
+iter #13: temp = 0.000000, timing cost = 0, wirelen = 3208, dia = 1, Ra = 0.06 
+Info:   at iteration #14: temp = 0.000000, timing cost = 0, wirelen = 3208 
+Info: SA placement time 0.06s
+Info: No Fmax available; no interior timing paths found in design.
+
+Info: Checksum: 0x1b13c97c
+
+Info: Routing..
+Info: Setting up routing queue.
+Info: Routing 1444 arcs.
+Info:            |   (re-)routed arcs  |   delta    | remaining|       time spent     |
+Info:    IterCnt |  w/ripup   wo/ripup |  w/r  wo/r |      arcs| batch(sec) total(sec)|
+Info:       1000 |       64        935 |   64   935 |       522|       0.06       0.06|
+Info:       1818 |      257       1561 |  193   626 |         0|       0.06       0.12|
+Info: Routing complete.
+Info: Router1 time 0.12s
+Info: Checksum: 0x00f46958
+Info: No Fmax available; no interior timing paths found in design.
+
+Info: Program finished normally.

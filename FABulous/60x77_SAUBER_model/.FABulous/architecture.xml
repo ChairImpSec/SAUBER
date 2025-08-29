@@ -1,0 +1,1660 @@
+<architecture>
+  <device>
+    <sizing R_minW_nmos="6065.520020" R_minW_pmos="18138.500000" />
+    <area grid_logic_tile_area="14813.392" />
+    <chan_width_distr>
+      <x distr="uniform" peak="1.000000" />
+      <y distr="uniform" peak="1.000000" />
+    </chan_width_distr>
+    <switch_block type="universal" fs="3" />
+    <connection_block input_switch_name="ipin_cblock" />
+    <default_fc in_type="frac" in_val="1" out_type="frac" out_val="1" />
+  </device>
+  <layout>
+    <fixed_layout name="FABulous" width="8" height="20">
+      <single type="clock_primitive" priority="1" x="1" y="1" />
+      <single type="N_term_custom" priority="1" x="1" y="1">
+        <metadata>
+          <meta name="fasm_prefix">X0Y0.dummy</meta>
+        </metadata>
+      </single>
+      <single type="N_term_custom" priority="1" x="2" y="1">
+        <metadata>
+          <meta name="fasm_prefix">X1Y0.dummy</meta>
+        </metadata>
+      </single>
+      <single type="N_term_custom" priority="1" x="3" y="1">
+        <metadata>
+          <meta name="fasm_prefix">X2Y0.dummy</meta>
+        </metadata>
+      </single>
+      <single type="N_term_custom" priority="1" x="4" y="1">
+        <metadata>
+          <meta name="fasm_prefix">X3Y0.dummy</meta>
+        </metadata>
+      </single>
+      <single type="N_term_custom" priority="1" x="5" y="1">
+        <metadata>
+          <meta name="fasm_prefix">X4Y0.dummy</meta>
+        </metadata>
+      </single>
+      <single type="N_term_custom" priority="1" x="6" y="1">
+        <metadata>
+          <meta name="fasm_prefix">X5Y0.dummy</meta>
+        </metadata>
+      </single>
+      <single type="N_term_custom" priority="1" x="7" y="1">
+        <metadata>
+          <meta name="fasm_prefix">X6Y0.dummy</meta>
+        </metadata>
+      </single>
+      <single type="N_term_custom" priority="1" x="8" y="1">
+        <metadata>
+          <meta name="fasm_prefix">X7Y0.dummy</meta>
+        </metadata>
+      </single>
+      <single type="N_term_custom" priority="1" x="9" y="1">
+        <metadata>
+          <meta name="fasm_prefix">X8Y0.dummy</meta>
+        </metadata>
+      </single>
+      <single type="N_term_custom" priority="1" x="10" y="1">
+        <metadata>
+          <meta name="fasm_prefix">X9Y0.dummy</meta>
+        </metadata>
+      </single>
+      <single type="W_IO_custom" priority="1" x="1" y="2">
+        <metadata>
+          <meta name="fasm_prefix">X0Y1.A X0Y1.B X0Y1.C X0Y1.D X0Y1.hanging</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="2" y="2">
+        <metadata>
+          <meta name="fasm_prefix">X1Y1.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="3" y="2">
+        <metadata>
+          <meta name="fasm_prefix">X2Y1.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="4" y="2">
+        <metadata>
+          <meta name="fasm_prefix">X3Y1.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="5" y="2">
+        <metadata>
+          <meta name="fasm_prefix">X4Y1.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="6" y="2">
+        <metadata>
+          <meta name="fasm_prefix">X5Y1.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="7" y="2">
+        <metadata>
+          <meta name="fasm_prefix">X6Y1.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="8" y="2">
+        <metadata>
+          <meta name="fasm_prefix">X7Y1.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="9" y="2">
+        <metadata>
+          <meta name="fasm_prefix">X8Y1.A</meta>
+        </metadata>
+      </single>
+      <single type="RAM_IO_custom" priority="1" x="10" y="2">
+        <metadata>
+          <meta name="fasm_prefix">X9Y1.A X9Y1.B X9Y1.C X9Y1.D X9Y1.E X9Y1.F X9Y1.G X9Y1.H X9Y1.I X9Y1.J X9Y1.K X9Y1.L X9Y1.hanging</meta>
+        </metadata>
+      </single>
+      <single type="W_IO_custom" priority="1" x="1" y="3">
+        <metadata>
+          <meta name="fasm_prefix">X0Y2.A X0Y2.B X0Y2.C X0Y2.D X0Y2.hanging</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="2" y="3">
+        <metadata>
+          <meta name="fasm_prefix">X1Y2.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="3" y="3">
+        <metadata>
+          <meta name="fasm_prefix">X2Y2.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="4" y="3">
+        <metadata>
+          <meta name="fasm_prefix">X3Y2.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="5" y="3">
+        <metadata>
+          <meta name="fasm_prefix">X4Y2.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="6" y="3">
+        <metadata>
+          <meta name="fasm_prefix">X5Y2.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="7" y="3">
+        <metadata>
+          <meta name="fasm_prefix">X6Y2.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="8" y="3">
+        <metadata>
+          <meta name="fasm_prefix">X7Y2.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="9" y="3">
+        <metadata>
+          <meta name="fasm_prefix">X8Y2.A</meta>
+        </metadata>
+      </single>
+      <single type="RAM_IO_custom" priority="1" x="10" y="3">
+        <metadata>
+          <meta name="fasm_prefix">X9Y2.A X9Y2.B X9Y2.C X9Y2.D X9Y2.E X9Y2.F X9Y2.G X9Y2.H X9Y2.I X9Y2.J X9Y2.K X9Y2.L X9Y2.hanging</meta>
+        </metadata>
+      </single>
+      <single type="W_IO_custom" priority="1" x="1" y="4">
+        <metadata>
+          <meta name="fasm_prefix">X0Y3.A X0Y3.B X0Y3.C X0Y3.D X0Y3.hanging</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="2" y="4">
+        <metadata>
+          <meta name="fasm_prefix">X1Y3.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="3" y="4">
+        <metadata>
+          <meta name="fasm_prefix">X2Y3.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="4" y="4">
+        <metadata>
+          <meta name="fasm_prefix">X3Y3.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="5" y="4">
+        <metadata>
+          <meta name="fasm_prefix">X4Y3.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="6" y="4">
+        <metadata>
+          <meta name="fasm_prefix">X5Y3.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="7" y="4">
+        <metadata>
+          <meta name="fasm_prefix">X6Y3.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="8" y="4">
+        <metadata>
+          <meta name="fasm_prefix">X7Y3.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="9" y="4">
+        <metadata>
+          <meta name="fasm_prefix">X8Y3.A</meta>
+        </metadata>
+      </single>
+      <single type="RAM_IO_custom" priority="1" x="10" y="4">
+        <metadata>
+          <meta name="fasm_prefix">X9Y3.A X9Y3.B X9Y3.C X9Y3.D X9Y3.E X9Y3.F X9Y3.G X9Y3.H X9Y3.I X9Y3.J X9Y3.K X9Y3.L X9Y3.hanging</meta>
+        </metadata>
+      </single>
+      <single type="W_IO_custom" priority="1" x="1" y="5">
+        <metadata>
+          <meta name="fasm_prefix">X0Y4.A X0Y4.B X0Y4.C X0Y4.D X0Y4.hanging</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="2" y="5">
+        <metadata>
+          <meta name="fasm_prefix">X1Y4.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="3" y="5">
+        <metadata>
+          <meta name="fasm_prefix">X2Y4.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="4" y="5">
+        <metadata>
+          <meta name="fasm_prefix">X3Y4.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="5" y="5">
+        <metadata>
+          <meta name="fasm_prefix">X4Y4.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="6" y="5">
+        <metadata>
+          <meta name="fasm_prefix">X5Y4.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="7" y="5">
+        <metadata>
+          <meta name="fasm_prefix">X6Y4.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="8" y="5">
+        <metadata>
+          <meta name="fasm_prefix">X7Y4.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="9" y="5">
+        <metadata>
+          <meta name="fasm_prefix">X8Y4.A</meta>
+        </metadata>
+      </single>
+      <single type="RAM_IO_custom" priority="1" x="10" y="5">
+        <metadata>
+          <meta name="fasm_prefix">X9Y4.A X9Y4.B X9Y4.C X9Y4.D X9Y4.E X9Y4.F X9Y4.G X9Y4.H X9Y4.I X9Y4.J X9Y4.K X9Y4.L X9Y4.hanging</meta>
+        </metadata>
+      </single>
+      <single type="W_IO_custom" priority="1" x="1" y="6">
+        <metadata>
+          <meta name="fasm_prefix">X0Y5.A X0Y5.B X0Y5.C X0Y5.D X0Y5.hanging</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="2" y="6">
+        <metadata>
+          <meta name="fasm_prefix">X1Y5.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="3" y="6">
+        <metadata>
+          <meta name="fasm_prefix">X2Y5.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="4" y="6">
+        <metadata>
+          <meta name="fasm_prefix">X3Y5.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="5" y="6">
+        <metadata>
+          <meta name="fasm_prefix">X4Y5.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="6" y="6">
+        <metadata>
+          <meta name="fasm_prefix">X5Y5.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="7" y="6">
+        <metadata>
+          <meta name="fasm_prefix">X6Y5.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="8" y="6">
+        <metadata>
+          <meta name="fasm_prefix">X7Y5.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="9" y="6">
+        <metadata>
+          <meta name="fasm_prefix">X8Y5.A</meta>
+        </metadata>
+      </single>
+      <single type="RAM_IO_custom" priority="1" x="10" y="6">
+        <metadata>
+          <meta name="fasm_prefix">X9Y5.A X9Y5.B X9Y5.C X9Y5.D X9Y5.E X9Y5.F X9Y5.G X9Y5.H X9Y5.I X9Y5.J X9Y5.K X9Y5.L X9Y5.hanging</meta>
+        </metadata>
+      </single>
+      <single type="W_IO_custom" priority="1" x="1" y="7">
+        <metadata>
+          <meta name="fasm_prefix">X0Y6.A X0Y6.B X0Y6.C X0Y6.D X0Y6.hanging</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="2" y="7">
+        <metadata>
+          <meta name="fasm_prefix">X1Y6.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="3" y="7">
+        <metadata>
+          <meta name="fasm_prefix">X2Y6.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="4" y="7">
+        <metadata>
+          <meta name="fasm_prefix">X3Y6.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="5" y="7">
+        <metadata>
+          <meta name="fasm_prefix">X4Y6.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="6" y="7">
+        <metadata>
+          <meta name="fasm_prefix">X5Y6.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="7" y="7">
+        <metadata>
+          <meta name="fasm_prefix">X6Y6.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="8" y="7">
+        <metadata>
+          <meta name="fasm_prefix">X7Y6.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="9" y="7">
+        <metadata>
+          <meta name="fasm_prefix">X8Y6.A</meta>
+        </metadata>
+      </single>
+      <single type="RAM_IO_custom" priority="1" x="10" y="7">
+        <metadata>
+          <meta name="fasm_prefix">X9Y6.A X9Y6.B X9Y6.C X9Y6.D X9Y6.E X9Y6.F X9Y6.G X9Y6.H X9Y6.I X9Y6.J X9Y6.K X9Y6.L X9Y6.hanging</meta>
+        </metadata>
+      </single>
+      <single type="W_IO_custom" priority="1" x="1" y="8">
+        <metadata>
+          <meta name="fasm_prefix">X0Y7.A X0Y7.B X0Y7.C X0Y7.D X0Y7.hanging</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="2" y="8">
+        <metadata>
+          <meta name="fasm_prefix">X1Y7.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="3" y="8">
+        <metadata>
+          <meta name="fasm_prefix">X2Y7.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="4" y="8">
+        <metadata>
+          <meta name="fasm_prefix">X3Y7.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="5" y="8">
+        <metadata>
+          <meta name="fasm_prefix">X4Y7.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="6" y="8">
+        <metadata>
+          <meta name="fasm_prefix">X5Y7.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="7" y="8">
+        <metadata>
+          <meta name="fasm_prefix">X6Y7.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="8" y="8">
+        <metadata>
+          <meta name="fasm_prefix">X7Y7.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="9" y="8">
+        <metadata>
+          <meta name="fasm_prefix">X8Y7.A</meta>
+        </metadata>
+      </single>
+      <single type="RAM_IO_custom" priority="1" x="10" y="8">
+        <metadata>
+          <meta name="fasm_prefix">X9Y7.A X9Y7.B X9Y7.C X9Y7.D X9Y7.E X9Y7.F X9Y7.G X9Y7.H X9Y7.I X9Y7.J X9Y7.K X9Y7.L X9Y7.hanging</meta>
+        </metadata>
+      </single>
+      <single type="W_IO_custom" priority="1" x="1" y="9">
+        <metadata>
+          <meta name="fasm_prefix">X0Y8.A X0Y8.B X0Y8.C X0Y8.D X0Y8.hanging</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="2" y="9">
+        <metadata>
+          <meta name="fasm_prefix">X1Y8.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="3" y="9">
+        <metadata>
+          <meta name="fasm_prefix">X2Y8.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="4" y="9">
+        <metadata>
+          <meta name="fasm_prefix">X3Y8.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="5" y="9">
+        <metadata>
+          <meta name="fasm_prefix">X4Y8.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="6" y="9">
+        <metadata>
+          <meta name="fasm_prefix">X5Y8.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="7" y="9">
+        <metadata>
+          <meta name="fasm_prefix">X6Y8.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="8" y="9">
+        <metadata>
+          <meta name="fasm_prefix">X7Y8.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="9" y="9">
+        <metadata>
+          <meta name="fasm_prefix">X8Y8.A</meta>
+        </metadata>
+      </single>
+      <single type="RAM_IO_custom" priority="1" x="10" y="9">
+        <metadata>
+          <meta name="fasm_prefix">X9Y8.A X9Y8.B X9Y8.C X9Y8.D X9Y8.E X9Y8.F X9Y8.G X9Y8.H X9Y8.I X9Y8.J X9Y8.K X9Y8.L X9Y8.hanging</meta>
+        </metadata>
+      </single>
+      <single type="W_IO_custom" priority="1" x="1" y="10">
+        <metadata>
+          <meta name="fasm_prefix">X0Y9.A X0Y9.B X0Y9.C X0Y9.D X0Y9.hanging</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="2" y="10">
+        <metadata>
+          <meta name="fasm_prefix">X1Y9.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="3" y="10">
+        <metadata>
+          <meta name="fasm_prefix">X2Y9.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="4" y="10">
+        <metadata>
+          <meta name="fasm_prefix">X3Y9.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="5" y="10">
+        <metadata>
+          <meta name="fasm_prefix">X4Y9.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="6" y="10">
+        <metadata>
+          <meta name="fasm_prefix">X5Y9.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="7" y="10">
+        <metadata>
+          <meta name="fasm_prefix">X6Y9.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="8" y="10">
+        <metadata>
+          <meta name="fasm_prefix">X7Y9.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="9" y="10">
+        <metadata>
+          <meta name="fasm_prefix">X8Y9.A</meta>
+        </metadata>
+      </single>
+      <single type="RAM_IO_custom" priority="1" x="10" y="10">
+        <metadata>
+          <meta name="fasm_prefix">X9Y9.A X9Y9.B X9Y9.C X9Y9.D X9Y9.E X9Y9.F X9Y9.G X9Y9.H X9Y9.I X9Y9.J X9Y9.K X9Y9.L X9Y9.hanging</meta>
+        </metadata>
+      </single>
+      <single type="W_IO_custom" priority="1" x="1" y="11">
+        <metadata>
+          <meta name="fasm_prefix">X0Y10.A X0Y10.B X0Y10.C X0Y10.D X0Y10.hanging</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="2" y="11">
+        <metadata>
+          <meta name="fasm_prefix">X1Y10.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="3" y="11">
+        <metadata>
+          <meta name="fasm_prefix">X2Y10.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="4" y="11">
+        <metadata>
+          <meta name="fasm_prefix">X3Y10.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="5" y="11">
+        <metadata>
+          <meta name="fasm_prefix">X4Y10.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="6" y="11">
+        <metadata>
+          <meta name="fasm_prefix">X5Y10.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="7" y="11">
+        <metadata>
+          <meta name="fasm_prefix">X6Y10.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="8" y="11">
+        <metadata>
+          <meta name="fasm_prefix">X7Y10.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="9" y="11">
+        <metadata>
+          <meta name="fasm_prefix">X8Y10.A</meta>
+        </metadata>
+      </single>
+      <single type="RAM_IO_custom" priority="1" x="10" y="11">
+        <metadata>
+          <meta name="fasm_prefix">X9Y10.A X9Y10.B X9Y10.C X9Y10.D X9Y10.E X9Y10.F X9Y10.G X9Y10.H X9Y10.I X9Y10.J X9Y10.K X9Y10.L X9Y10.hanging</meta>
+        </metadata>
+      </single>
+      <single type="W_IO_custom" priority="1" x="1" y="12">
+        <metadata>
+          <meta name="fasm_prefix">X0Y11.A X0Y11.B X0Y11.C X0Y11.D X0Y11.hanging</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="2" y="12">
+        <metadata>
+          <meta name="fasm_prefix">X1Y11.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="3" y="12">
+        <metadata>
+          <meta name="fasm_prefix">X2Y11.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="4" y="12">
+        <metadata>
+          <meta name="fasm_prefix">X3Y11.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="5" y="12">
+        <metadata>
+          <meta name="fasm_prefix">X4Y11.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="6" y="12">
+        <metadata>
+          <meta name="fasm_prefix">X5Y11.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="7" y="12">
+        <metadata>
+          <meta name="fasm_prefix">X6Y11.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="8" y="12">
+        <metadata>
+          <meta name="fasm_prefix">X7Y11.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="9" y="12">
+        <metadata>
+          <meta name="fasm_prefix">X8Y11.A</meta>
+        </metadata>
+      </single>
+      <single type="RAM_IO_custom" priority="1" x="10" y="12">
+        <metadata>
+          <meta name="fasm_prefix">X9Y11.A X9Y11.B X9Y11.C X9Y11.D X9Y11.E X9Y11.F X9Y11.G X9Y11.H X9Y11.I X9Y11.J X9Y11.K X9Y11.L X9Y11.hanging</meta>
+        </metadata>
+      </single>
+      <single type="W_IO_custom" priority="1" x="1" y="13">
+        <metadata>
+          <meta name="fasm_prefix">X0Y12.A X0Y12.B X0Y12.C X0Y12.D X0Y12.hanging</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="2" y="13">
+        <metadata>
+          <meta name="fasm_prefix">X1Y12.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="3" y="13">
+        <metadata>
+          <meta name="fasm_prefix">X2Y12.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="4" y="13">
+        <metadata>
+          <meta name="fasm_prefix">X3Y12.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="5" y="13">
+        <metadata>
+          <meta name="fasm_prefix">X4Y12.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="6" y="13">
+        <metadata>
+          <meta name="fasm_prefix">X5Y12.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="7" y="13">
+        <metadata>
+          <meta name="fasm_prefix">X6Y12.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="8" y="13">
+        <metadata>
+          <meta name="fasm_prefix">X7Y12.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="9" y="13">
+        <metadata>
+          <meta name="fasm_prefix">X8Y12.A</meta>
+        </metadata>
+      </single>
+      <single type="RAM_IO_custom" priority="1" x="10" y="13">
+        <metadata>
+          <meta name="fasm_prefix">X9Y12.A X9Y12.B X9Y12.C X9Y12.D X9Y12.E X9Y12.F X9Y12.G X9Y12.H X9Y12.I X9Y12.J X9Y12.K X9Y12.L X9Y12.hanging</meta>
+        </metadata>
+      </single>
+      <single type="W_IO_custom" priority="1" x="1" y="14">
+        <metadata>
+          <meta name="fasm_prefix">X0Y13.A X0Y13.B X0Y13.C X0Y13.D X0Y13.hanging</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="2" y="14">
+        <metadata>
+          <meta name="fasm_prefix">X1Y13.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="3" y="14">
+        <metadata>
+          <meta name="fasm_prefix">X2Y13.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="4" y="14">
+        <metadata>
+          <meta name="fasm_prefix">X3Y13.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="5" y="14">
+        <metadata>
+          <meta name="fasm_prefix">X4Y13.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="6" y="14">
+        <metadata>
+          <meta name="fasm_prefix">X5Y13.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="7" y="14">
+        <metadata>
+          <meta name="fasm_prefix">X6Y13.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="8" y="14">
+        <metadata>
+          <meta name="fasm_prefix">X7Y13.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="9" y="14">
+        <metadata>
+          <meta name="fasm_prefix">X8Y13.A</meta>
+        </metadata>
+      </single>
+      <single type="RAM_IO_custom" priority="1" x="10" y="14">
+        <metadata>
+          <meta name="fasm_prefix">X9Y13.A X9Y13.B X9Y13.C X9Y13.D X9Y13.E X9Y13.F X9Y13.G X9Y13.H X9Y13.I X9Y13.J X9Y13.K X9Y13.L X9Y13.hanging</meta>
+        </metadata>
+      </single>
+      <single type="W_IO_custom" priority="1" x="1" y="15">
+        <metadata>
+          <meta name="fasm_prefix">X0Y14.A X0Y14.B X0Y14.C X0Y14.D X0Y14.hanging</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="2" y="15">
+        <metadata>
+          <meta name="fasm_prefix">X1Y14.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="3" y="15">
+        <metadata>
+          <meta name="fasm_prefix">X2Y14.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="4" y="15">
+        <metadata>
+          <meta name="fasm_prefix">X3Y14.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="5" y="15">
+        <metadata>
+          <meta name="fasm_prefix">X4Y14.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="6" y="15">
+        <metadata>
+          <meta name="fasm_prefix">X5Y14.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="7" y="15">
+        <metadata>
+          <meta name="fasm_prefix">X6Y14.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="8" y="15">
+        <metadata>
+          <meta name="fasm_prefix">X7Y14.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="9" y="15">
+        <metadata>
+          <meta name="fasm_prefix">X8Y14.A</meta>
+        </metadata>
+      </single>
+      <single type="RAM_IO_custom" priority="1" x="10" y="15">
+        <metadata>
+          <meta name="fasm_prefix">X9Y14.A X9Y14.B X9Y14.C X9Y14.D X9Y14.E X9Y14.F X9Y14.G X9Y14.H X9Y14.I X9Y14.J X9Y14.K X9Y14.L X9Y14.hanging</meta>
+        </metadata>
+      </single>
+      <single type="W_IO_custom" priority="1" x="1" y="16">
+        <metadata>
+          <meta name="fasm_prefix">X0Y15.A X0Y15.B X0Y15.C X0Y15.D X0Y15.hanging</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="2" y="16">
+        <metadata>
+          <meta name="fasm_prefix">X1Y15.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="3" y="16">
+        <metadata>
+          <meta name="fasm_prefix">X2Y15.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="4" y="16">
+        <metadata>
+          <meta name="fasm_prefix">X3Y15.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="5" y="16">
+        <metadata>
+          <meta name="fasm_prefix">X4Y15.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="6" y="16">
+        <metadata>
+          <meta name="fasm_prefix">X5Y15.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="7" y="16">
+        <metadata>
+          <meta name="fasm_prefix">X6Y15.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="8" y="16">
+        <metadata>
+          <meta name="fasm_prefix">X7Y15.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="9" y="16">
+        <metadata>
+          <meta name="fasm_prefix">X8Y15.A</meta>
+        </metadata>
+      </single>
+      <single type="RAM_IO_custom" priority="1" x="10" y="16">
+        <metadata>
+          <meta name="fasm_prefix">X9Y15.A X9Y15.B X9Y15.C X9Y15.D X9Y15.E X9Y15.F X9Y15.G X9Y15.H X9Y15.I X9Y15.J X9Y15.K X9Y15.L X9Y15.hanging</meta>
+        </metadata>
+      </single>
+      <single type="W_IO_custom" priority="1" x="1" y="17">
+        <metadata>
+          <meta name="fasm_prefix">X0Y16.A X0Y16.B X0Y16.C X0Y16.D X0Y16.hanging</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="2" y="17">
+        <metadata>
+          <meta name="fasm_prefix">X1Y16.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="3" y="17">
+        <metadata>
+          <meta name="fasm_prefix">X2Y16.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="4" y="17">
+        <metadata>
+          <meta name="fasm_prefix">X3Y16.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="5" y="17">
+        <metadata>
+          <meta name="fasm_prefix">X4Y16.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="6" y="17">
+        <metadata>
+          <meta name="fasm_prefix">X5Y16.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="7" y="17">
+        <metadata>
+          <meta name="fasm_prefix">X6Y16.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="8" y="17">
+        <metadata>
+          <meta name="fasm_prefix">X7Y16.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="9" y="17">
+        <metadata>
+          <meta name="fasm_prefix">X8Y16.A</meta>
+        </metadata>
+      </single>
+      <single type="RAM_IO_custom" priority="1" x="10" y="17">
+        <metadata>
+          <meta name="fasm_prefix">X9Y16.A X9Y16.B X9Y16.C X9Y16.D X9Y16.E X9Y16.F X9Y16.G X9Y16.H X9Y16.I X9Y16.J X9Y16.K X9Y16.L X9Y16.hanging</meta>
+        </metadata>
+      </single>
+      <single type="W_IO_custom" priority="1" x="1" y="18">
+        <metadata>
+          <meta name="fasm_prefix">X0Y17.A X0Y17.B X0Y17.C X0Y17.D X0Y17.hanging</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="2" y="18">
+        <metadata>
+          <meta name="fasm_prefix">X1Y17.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="3" y="18">
+        <metadata>
+          <meta name="fasm_prefix">X2Y17.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="4" y="18">
+        <metadata>
+          <meta name="fasm_prefix">X3Y17.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="5" y="18">
+        <metadata>
+          <meta name="fasm_prefix">X4Y17.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="6" y="18">
+        <metadata>
+          <meta name="fasm_prefix">X5Y17.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="7" y="18">
+        <metadata>
+          <meta name="fasm_prefix">X6Y17.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="8" y="18">
+        <metadata>
+          <meta name="fasm_prefix">X7Y17.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="9" y="18">
+        <metadata>
+          <meta name="fasm_prefix">X8Y17.A</meta>
+        </metadata>
+      </single>
+      <single type="RAM_IO_custom" priority="1" x="10" y="18">
+        <metadata>
+          <meta name="fasm_prefix">X9Y17.A X9Y17.B X9Y17.C X9Y17.D X9Y17.E X9Y17.F X9Y17.G X9Y17.H X9Y17.I X9Y17.J X9Y17.K X9Y17.L X9Y17.hanging</meta>
+        </metadata>
+      </single>
+      <single type="W_IO_custom" priority="1" x="1" y="19">
+        <metadata>
+          <meta name="fasm_prefix">X0Y18.A X0Y18.B X0Y18.C X0Y18.D X0Y18.hanging</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="2" y="19">
+        <metadata>
+          <meta name="fasm_prefix">X1Y18.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="3" y="19">
+        <metadata>
+          <meta name="fasm_prefix">X2Y18.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="4" y="19">
+        <metadata>
+          <meta name="fasm_prefix">X3Y18.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="5" y="19">
+        <metadata>
+          <meta name="fasm_prefix">X4Y18.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="6" y="19">
+        <metadata>
+          <meta name="fasm_prefix">X5Y18.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="7" y="19">
+        <metadata>
+          <meta name="fasm_prefix">X6Y18.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="8" y="19">
+        <metadata>
+          <meta name="fasm_prefix">X7Y18.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="9" y="19">
+        <metadata>
+          <meta name="fasm_prefix">X8Y18.A</meta>
+        </metadata>
+      </single>
+      <single type="RAM_IO_custom" priority="1" x="10" y="19">
+        <metadata>
+          <meta name="fasm_prefix">X9Y18.A X9Y18.B X9Y18.C X9Y18.D X9Y18.E X9Y18.F X9Y18.G X9Y18.H X9Y18.I X9Y18.J X9Y18.K X9Y18.L X9Y18.hanging</meta>
+        </metadata>
+      </single>
+      <single type="W_IO_custom" priority="1" x="1" y="20">
+        <metadata>
+          <meta name="fasm_prefix">X0Y19.A X0Y19.B X0Y19.C X0Y19.D X0Y19.hanging</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="2" y="20">
+        <metadata>
+          <meta name="fasm_prefix">X1Y19.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="3" y="20">
+        <metadata>
+          <meta name="fasm_prefix">X2Y19.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="4" y="20">
+        <metadata>
+          <meta name="fasm_prefix">X3Y19.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="5" y="20">
+        <metadata>
+          <meta name="fasm_prefix">X4Y19.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="6" y="20">
+        <metadata>
+          <meta name="fasm_prefix">X5Y19.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="7" y="20">
+        <metadata>
+          <meta name="fasm_prefix">X6Y19.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="8" y="20">
+        <metadata>
+          <meta name="fasm_prefix">X7Y19.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="9" y="20">
+        <metadata>
+          <meta name="fasm_prefix">X8Y19.A</meta>
+        </metadata>
+      </single>
+      <single type="RAM_IO_custom" priority="1" x="10" y="20">
+        <metadata>
+          <meta name="fasm_prefix">X9Y19.A X9Y19.B X9Y19.C X9Y19.D X9Y19.E X9Y19.F X9Y19.G X9Y19.H X9Y19.I X9Y19.J X9Y19.K X9Y19.L X9Y19.hanging</meta>
+        </metadata>
+      </single>
+      <single type="W_IO_custom" priority="1" x="1" y="21">
+        <metadata>
+          <meta name="fasm_prefix">X0Y20.A X0Y20.B X0Y20.C X0Y20.D X0Y20.hanging</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="2" y="21">
+        <metadata>
+          <meta name="fasm_prefix">X1Y20.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="3" y="21">
+        <metadata>
+          <meta name="fasm_prefix">X2Y20.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="4" y="21">
+        <metadata>
+          <meta name="fasm_prefix">X3Y20.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="5" y="21">
+        <metadata>
+          <meta name="fasm_prefix">X4Y20.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="6" y="21">
+        <metadata>
+          <meta name="fasm_prefix">X5Y20.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="7" y="21">
+        <metadata>
+          <meta name="fasm_prefix">X6Y20.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="8" y="21">
+        <metadata>
+          <meta name="fasm_prefix">X7Y20.A</meta>
+        </metadata>
+      </single>
+      <single type="Gdgt" priority="1" x="9" y="21">
+        <metadata>
+          <meta name="fasm_prefix">X8Y20.A</meta>
+        </metadata>
+      </single>
+      <single type="RAM_IO_custom" priority="1" x="10" y="21">
+        <metadata>
+          <meta name="fasm_prefix">X9Y20.A X9Y20.B X9Y20.C X9Y20.D X9Y20.E X9Y20.F X9Y20.G X9Y20.H X9Y20.I X9Y20.J X9Y20.K X9Y20.L X9Y20.hanging</meta>
+        </metadata>
+      </single>
+      <single type="S_term_custom" priority="1" x="1" y="22">
+        <metadata>
+          <meta name="fasm_prefix">X0Y21.dummy</meta>
+        </metadata>
+      </single>
+      <single type="S_term_custom" priority="1" x="2" y="22">
+        <metadata>
+          <meta name="fasm_prefix">X1Y21.dummy</meta>
+        </metadata>
+      </single>
+      <single type="S_term_custom" priority="1" x="3" y="22">
+        <metadata>
+          <meta name="fasm_prefix">X2Y21.dummy</meta>
+        </metadata>
+      </single>
+      <single type="S_term_custom" priority="1" x="4" y="22">
+        <metadata>
+          <meta name="fasm_prefix">X3Y21.dummy</meta>
+        </metadata>
+      </single>
+      <single type="S_term_custom" priority="1" x="5" y="22">
+        <metadata>
+          <meta name="fasm_prefix">X4Y21.dummy</meta>
+        </metadata>
+      </single>
+      <single type="S_term_custom" priority="1" x="6" y="22">
+        <metadata>
+          <meta name="fasm_prefix">X5Y21.dummy</meta>
+        </metadata>
+      </single>
+      <single type="S_term_custom" priority="1" x="7" y="22">
+        <metadata>
+          <meta name="fasm_prefix">X6Y21.dummy</meta>
+        </metadata>
+      </single>
+      <single type="S_term_custom" priority="1" x="8" y="22">
+        <metadata>
+          <meta name="fasm_prefix">X7Y21.dummy</meta>
+        </metadata>
+      </single>
+      <single type="S_term_custom" priority="1" x="9" y="22">
+        <metadata>
+          <meta name="fasm_prefix">X8Y21.dummy</meta>
+        </metadata>
+      </single>
+      <single type="S_term_custom" priority="1" x="10" y="22">
+        <metadata>
+          <meta name="fasm_prefix">X9Y21.dummy</meta>
+        </metadata>
+      </single>
+    </fixed_layout>
+  </layout>
+  <tiles>
+    <tile name="clock_primitive">
+      <sub_tile name="clock_sub">
+        <equivalent_sites>
+          <site pb_type="clock_primitive" pin_mapping="direct" />
+        </equivalent_sites>
+        <output name="clock_out" num_pins="1" />
+      </sub_tile>
+    </tile>
+    <tile name="N_term_custom">
+      <sub_tile name="N_term_custom_dummy" capacity="1">
+        <equivalent_sites>
+          <site pb_type="reserved_dummy" pin_mapping="direct" />
+        </equivalent_sites>
+        <input name="UserCLK" num_pins="1" />
+      </sub_tile>
+    </tile>
+    <tile name="S_term_custom">
+      <sub_tile name="S_term_custom_dummy" capacity="1">
+        <equivalent_sites>
+          <site pb_type="reserved_dummy" pin_mapping="direct" />
+        </equivalent_sites>
+        <input name="UserCLK" num_pins="1" />
+      </sub_tile>
+    </tile>
+    <tile name="W_IO_custom">
+      <sub_tile name="A_IO_1_bidirectional_frame_config_pass" capacity="1">
+        <equivalent_sites>
+          <site pb_type="IO_1_bidirectional_frame_config_pass_wrapper" pin_mapping="custom">
+            <direct from="A_IO_1_bidirectional_frame_config_pass.A_I" to="IO_1_bidirectional_frame_config_pass_wrapper.I" />
+            <direct from="A_IO_1_bidirectional_frame_config_pass.A_T" to="IO_1_bidirectional_frame_config_pass_wrapper.T" />
+            <direct to="IO_1_bidirectional_frame_config_pass_wrapper.O" from="A_IO_1_bidirectional_frame_config_pass.A_O" />
+            <direct to="IO_1_bidirectional_frame_config_pass_wrapper.Q" from="A_IO_1_bidirectional_frame_config_pass.A_Q" />
+            <direct from="A_IO_1_bidirectional_frame_config_pass.UserCLK" to="IO_1_bidirectional_frame_config_pass_wrapper.UserCLK" />
+          </site>
+        </equivalent_sites>
+        <input name="UserCLK" num_pins="1" />
+        <input name="A_I" num_pins="1" />
+        <input name="A_T" num_pins="1" />
+        <output name="A_O" num_pins="1" />
+        <output name="A_Q" num_pins="1" />
+      </sub_tile>
+      <sub_tile name="B_IO_1_bidirectional_frame_config_pass" capacity="1">
+        <equivalent_sites>
+          <site pb_type="IO_1_bidirectional_frame_config_pass_wrapper" pin_mapping="custom">
+            <direct from="B_IO_1_bidirectional_frame_config_pass.B_I" to="IO_1_bidirectional_frame_config_pass_wrapper.I" />
+            <direct from="B_IO_1_bidirectional_frame_config_pass.B_T" to="IO_1_bidirectional_frame_config_pass_wrapper.T" />
+            <direct to="IO_1_bidirectional_frame_config_pass_wrapper.O" from="B_IO_1_bidirectional_frame_config_pass.B_O" />
+            <direct to="IO_1_bidirectional_frame_config_pass_wrapper.Q" from="B_IO_1_bidirectional_frame_config_pass.B_Q" />
+            <direct from="B_IO_1_bidirectional_frame_config_pass.UserCLK" to="IO_1_bidirectional_frame_config_pass_wrapper.UserCLK" />
+          </site>
+        </equivalent_sites>
+        <input name="UserCLK" num_pins="1" />
+        <input name="B_I" num_pins="1" />
+        <input name="B_T" num_pins="1" />
+        <output name="B_O" num_pins="1" />
+        <output name="B_Q" num_pins="1" />
+      </sub_tile>
+      <sub_tile name="A_config_Config_access_dummy" capacity="1">
+        <equivalent_sites>
+          <site pb_type="reserved_dummy" pin_mapping="direct" />
+        </equivalent_sites>
+        <input name="UserCLK" num_pins="1" />
+      </sub_tile>
+      <sub_tile name="B_config_Config_access_dummy" capacity="1">
+        <equivalent_sites>
+          <site pb_type="reserved_dummy" pin_mapping="direct" />
+        </equivalent_sites>
+        <input name="UserCLK" num_pins="1" />
+      </sub_tile>
+      <sub_tile name="W_IO_custom_hanging" capacity="1">
+        <equivalent_sites>
+          <site pb_type="W_IO_custom_hanging" pin_mapping="direct" />
+        </equivalent_sites>
+        <output name="VCC" num_pins="1" />
+        <output name="GND" num_pins="1" />
+      </sub_tile>
+    </tile>
+    <tile name="RAM_IO_custom">
+      <sub_tile name="RAM2FAB_D0_InPass4_frame_config_mux" capacity="1">
+        <equivalent_sites>
+          <site pb_type="InPass4_frame_config_mux_wrapper" pin_mapping="custom">
+            <direct to="InPass4_frame_config_mux_wrapper.O0" from="RAM2FAB_D0_InPass4_frame_config_mux.RAM2FAB_D0_O0" />
+            <direct to="InPass4_frame_config_mux_wrapper.O1" from="RAM2FAB_D0_InPass4_frame_config_mux.RAM2FAB_D0_O1" />
+            <direct to="InPass4_frame_config_mux_wrapper.O2" from="RAM2FAB_D0_InPass4_frame_config_mux.RAM2FAB_D0_O2" />
+            <direct to="InPass4_frame_config_mux_wrapper.O3" from="RAM2FAB_D0_InPass4_frame_config_mux.RAM2FAB_D0_O3" />
+            <direct from="RAM2FAB_D0_InPass4_frame_config_mux.UserCLK" to="InPass4_frame_config_mux_wrapper.UserCLK" />
+          </site>
+        </equivalent_sites>
+        <input name="UserCLK" num_pins="1" />
+        <output name="RAM2FAB_D0_O0" num_pins="1" />
+        <output name="RAM2FAB_D0_O1" num_pins="1" />
+        <output name="RAM2FAB_D0_O2" num_pins="1" />
+        <output name="RAM2FAB_D0_O3" num_pins="1" />
+      </sub_tile>
+      <sub_tile name="RAM2FAB_D1_InPass4_frame_config_mux" capacity="1">
+        <equivalent_sites>
+          <site pb_type="InPass4_frame_config_mux_wrapper" pin_mapping="custom">
+            <direct to="InPass4_frame_config_mux_wrapper.O0" from="RAM2FAB_D1_InPass4_frame_config_mux.RAM2FAB_D1_O0" />
+            <direct to="InPass4_frame_config_mux_wrapper.O1" from="RAM2FAB_D1_InPass4_frame_config_mux.RAM2FAB_D1_O1" />
+            <direct to="InPass4_frame_config_mux_wrapper.O2" from="RAM2FAB_D1_InPass4_frame_config_mux.RAM2FAB_D1_O2" />
+            <direct to="InPass4_frame_config_mux_wrapper.O3" from="RAM2FAB_D1_InPass4_frame_config_mux.RAM2FAB_D1_O3" />
+            <direct from="RAM2FAB_D1_InPass4_frame_config_mux.UserCLK" to="InPass4_frame_config_mux_wrapper.UserCLK" />
+          </site>
+        </equivalent_sites>
+        <input name="UserCLK" num_pins="1" />
+        <output name="RAM2FAB_D1_O0" num_pins="1" />
+        <output name="RAM2FAB_D1_O1" num_pins="1" />
+        <output name="RAM2FAB_D1_O2" num_pins="1" />
+        <output name="RAM2FAB_D1_O3" num_pins="1" />
+      </sub_tile>
+      <sub_tile name="RAM2FAB_D2_InPass4_frame_config_mux" capacity="1">
+        <equivalent_sites>
+          <site pb_type="InPass4_frame_config_mux_wrapper" pin_mapping="custom">
+            <direct to="InPass4_frame_config_mux_wrapper.O0" from="RAM2FAB_D2_InPass4_frame_config_mux.RAM2FAB_D2_O0" />
+            <direct to="InPass4_frame_config_mux_wrapper.O1" from="RAM2FAB_D2_InPass4_frame_config_mux.RAM2FAB_D2_O1" />
+            <direct to="InPass4_frame_config_mux_wrapper.O2" from="RAM2FAB_D2_InPass4_frame_config_mux.RAM2FAB_D2_O2" />
+            <direct to="InPass4_frame_config_mux_wrapper.O3" from="RAM2FAB_D2_InPass4_frame_config_mux.RAM2FAB_D2_O3" />
+            <direct from="RAM2FAB_D2_InPass4_frame_config_mux.UserCLK" to="InPass4_frame_config_mux_wrapper.UserCLK" />
+          </site>
+        </equivalent_sites>
+        <input name="UserCLK" num_pins="1" />
+        <output name="RAM2FAB_D2_O0" num_pins="1" />
+        <output name="RAM2FAB_D2_O1" num_pins="1" />
+        <output name="RAM2FAB_D2_O2" num_pins="1" />
+        <output name="RAM2FAB_D2_O3" num_pins="1" />
+      </sub_tile>
+      <sub_tile name="RAM2FAB_D3_InPass4_frame_config_mux" capacity="1">
+        <equivalent_sites>
+          <site pb_type="InPass4_frame_config_mux_wrapper" pin_mapping="custom">
+            <direct to="InPass4_frame_config_mux_wrapper.O0" from="RAM2FAB_D3_InPass4_frame_config_mux.RAM2FAB_D3_O0" />
+            <direct to="InPass4_frame_config_mux_wrapper.O1" from="RAM2FAB_D3_InPass4_frame_config_mux.RAM2FAB_D3_O1" />
+            <direct to="InPass4_frame_config_mux_wrapper.O2" from="RAM2FAB_D3_InPass4_frame_config_mux.RAM2FAB_D3_O2" />
+            <direct to="InPass4_frame_config_mux_wrapper.O3" from="RAM2FAB_D3_InPass4_frame_config_mux.RAM2FAB_D3_O3" />
+            <direct from="RAM2FAB_D3_InPass4_frame_config_mux.UserCLK" to="InPass4_frame_config_mux_wrapper.UserCLK" />
+          </site>
+        </equivalent_sites>
+        <input name="UserCLK" num_pins="1" />
+        <output name="RAM2FAB_D3_O0" num_pins="1" />
+        <output name="RAM2FAB_D3_O1" num_pins="1" />
+        <output name="RAM2FAB_D3_O2" num_pins="1" />
+        <output name="RAM2FAB_D3_O3" num_pins="1" />
+      </sub_tile>
+      <sub_tile name="FAB2RAM_D0_OutPass4_frame_config_mux" capacity="1">
+        <equivalent_sites>
+          <site pb_type="OutPass4_frame_config_mux_wrapper" pin_mapping="custom">
+            <direct from="FAB2RAM_D0_OutPass4_frame_config_mux.FAB2RAM_D0_I0" to="OutPass4_frame_config_mux_wrapper.I0" />
+            <direct from="FAB2RAM_D0_OutPass4_frame_config_mux.FAB2RAM_D0_I1" to="OutPass4_frame_config_mux_wrapper.I1" />
+            <direct from="FAB2RAM_D0_OutPass4_frame_config_mux.FAB2RAM_D0_I2" to="OutPass4_frame_config_mux_wrapper.I2" />
+            <direct from="FAB2RAM_D0_OutPass4_frame_config_mux.FAB2RAM_D0_I3" to="OutPass4_frame_config_mux_wrapper.I3" />
+            <direct from="FAB2RAM_D0_OutPass4_frame_config_mux.UserCLK" to="OutPass4_frame_config_mux_wrapper.UserCLK" />
+          </site>
+        </equivalent_sites>
+        <input name="UserCLK" num_pins="1" />
+        <input name="FAB2RAM_D0_I0" num_pins="1" />
+        <input name="FAB2RAM_D0_I1" num_pins="1" />
+        <input name="FAB2RAM_D0_I2" num_pins="1" />
+        <input name="FAB2RAM_D0_I3" num_pins="1" />
+      </sub_tile>
+      <sub_tile name="FAB2RAM_D1_OutPass4_frame_config_mux" capacity="1">
+        <equivalent_sites>
+          <site pb_type="OutPass4_frame_config_mux_wrapper" pin_mapping="custom">
+            <direct from="FAB2RAM_D1_OutPass4_frame_config_mux.FAB2RAM_D1_I0" to="OutPass4_frame_config_mux_wrapper.I0" />
+            <direct from="FAB2RAM_D1_OutPass4_frame_config_mux.FAB2RAM_D1_I1" to="OutPass4_frame_config_mux_wrapper.I1" />
+            <direct from="FAB2RAM_D1_OutPass4_frame_config_mux.FAB2RAM_D1_I2" to="OutPass4_frame_config_mux_wrapper.I2" />
+            <direct from="FAB2RAM_D1_OutPass4_frame_config_mux.FAB2RAM_D1_I3" to="OutPass4_frame_config_mux_wrapper.I3" />
+            <direct from="FAB2RAM_D1_OutPass4_frame_config_mux.UserCLK" to="OutPass4_frame_config_mux_wrapper.UserCLK" />
+          </site>
+        </equivalent_sites>
+        <input name="UserCLK" num_pins="1" />
+        <input name="FAB2RAM_D1_I0" num_pins="1" />
+        <input name="FAB2RAM_D1_I1" num_pins="1" />
+        <input name="FAB2RAM_D1_I2" num_pins="1" />
+        <input name="FAB2RAM_D1_I3" num_pins="1" />
+      </sub_tile>
+      <sub_tile name="FAB2RAM_D2_OutPass4_frame_config_mux" capacity="1">
+        <equivalent_sites>
+          <site pb_type="OutPass4_frame_config_mux_wrapper" pin_mapping="custom">
+            <direct from="FAB2RAM_D2_OutPass4_frame_config_mux.FAB2RAM_D2_I0" to="OutPass4_frame_config_mux_wrapper.I0" />
+            <direct from="FAB2RAM_D2_OutPass4_frame_config_mux.FAB2RAM_D2_I1" to="OutPass4_frame_config_mux_wrapper.I1" />
+            <direct from="FAB2RAM_D2_OutPass4_frame_config_mux.FAB2RAM_D2_I2" to="OutPass4_frame_config_mux_wrapper.I2" />
+            <direct from="FAB2RAM_D2_OutPass4_frame_config_mux.FAB2RAM_D2_I3" to="OutPass4_frame_config_mux_wrapper.I3" />
+            <direct from="FAB2RAM_D2_OutPass4_frame_config_mux.UserCLK" to="OutPass4_frame_config_mux_wrapper.UserCLK" />
+          </site>
+        </equivalent_sites>
+        <input name="UserCLK" num_pins="1" />
+        <input name="FAB2RAM_D2_I0" num_pins="1" />
+        <input name="FAB2RAM_D2_I1" num_pins="1" />
+        <input name="FAB2RAM_D2_I2" num_pins="1" />
+        <input name="FAB2RAM_D2_I3" num_pins="1" />
+      </sub_tile>
+      <sub_tile name="FAB2RAM_D3_OutPass4_frame_config_mux" capacity="1">
+        <equivalent_sites>
+          <site pb_type="OutPass4_frame_config_mux_wrapper" pin_mapping="custom">
+            <direct from="FAB2RAM_D3_OutPass4_frame_config_mux.FAB2RAM_D3_I0" to="OutPass4_frame_config_mux_wrapper.I0" />
+            <direct from="FAB2RAM_D3_OutPass4_frame_config_mux.FAB2RAM_D3_I1" to="OutPass4_frame_config_mux_wrapper.I1" />
+            <direct from="FAB2RAM_D3_OutPass4_frame_config_mux.FAB2RAM_D3_I2" to="OutPass4_frame_config_mux_wrapper.I2" />
+            <direct from="FAB2RAM_D3_OutPass4_frame_config_mux.FAB2RAM_D3_I3" to="OutPass4_frame_config_mux_wrapper.I3" />
+            <direct from="FAB2RAM_D3_OutPass4_frame_config_mux.UserCLK" to="OutPass4_frame_config_mux_wrapper.UserCLK" />
+          </site>
+        </equivalent_sites>
+        <input name="UserCLK" num_pins="1" />
+        <input name="FAB2RAM_D3_I0" num_pins="1" />
+        <input name="FAB2RAM_D3_I1" num_pins="1" />
+        <input name="FAB2RAM_D3_I2" num_pins="1" />
+        <input name="FAB2RAM_D3_I3" num_pins="1" />
+      </sub_tile>
+      <sub_tile name="FAB2RAM_A0_OutPass4_frame_config_mux" capacity="1">
+        <equivalent_sites>
+          <site pb_type="OutPass4_frame_config_mux_wrapper" pin_mapping="custom">
+            <direct from="FAB2RAM_A0_OutPass4_frame_config_mux.FAB2RAM_A0_I0" to="OutPass4_frame_config_mux_wrapper.I0" />
+            <direct from="FAB2RAM_A0_OutPass4_frame_config_mux.FAB2RAM_A0_I1" to="OutPass4_frame_config_mux_wrapper.I1" />
+            <direct from="FAB2RAM_A0_OutPass4_frame_config_mux.FAB2RAM_A0_I2" to="OutPass4_frame_config_mux_wrapper.I2" />
+            <direct from="FAB2RAM_A0_OutPass4_frame_config_mux.FAB2RAM_A0_I3" to="OutPass4_frame_config_mux_wrapper.I3" />
+            <direct from="FAB2RAM_A0_OutPass4_frame_config_mux.UserCLK" to="OutPass4_frame_config_mux_wrapper.UserCLK" />
+          </site>
+        </equivalent_sites>
+        <input name="UserCLK" num_pins="1" />
+        <input name="FAB2RAM_A0_I0" num_pins="1" />
+        <input name="FAB2RAM_A0_I1" num_pins="1" />
+        <input name="FAB2RAM_A0_I2" num_pins="1" />
+        <input name="FAB2RAM_A0_I3" num_pins="1" />
+      </sub_tile>
+      <sub_tile name="FAB2RAM_A1_OutPass4_frame_config_mux" capacity="1">
+        <equivalent_sites>
+          <site pb_type="OutPass4_frame_config_mux_wrapper" pin_mapping="custom">
+            <direct from="FAB2RAM_A1_OutPass4_frame_config_mux.FAB2RAM_A1_I0" to="OutPass4_frame_config_mux_wrapper.I0" />
+            <direct from="FAB2RAM_A1_OutPass4_frame_config_mux.FAB2RAM_A1_I1" to="OutPass4_frame_config_mux_wrapper.I1" />
+            <direct from="FAB2RAM_A1_OutPass4_frame_config_mux.FAB2RAM_A1_I2" to="OutPass4_frame_config_mux_wrapper.I2" />
+            <direct from="FAB2RAM_A1_OutPass4_frame_config_mux.FAB2RAM_A1_I3" to="OutPass4_frame_config_mux_wrapper.I3" />
+            <direct from="FAB2RAM_A1_OutPass4_frame_config_mux.UserCLK" to="OutPass4_frame_config_mux_wrapper.UserCLK" />
+          </site>
+        </equivalent_sites>
+        <input name="UserCLK" num_pins="1" />
+        <input name="FAB2RAM_A1_I0" num_pins="1" />
+        <input name="FAB2RAM_A1_I1" num_pins="1" />
+        <input name="FAB2RAM_A1_I2" num_pins="1" />
+        <input name="FAB2RAM_A1_I3" num_pins="1" />
+      </sub_tile>
+      <sub_tile name="FAB2RAM_C_OutPass4_frame_config_mux" capacity="1">
+        <equivalent_sites>
+          <site pb_type="OutPass4_frame_config_mux_wrapper" pin_mapping="custom">
+            <direct from="FAB2RAM_C_OutPass4_frame_config_mux.FAB2RAM_C_I0" to="OutPass4_frame_config_mux_wrapper.I0" />
+            <direct from="FAB2RAM_C_OutPass4_frame_config_mux.FAB2RAM_C_I1" to="OutPass4_frame_config_mux_wrapper.I1" />
+            <direct from="FAB2RAM_C_OutPass4_frame_config_mux.FAB2RAM_C_I2" to="OutPass4_frame_config_mux_wrapper.I2" />
+            <direct from="FAB2RAM_C_OutPass4_frame_config_mux.FAB2RAM_C_I3" to="OutPass4_frame_config_mux_wrapper.I3" />
+            <direct from="FAB2RAM_C_OutPass4_frame_config_mux.UserCLK" to="OutPass4_frame_config_mux_wrapper.UserCLK" />
+          </site>
+        </equivalent_sites>
+        <input name="UserCLK" num_pins="1" />
+        <input name="FAB2RAM_C_I0" num_pins="1" />
+        <input name="FAB2RAM_C_I1" num_pins="1" />
+        <input name="FAB2RAM_C_I2" num_pins="1" />
+        <input name="FAB2RAM_C_I3" num_pins="1" />
+      </sub_tile>
+      <sub_tile name="Config_accessConfig_access_dummy" capacity="1">
+        <equivalent_sites>
+          <site pb_type="reserved_dummy" pin_mapping="direct" />
+        </equivalent_sites>
+        <input name="UserCLK" num_pins="1" />
+      </sub_tile>
+      <sub_tile name="RAM_IO_custom_hanging" capacity="1">
+        <equivalent_sites>
+          <site pb_type="RAM_IO_custom_hanging" pin_mapping="direct" />
+        </equivalent_sites>
+        <output name="VCC" num_pins="1" />
+        <output name="GND" num_pins="1" />
+      </sub_tile>
+    </tile>
+    <tile name="Gdgt">
+      <sub_tile name="my_gadget_v0" capacity="1">
+        <equivalent_sites>
+          <site pb_type="my_gadget_v0_wrapper" pin_mapping="custom">
+            <direct from="my_gadget_v0.A_0" to="my_gadget_v0_wrapper.A_0" />
+            <direct from="my_gadget_v0.B_0" to="my_gadget_v0_wrapper.B_0" />
+            <direct from="my_gadget_v0.NA_0" to="my_gadget_v0_wrapper.NA_0" />
+            <direct from="my_gadget_v0.NB_0" to="my_gadget_v0_wrapper.NB_0" />
+            <direct from="my_gadget_v0.A_1" to="my_gadget_v0_wrapper.A_1" />
+            <direct from="my_gadget_v0.B_1" to="my_gadget_v0_wrapper.B_1" />
+            <direct from="my_gadget_v0.NA_1" to="my_gadget_v0_wrapper.NA_1" />
+            <direct from="my_gadget_v0.NB_1" to="my_gadget_v0_wrapper.NB_1" />
+            <direct to="my_gadget_v0_wrapper.O_0" from="my_gadget_v0.O_0" />
+            <direct to="my_gadget_v0_wrapper.NO_0" from="my_gadget_v0.NO_0" />
+            <direct to="my_gadget_v0_wrapper.O_1" from="my_gadget_v0.O_1" />
+            <direct to="my_gadget_v0_wrapper.NO_1" from="my_gadget_v0.NO_1" />
+            <direct from="my_gadget_v0.UserCLK" to="my_gadget_v0_wrapper.UserCLK" />
+          </site>
+        </equivalent_sites>
+        <input name="UserCLK" num_pins="1" />
+        <input name="A_0" num_pins="1" />
+        <input name="B_0" num_pins="1" />
+        <input name="NA_0" num_pins="1" />
+        <input name="NB_0" num_pins="1" />
+        <input name="A_1" num_pins="1" />
+        <input name="B_1" num_pins="1" />
+        <input name="NA_1" num_pins="1" />
+        <input name="NB_1" num_pins="1" />
+        <output name="O_0" num_pins="1" />
+        <output name="NO_0" num_pins="1" />
+        <output name="O_1" num_pins="1" />
+        <output name="NO_1" num_pins="1" />
+      </sub_tile>
+    </tile>
+  </tiles>
+  <models>
+    <model name="Global_Clock">
+      <output_ports>
+        <port name="CLK" />
+      </output_ports>
+    </model>
+    <model name="IO_1_bidirectional_frame_config_pass">
+      <input_ports>
+        <port name="I" combinational_sink_ports="O Q" />
+        <port name="T" combinational_sink_ports="O Q" />
+        <port name="UserCLK" />
+      </input_ports>
+      <output_ports>
+        <port name="O" />
+        <port name="Q" />
+      </output_ports>
+    </model>
+    <model name="InPass4_frame_config_mux">
+      <input_ports>
+        <port name="UserCLK" />
+      </input_ports>
+      <output_ports>
+        <port name="O0" />
+        <port name="O1" />
+        <port name="O2" />
+        <port name="O3" />
+      </output_ports>
+    </model>
+    <model name="OutPass4_frame_config_mux">
+      <input_ports>
+        <port name="I0" combinational_sink_ports="" />
+        <port name="I1" combinational_sink_ports="" />
+        <port name="I2" combinational_sink_ports="" />
+        <port name="I3" combinational_sink_ports="" />
+        <port name="UserCLK" />
+      </input_ports>
+      <output_ports />
+    </model>
+    <model name="my_gadget_v0">
+      <input_ports>
+        <port name="A_0" combinational_sink_ports="O_0 NO_0 O_1 NO_1" />
+        <port name="B_0" combinational_sink_ports="O_0 NO_0 O_1 NO_1" />
+        <port name="NA_0" combinational_sink_ports="O_0 NO_0 O_1 NO_1" />
+        <port name="NB_0" combinational_sink_ports="O_0 NO_0 O_1 NO_1" />
+        <port name="A_1" combinational_sink_ports="O_0 NO_0 O_1 NO_1" />
+        <port name="B_1" combinational_sink_ports="O_0 NO_0 O_1 NO_1" />
+        <port name="NA_1" combinational_sink_ports="O_0 NO_0 O_1 NO_1" />
+        <port name="NB_1" combinational_sink_ports="O_0 NO_0 O_1 NO_1" />
+        <port name="UserCLK" />
+      </input_ports>
+      <output_ports>
+        <port name="O_0" />
+        <port name="NO_0" />
+        <port name="O_1" />
+        <port name="NO_1" />
+      </output_ports>
+    </model>
+  </models>
+  <complexblocklist>
+    <pb_type name="clock_primitive">
+      <pb_type name="clock_input" blif_model=".subckt Global_Clock" num_pb="1">
+        <output name="CLK" num_pins="1" />
+      </pb_type>
+      <output name="clock_out" num_pins="1" />
+      <interconnect>
+        <direct name="clock_prim_to_top" input="clock_input.CLK" output="clock_primitive.clock_out" />
+      </interconnect>
+    </pb_type>
+    <pb_type name="reserved_dummy">
+      <input name="UserCLK" num_pins="1" />
+      <interconnect />
+    </pb_type>
+    <pb_type name="W_IO_custom_hanging">
+      <interconnect />
+      <output name="VCC" num_pins="1" />
+      <output name="GND" num_pins="1" />
+    </pb_type>
+    <pb_type name="RAM_IO_custom_hanging">
+      <interconnect />
+      <output name="VCC" num_pins="1" />
+      <output name="GND" num_pins="1" />
+    </pb_type>
+    <pb_type name="IO_1_bidirectional_frame_config_pass_wrapper">
+      <pb_type name="IO_1_bidirectional_frame_config_pass" num_pb="1" blif_model=".subckt IO_1_bidirectional_frame_config_pass">
+        <delay_constant max="300e-12" in_port="IO_1_bidirectional_frame_config_pass.I" out_port="IO_1_bidirectional_frame_config_pass.O" />
+        <delay_constant max="300e-12" in_port="IO_1_bidirectional_frame_config_pass.I" out_port="IO_1_bidirectional_frame_config_pass.Q" />
+        <delay_constant max="300e-12" in_port="IO_1_bidirectional_frame_config_pass.T" out_port="IO_1_bidirectional_frame_config_pass.O" />
+        <delay_constant max="300e-12" in_port="IO_1_bidirectional_frame_config_pass.T" out_port="IO_1_bidirectional_frame_config_pass.Q" />
+        <input name="UserCLK" num_pins="1" />
+        <input name="I" num_pins="1" />
+        <input name="T" num_pins="1" />
+        <output name="O" num_pins="1" />
+        <output name="Q" num_pins="1" />
+      </pb_type>
+      <interconnect>
+        <direct name="IO_1_bidirectional_frame_config_pass_UserCLK_to_top_child" input="IO_1_bidirectional_frame_config_pass_wrapper.UserCLK" output="IO_1_bidirectional_frame_config_pass.UserCLK" />
+        <direct name="IO_1_bidirectional_frame_config_pass_I_top_to_child" input="IO_1_bidirectional_frame_config_pass_wrapper.I" output="IO_1_bidirectional_frame_config_pass.I" />
+        <direct name="IO_1_bidirectional_frame_config_pass_T_top_to_child" input="IO_1_bidirectional_frame_config_pass_wrapper.T" output="IO_1_bidirectional_frame_config_pass.T" />
+        <direct name="IO_1_bidirectional_frame_config_pass_O_child_to_top" input="IO_1_bidirectional_frame_config_pass.O" output="IO_1_bidirectional_frame_config_pass_wrapper.O" />
+        <direct name="IO_1_bidirectional_frame_config_pass_Q_child_to_top" input="IO_1_bidirectional_frame_config_pass.Q" output="IO_1_bidirectional_frame_config_pass_wrapper.Q" />
+      </interconnect>
+      <input name="UserCLK" num_pins="1" />
+      <input name="I" num_pins="1" />
+      <input name="T" num_pins="1" />
+      <output name="O" num_pins="1" />
+      <output name="Q" num_pins="1" />
+    </pb_type>
+    <pb_type name="InPass4_frame_config_mux_wrapper">
+      <pb_type name="InPass4_frame_config_mux" num_pb="1" blif_model=".subckt InPass4_frame_config_mux">
+        <input name="UserCLK" num_pins="1" />
+        <output name="O0" num_pins="1" />
+        <output name="O1" num_pins="1" />
+        <output name="O2" num_pins="1" />
+        <output name="O3" num_pins="1" />
+      </pb_type>
+      <interconnect>
+        <direct name="InPass4_frame_config_mux_UserCLK_to_top_child" input="InPass4_frame_config_mux_wrapper.UserCLK" output="InPass4_frame_config_mux.UserCLK" />
+        <direct name="InPass4_frame_config_mux_O0_child_to_top" input="InPass4_frame_config_mux.O0" output="InPass4_frame_config_mux_wrapper.O0" />
+        <direct name="InPass4_frame_config_mux_O1_child_to_top" input="InPass4_frame_config_mux.O1" output="InPass4_frame_config_mux_wrapper.O1" />
+        <direct name="InPass4_frame_config_mux_O2_child_to_top" input="InPass4_frame_config_mux.O2" output="InPass4_frame_config_mux_wrapper.O2" />
+        <direct name="InPass4_frame_config_mux_O3_child_to_top" input="InPass4_frame_config_mux.O3" output="InPass4_frame_config_mux_wrapper.O3" />
+      </interconnect>
+      <input name="UserCLK" num_pins="1" />
+      <output name="O0" num_pins="1" />
+      <output name="O1" num_pins="1" />
+      <output name="O2" num_pins="1" />
+      <output name="O3" num_pins="1" />
+    </pb_type>
+    <pb_type name="OutPass4_frame_config_mux_wrapper">
+      <pb_type name="OutPass4_frame_config_mux" num_pb="1" blif_model=".subckt OutPass4_frame_config_mux">
+        <input name="UserCLK" num_pins="1" />
+        <input name="I0" num_pins="1" />
+        <input name="I1" num_pins="1" />
+        <input name="I2" num_pins="1" />
+        <input name="I3" num_pins="1" />
+      </pb_type>
+      <interconnect>
+        <direct name="OutPass4_frame_config_mux_UserCLK_to_top_child" input="OutPass4_frame_config_mux_wrapper.UserCLK" output="OutPass4_frame_config_mux.UserCLK" />
+        <direct name="OutPass4_frame_config_mux_I0_top_to_child" input="OutPass4_frame_config_mux_wrapper.I0" output="OutPass4_frame_config_mux.I0" />
+        <direct name="OutPass4_frame_config_mux_I1_top_to_child" input="OutPass4_frame_config_mux_wrapper.I1" output="OutPass4_frame_config_mux.I1" />
+        <direct name="OutPass4_frame_config_mux_I2_top_to_child" input="OutPass4_frame_config_mux_wrapper.I2" output="OutPass4_frame_config_mux.I2" />
+        <direct name="OutPass4_frame_config_mux_I3_top_to_child" input="OutPass4_frame_config_mux_wrapper.I3" output="OutPass4_frame_config_mux.I3" />
+      </interconnect>
+      <input name="UserCLK" num_pins="1" />
+      <input name="I0" num_pins="1" />
+      <input name="I1" num_pins="1" />
+      <input name="I2" num_pins="1" />
+      <input name="I3" num_pins="1" />
+    </pb_type>
+    <pb_type name="my_gadget_v0_wrapper">
+      <pb_type name="my_gadget_v0" num_pb="1" blif_model=".subckt my_gadget_v0">
+        <delay_constant max="300e-12" in_port="my_gadget_v0.A_0" out_port="my_gadget_v0.O_0" />
+        <delay_constant max="300e-12" in_port="my_gadget_v0.A_0" out_port="my_gadget_v0.NO_0" />
+        <delay_constant max="300e-12" in_port="my_gadget_v0.A_0" out_port="my_gadget_v0.O_1" />
+        <delay_constant max="300e-12" in_port="my_gadget_v0.A_0" out_port="my_gadget_v0.NO_1" />
+        <delay_constant max="300e-12" in_port="my_gadget_v0.B_0" out_port="my_gadget_v0.O_0" />
+        <delay_constant max="300e-12" in_port="my_gadget_v0.B_0" out_port="my_gadget_v0.NO_0" />
+        <delay_constant max="300e-12" in_port="my_gadget_v0.B_0" out_port="my_gadget_v0.O_1" />
+        <delay_constant max="300e-12" in_port="my_gadget_v0.B_0" out_port="my_gadget_v0.NO_1" />
+        <delay_constant max="300e-12" in_port="my_gadget_v0.NA_0" out_port="my_gadget_v0.O_0" />
+        <delay_constant max="300e-12" in_port="my_gadget_v0.NA_0" out_port="my_gadget_v0.NO_0" />
+        <delay_constant max="300e-12" in_port="my_gadget_v0.NA_0" out_port="my_gadget_v0.O_1" />
+        <delay_constant max="300e-12" in_port="my_gadget_v0.NA_0" out_port="my_gadget_v0.NO_1" />
+        <delay_constant max="300e-12" in_port="my_gadget_v0.NB_0" out_port="my_gadget_v0.O_0" />
+        <delay_constant max="300e-12" in_port="my_gadget_v0.NB_0" out_port="my_gadget_v0.NO_0" />
+        <delay_constant max="300e-12" in_port="my_gadget_v0.NB_0" out_port="my_gadget_v0.O_1" />
+        <delay_constant max="300e-12" in_port="my_gadget_v0.NB_0" out_port="my_gadget_v0.NO_1" />
+        <delay_constant max="300e-12" in_port="my_gadget_v0.A_1" out_port="my_gadget_v0.O_0" />
+        <delay_constant max="300e-12" in_port="my_gadget_v0.A_1" out_port="my_gadget_v0.NO_0" />
+        <delay_constant max="300e-12" in_port="my_gadget_v0.A_1" out_port="my_gadget_v0.O_1" />
+        <delay_constant max="300e-12" in_port="my_gadget_v0.A_1" out_port="my_gadget_v0.NO_1" />
+        <delay_constant max="300e-12" in_port="my_gadget_v0.B_1" out_port="my_gadget_v0.O_0" />
+        <delay_constant max="300e-12" in_port="my_gadget_v0.B_1" out_port="my_gadget_v0.NO_0" />
+        <delay_constant max="300e-12" in_port="my_gadget_v0.B_1" out_port="my_gadget_v0.O_1" />
+        <delay_constant max="300e-12" in_port="my_gadget_v0.B_1" out_port="my_gadget_v0.NO_1" />
+        <delay_constant max="300e-12" in_port="my_gadget_v0.NA_1" out_port="my_gadget_v0.O_0" />
+        <delay_constant max="300e-12" in_port="my_gadget_v0.NA_1" out_port="my_gadget_v0.NO_0" />
+        <delay_constant max="300e-12" in_port="my_gadget_v0.NA_1" out_port="my_gadget_v0.O_1" />
+        <delay_constant max="300e-12" in_port="my_gadget_v0.NA_1" out_port="my_gadget_v0.NO_1" />
+        <delay_constant max="300e-12" in_port="my_gadget_v0.NB_1" out_port="my_gadget_v0.O_0" />
+        <delay_constant max="300e-12" in_port="my_gadget_v0.NB_1" out_port="my_gadget_v0.NO_0" />
+        <delay_constant max="300e-12" in_port="my_gadget_v0.NB_1" out_port="my_gadget_v0.O_1" />
+        <delay_constant max="300e-12" in_port="my_gadget_v0.NB_1" out_port="my_gadget_v0.NO_1" />
+        <input name="UserCLK" num_pins="1" />
+        <input name="A_0" num_pins="1" />
+        <input name="B_0" num_pins="1" />
+        <input name="NA_0" num_pins="1" />
+        <input name="NB_0" num_pins="1" />
+        <input name="A_1" num_pins="1" />
+        <input name="B_1" num_pins="1" />
+        <input name="NA_1" num_pins="1" />
+        <input name="NB_1" num_pins="1" />
+        <output name="O_0" num_pins="1" />
+        <output name="NO_0" num_pins="1" />
+        <output name="O_1" num_pins="1" />
+        <output name="NO_1" num_pins="1" />
+      </pb_type>
+      <interconnect>
+        <direct name="my_gadget_v0_UserCLK_to_top_child" input="my_gadget_v0_wrapper.UserCLK" output="my_gadget_v0.UserCLK" />
+        <direct name="my_gadget_v0_A_0_top_to_child" input="my_gadget_v0_wrapper.A_0" output="my_gadget_v0.A_0" />
+        <direct name="my_gadget_v0_B_0_top_to_child" input="my_gadget_v0_wrapper.B_0" output="my_gadget_v0.B_0" />
+        <direct name="my_gadget_v0_NA_0_top_to_child" input="my_gadget_v0_wrapper.NA_0" output="my_gadget_v0.NA_0" />
+        <direct name="my_gadget_v0_NB_0_top_to_child" input="my_gadget_v0_wrapper.NB_0" output="my_gadget_v0.NB_0" />
+        <direct name="my_gadget_v0_A_1_top_to_child" input="my_gadget_v0_wrapper.A_1" output="my_gadget_v0.A_1" />
+        <direct name="my_gadget_v0_B_1_top_to_child" input="my_gadget_v0_wrapper.B_1" output="my_gadget_v0.B_1" />
+        <direct name="my_gadget_v0_NA_1_top_to_child" input="my_gadget_v0_wrapper.NA_1" output="my_gadget_v0.NA_1" />
+        <direct name="my_gadget_v0_NB_1_top_to_child" input="my_gadget_v0_wrapper.NB_1" output="my_gadget_v0.NB_1" />
+        <direct name="my_gadget_v0_O_0_child_to_top" input="my_gadget_v0.O_0" output="my_gadget_v0_wrapper.O_0" />
+        <direct name="my_gadget_v0_NO_0_child_to_top" input="my_gadget_v0.NO_0" output="my_gadget_v0_wrapper.NO_0" />
+        <direct name="my_gadget_v0_O_1_child_to_top" input="my_gadget_v0.O_1" output="my_gadget_v0_wrapper.O_1" />
+        <direct name="my_gadget_v0_NO_1_child_to_top" input="my_gadget_v0.NO_1" output="my_gadget_v0_wrapper.NO_1" />
+      </interconnect>
+      <input name="UserCLK" num_pins="1" />
+      <input name="A_0" num_pins="1" />
+      <input name="B_0" num_pins="1" />
+      <input name="NA_0" num_pins="1" />
+      <input name="NB_0" num_pins="1" />
+      <input name="A_1" num_pins="1" />
+      <input name="B_1" num_pins="1" />
+      <input name="NA_1" num_pins="1" />
+      <input name="NB_1" num_pins="1" />
+      <output name="O_0" num_pins="1" />
+      <output name="NO_0" num_pins="1" />
+      <output name="O_1" num_pins="1" />
+      <output name="NO_1" num_pins="1" />
+    </pb_type>
+  </complexblocklist>
+  <switchlist>
+    <switch type="buffer" name="ipin_cblock" R="551" Cin=".77e-15" Cout="4e-15" Tdel="58e-12" buf_size="27.645901" />
+    <switch type="mux" name="buffer" R="2e-12" Cin=".77e-15" Cout="4e-15" Tdel="58e-12" mux_trans_size="2.630740" buf_size="27.645901" />
+  </switchlist>
+  <segmentlist>
+    <segment name="dummy" length="1" freq="1.000000" type="unidir" Rmetal="1e-12" Cmetal="22.5e-15">
+      <sb type="pattern">0 0</sb>
+      <cb type="pattern">0</cb>
+      <mux name="buffer" />
+    </segment>
+  </segmentlist>
+</architecture>

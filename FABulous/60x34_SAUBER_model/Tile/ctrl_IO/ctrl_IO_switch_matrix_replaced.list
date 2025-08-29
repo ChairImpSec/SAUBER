@@ -1,0 +1,37 @@
+to_WA_1s[0] , from_EA_1s[0]
+to_WA_1s[0] , [A_Q0_t]
+
+to_WB_1s[0] , from_EB_1s[0]
+to_WB_1s[0] , [A_Q0_t]
+
+to_WC_1s[0] , from_EC_1s[0]
+to_WC_1s[0], [A_Q0_t]
+
+to_WD_1s[0] , from_ED_1s[0]
+to_WD_1s[0] , [A_Q0_t]
+
+to_WF_1s[0] , from_EF_1s[0]
+to_WF_1s[0] , [A_Q0_t]
+
+to_WG_1s[0] , from_EG_1s[0]
+to_WG_1s[0] , [A_Q0_t]
+
+to_WH_1s[0] , from_EH_1s[0]
+to_WH_1s[0], [A_Q0_t]
+
+to_WI_1s[0] , from_EI_1s[0]
+to_WI_1s[0] , [A_Q0_t]
+
+
+[A_I0_t] , from_EA_1s[0]
+[A_I0_t] , from_EB_1s[0]
+[A_I0_t] , from_EC_1s[0]
+[A_I0_t] , from_ED_1s[0]
+[A_I0_t] , from_EF_1s[0]
+[A_I0_t] , from_EG_1s[0]
+[A_I0_t] , from_EH_1s[0]
+[A_I0_t] , from_EI_1s[0]
+
+# Tristate control for those PADs
+A_T,VCC0
+A_T,GND0

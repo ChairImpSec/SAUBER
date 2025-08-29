@@ -1,0 +1,208 @@
+# W IO
+# MUX(3) for NA
+to_NA[0]  , [A_Q0_t]
+to_NA[0]  , from_SA[0]
+to_NA[0] , from_NA[0]
+to_NA[0] , from_WA[0]
+
+# MUX(3) for NB
+to_NB[0]  , [A_Q0_t]
+to_NB[0]  , from_SB[0]
+to_NB[0] , from_NB[0]
+to_NB[0] , from_WB[0]
+
+# MUX(3) for NC
+to_NC[0]  , [A_Q0_t]
+to_NC[0]  , from_SC[0]
+to_NC[0] , from_NC[0]
+to_NC[0] , from_WC[0]
+
+# MUX(3) for ND
+to_ND[0]  , [A_Q0_t]
+to_ND[0]  , from_SD[0]
+to_ND[0] , from_ND[0]
+to_ND[0] , from_WD[0]
+
+# MUX(3) for NF
+to_NF[0]  , [A_Q0_t]
+to_NF[0]  , from_SF[0]
+to_NF[0] , from_NF[0]
+to_NF[0] , from_WF[0]
+
+# MUX(3) for NG
+to_NG[0]  , [A_Q0_t]
+to_NG[0]  , from_SG[0]
+to_NG[0] , from_NG[0]
+to_NG[0] , from_WG[0]
+
+# MUX(3) for NH
+to_NH[0]  , [A_Q0_t]
+to_NH[0]  , from_SH[0]
+to_NH[0] , from_NH[0]
+to_NH[0] , from_WH[0]
+
+# MUX(3) for NI
+to_NI[0]  , [A_Q0_t]
+to_NI[0]  , from_SI[0]
+to_NI[0] , from_NI[0]
+to_NI[0] , from_WI[0]
+
+# MUX(3) for EA
+to_EA[0]  , [A_Q0_t]
+to_EA[0]  , from_WA[0]
+to_EA[0] , from_NA[0]
+to_EA[0] , from_SA[0]
+
+# MUX(3) for EB
+to_EB[0]  , [A_Q0_t]
+to_EB[0]  , from_WB[0]
+to_EB[0] , from_NB[0]
+to_EB[0] , from_SB[0]
+
+# MUX(3) for EC
+to_EC[0]  , [A_Q0_t]
+to_EC[0]  , from_WC[0]
+to_EC[0] , from_NC[0]
+to_EC[0] , from_SC[0]
+
+# MUX(3) for ED
+to_ED[0]  , [A_Q0_t]
+to_ED[0]  , from_WD[0]
+to_ED[0] , from_ND[0]
+to_ED[0] , from_SD[0]
+
+# MUX(3) for EF
+to_EF[0]  , [A_Q0_t]
+to_EF[0]  , from_WF[0]
+to_EF[0] , from_NF[0]
+to_EF[0] , from_SF[0]
+
+# MUX(3) for EG
+to_EG[0]  , [A_Q0_t]
+to_EG[0]  , from_WG[0]
+to_EG[0] , from_NG[0]
+to_EG[0] , from_SG[0]
+
+# MUX(3) for EH
+to_EH[0]  , [A_Q0_t]
+to_EH[0]  , from_WH[0]
+to_EH[0] , from_NH[0]
+to_EH[0] , from_SH[0]
+
+# MUX(3) for EI
+to_EI[0]  , [A_Q0_t]
+to_EI[0]  , from_WI[0]
+to_EI[0] , from_NI[0]
+to_EI[0] , from_SI[0]
+
+# MUX(3) for SA
+to_SA[0]  , [A_Q0_t]
+to_SA[0]  , from_NA[0]
+to_SA[0] , from_SA[0]
+to_SA[0] , from_WA[0]
+
+# MUX(3) for SB
+to_SB[0]  , [A_Q0_t]
+to_SB[0]  , from_NB[0]
+to_SB[0] , from_SB[0]
+to_SB[0] , from_WB[0]
+
+# MUX(3) for SC
+to_SC[0]  , [A_Q0_t]
+to_SC[0]  , from_NC[0]
+to_SC[0] , from_SC[0]
+to_SC[0] , from_WC[0]
+
+# MUX(3) for SD
+to_SD[0]  , [A_Q0_t]
+to_SD[0]  , from_ND[0]
+to_SD[0] , from_SD[0]
+to_SD[0] , from_WD[0]
+
+# MUX(3) for SF
+to_SF[0]  , [A_Q0_t]
+to_SF[0]  , from_NF[0]
+to_SF[0] , from_SF[0]
+to_SF[0] , from_WF[0]
+
+# MUX(3) for SG
+to_SG[0]  , [A_Q0_t]
+to_SG[0]  , from_NG[0]
+to_SG[0] , from_SG[0]
+to_SG[0] , from_WG[0]
+
+# MUX(3) for SH
+to_SH[0]  , [A_Q0_t]
+to_SH[0]  , from_NH[0]
+to_SH[0] , from_SH[0]
+to_SH[0] , from_WH[0]
+
+# MUX(3) for SI
+to_SI[0]  , [A_Q0_t]
+to_SI[0]  , from_NI[0]
+to_SI[0] , from_SI[0]
+to_SI[0] , from_WI[0]
+
+# MUX(8) for J_I1A
+to_J_I1A[0] , from_NA[0]
+to_J_I1A[0] , from_NB[0]
+to_J_I1A[0] , from_NC[0]
+to_J_I1A[0] , from_ND[0]
+to_J_I1A[0] , from_NF[0]
+to_J_I1A[0] , from_NG[0]
+to_J_I1A[0] , from_NH[0]
+to_J_I1A[0] , from_NI[0]
+
+
+
+# MUX(8) for J_I2A
+to_J_I2A[0] , from_SA[0]
+to_J_I2A[0] , from_SB[0]
+to_J_I2A[0] , from_SC[0]
+to_J_I2A[0] , from_SD[0]
+to_J_I2A[0] , from_SF[0]
+to_J_I2A[0] , from_SG[0]
+to_J_I2A[0] , from_SH[0]
+to_J_I2A[0] , from_SI[0]
+
+
+
+# MUX(8) for J_I3A
+to_J_I3A[0] , from_WA[0]
+to_J_I3A[0] , from_WB[0]
+to_J_I3A[0] , from_WC[0]
+to_J_I3A[0] , from_WD[0]
+to_J_I3A[0] , from_WF[0]
+to_J_I3A[0] , from_WG[0]
+to_J_I3A[0] , from_WH[0]
+to_J_I3A[0] , from_WI[0]
+
+# utilizing some additional inputs 
+# MUX(4) for J_I4A
+to_J_I4A[0] , from_WG[1]
+to_J_I4A[0] , from_WH[1]
+to_J_I4A[0] , from_WI[1]
+to_J_I4A[0] , from_WI[2]
+
+
+# MUX(4) for Inputs_A
+[A_I0_t] , from_J_I1A[0]
+[A_I0_t] , from_J_I2A[0]
+[A_I0_t] , from_J_I3A[0]
+[A_I0_t] , from_J_I4A[0]
+
+# turns
+to_EG[1] , from_WG[1]
+to_EH[1] , from_WH[1]
+to_EI[1] , from_WI[1]
+to_EI[2] , from_WI[2]
+
+# utilizing some additional outputs
+to_EG[1] , [A_Q0_t]
+to_EH[1] , [A_Q0_t]
+to_EI[1] , [A_Q0_t]
+to_EI[2] , [A_Q0_t]
+
+# Tristate control for those PADs
+A_T,VCC0
+A_T,GND0

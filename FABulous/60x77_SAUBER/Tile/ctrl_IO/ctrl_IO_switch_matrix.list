@@ -1,0 +1,36 @@
+to_WA_1s[0|1] , from_EA_1s[0|1]
+to_WA_1s[0|1] , [A_Q0_t|A_Q0_f]
+
+to_WB_1s[0|1] , from_EB_1s[0|1]
+to_WB_1s[0|1] , [A_Q0_t|A_Q0_f]
+
+to_WC_1s[0|1] , from_EC_1s[0|1]
+to_WC_1s[0|1], [A_Q0_t|A_Q0_f]
+
+to_WD_1s[0|1] , from_ED_1s[0|1]
+to_WD_1s[0|1] , [A_Q0_t|A_Q0_f]
+
+to_WF_1s[0|1] , from_EF_1s[0|1]
+to_WF_1s[0|1] , [A_Q0_t|A_Q0_f]
+
+to_WG_1s[0|1] , from_EG_1s[0|1]
+to_WG_1s[0|1] , [A_Q0_t|A_Q0_f]
+
+to_WH_1s[0|1] , from_EH_1s[0|1]
+to_WH_1s[0|1], [A_Q0_t|A_Q0_f]
+
+to_WI_1s[0|1] , from_EI_1s[0|1]
+to_WI_1s[0|1] , [A_Q0_t|A_Q0_f]
+
+
+[A_I0_t|A_I0_f] , from_EA_1s[0|1]
+[A_I0_t|A_I0_f] , from_EB_1s[0|1]
+[A_I0_t|A_I0_f] , from_EC_1s[0|1]
+[A_I0_t|A_I0_f] , from_ED_1s[0|1]
+[A_I0_t|A_I0_f] , from_EF_1s[0|1]
+[A_I0_t|A_I0_f] , from_EG_1s[0|1]
+[A_I0_t|A_I0_f] , from_EH_1s[0|1]
+[A_I0_t|A_I0_f] , from_EI_1s[0|1]
+
+# Tristate control for those PADs
+[A_T|A_T],[VCC0|GND0]
