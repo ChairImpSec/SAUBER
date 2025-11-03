@@ -1,6 +1,6 @@
 # SAUBER
 
-his repository contains the source code and hardware implementations (HDL files) for the paper [Design and Implementation of a Physically Secure Open-Source FPGA and Toolchain](https://tches.iacr.org/index.php/TCHES/article/view/12227).
+This repository contains the source code and hardware implementations (HDL files) for the paper [Design and Implementation of a Physically Secure Open-Source FPGA and Toolchain](https://tches.iacr.org/index.php/TCHES/article/view/12227).
 
 - *Designs for our FPGA* includes designs mapped to gadgets which can be used for bitstream generation
 - *FABulous* contains the adjusted FABulous framework for fabric generation as well as implementations of secure fabric scaled to 23x7, 60x34 and 60x77 (full-secure part).
